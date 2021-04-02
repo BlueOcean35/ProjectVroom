@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const morgan = require("morgan");
+require('dotenv').config();
 
 app.use(morgan('dev'));
 app.use(express.json());
