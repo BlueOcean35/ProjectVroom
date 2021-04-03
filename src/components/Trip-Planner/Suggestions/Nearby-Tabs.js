@@ -13,7 +13,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
 import nearbyPlaces from "../../../../sample-data/nearby-places.js";
-import FastfoodIcon from "@material-ui/icons/Fastfood";
+import NearbyListItems from "./List-Items.js";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -83,22 +83,7 @@ export default function NearbyTabs() {
 				<FilterSlider />
 				<List>
 					{nearbyPlaces.results.map((p) => {
-						return (
-							<ListItem button>
-								<ListItemIcon>
-									<FastfoodIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={p.name}
-									secondary={
-										<div>
-											Rating: {p.rating} <br />
-											Price Level: {p.price_level}
-										</div>
-									}
-								/>
-							</ListItem>
-						);
+						return <NearbyListItems place={p} key={p.place_id} />;
 					})}
 				</List>
 			</TabPanel>
