@@ -13,7 +13,7 @@ function valuetext(value) {
 	return `${value}°C`;
 }
 
-export default function SuggestionsFilter() {
+export default function FilterSlider() {
 	const classes = useStyles();
 
 	return (

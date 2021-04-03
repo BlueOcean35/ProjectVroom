@@ -19,11 +19,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
-import Suggestions from "./Suggestions/Suggestions.js";
-import SuggestionTabs from "./Suggestions/Suggestion-Tabs.js";
+import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
 import SuggestionsListItems from "./Suggestions/List-Items.js";
-// import MapContainer from "./Map.js";
-// import GoogleMaps from "./Map-Pure-JS";
 
 function Copyright() {
 	return (
@@ -125,6 +122,8 @@ export default function Dashboard() {
 	const handleDrawerOpen = () => {
 		setOpen(true);
 	};
+
+	//this is where we define the drawer close logic
 	const handleDrawerClose = () => {
 		// setOpen(false);
 	};
@@ -157,9 +156,9 @@ export default function Dashboard() {
 						noWrap
 						className={classes.title}
 					>
-						Bad Biker Club
+						This is where you add the Title
 					</Typography>
-					<div> Logo </div>
+					<div> This is where you add the logo </div>
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -176,15 +175,18 @@ export default function Dashboard() {
 				</div>
 				<Divider />
 				<>
+					Your travel so far list contained in the div below called
+					{"<List>{mainListItems}</List> "}
+					<List>{mainListItems}</List>
 					<List>{mainListItems}</List>
 					<Divider />
-					<SuggestionTabs />
+					<NearbyTabs />
 				</>
-				{/* <Suggestions /> */}
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.appBarSpacer} />
-				{/* <GoogleMaps /> */}
+				This is where the map will go. Any any component or div in this space to
+				get started
 			</main>
 		</div>
 	);

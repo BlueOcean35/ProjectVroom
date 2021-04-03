@@ -10,12 +10,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import SuggestionsFilter from "./Suggestions-Filter.js";
-import SuggestionsFilterOptions from "./Suggestions-Filter-Options.js";
-// import SuggestionsListItems from "./List-Items.js";
-import NearbyListItems from "./List-Items.js";
+import FilterSlider from "./Filter-Slider.js";
+import FilterRadioButtons from "./Filter-Radio.js";
 import nearbyPlaces from "../../../../sample-data/nearby-places.js";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 
@@ -59,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SuggestionTabs() {
+export default function NearbyTabs() {
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
 
@@ -83,8 +79,8 @@ export default function SuggestionTabs() {
 			</AppBar>
 			<TabPanel value={value} index={0}>
 				Food <br />
-				<SuggestionsFilterOptions />
-				<SuggestionsFilter />
+				<FilterRadioButtons />
+				<FilterSlider />
 				<List>
 					{nearbyPlaces.results.map((p) => {
 						return (
@@ -108,18 +104,18 @@ export default function SuggestionTabs() {
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				Lodging <br />
-				<SuggestionsFilterOptions />
-				<SuggestionsFilter />
+				<FilterRadioButtons />
+				<FilterSlider />
 			</TabPanel>
 			<TabPanel value={value} index={2}>
 				Attractions <br />
-				<SuggestionsFilterOptions />
-				<SuggestionsFilter />
+				<FilterRadioButtons />
+				<FilterSlider />
 			</TabPanel>
 			<TabPanel value={value} index={3}>
 				Fuel <br />
-				<SuggestionsFilterOptions />
-				<SuggestionsFilter />
+				<FilterRadioButtons />
+				<FilterSlider />
 			</TabPanel>
 		</div>
 	);

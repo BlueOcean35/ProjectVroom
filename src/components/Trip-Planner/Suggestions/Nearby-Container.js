@@ -2,9 +2,8 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import SuggestionTabs from "./Suggestion-Tabs.js";
 
-export default function Suggestions() {
+export default function NearbyContainer() {
 	return (
 		<React.Fragment>
 			<CssBaseline />
