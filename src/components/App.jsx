@@ -1,13 +1,17 @@
-import React, {Fragment} from "react";
-import Example from '../containers/exampleCounterContainer.js';
+import React, { Fragment } from "react";
+import Example from "../containers/exampleCounterContainer.js";
 
-const App = ({name}) => {
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+const App = ({ name }) => {
   return (
-    <Fragment>
-      <h1>How many times can you say "Big Bad Boston Bikers" fast?</h1>
-      <Example />
-    </Fragment>
+    <>
+      <Router>
+        <h1>How many times can you say "Big Bad Boston Bikers" fast?</h1>
+        <Example />
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
