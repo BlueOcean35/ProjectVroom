@@ -14,21 +14,23 @@ const App = ({ name }) => {
         <h1>How many times can you say "Big Bad Boston Bikers" fast?</h1>
         {/* component={ LandingPage }  */}
 
-        <Route path="/">
-          <LandingPage exampleProps={{ example: true }} />
-          {/* ^ this is v5 react router way to pass props without a cb */}
-        </Route>
+        <Switch>
+          <Route path="/" exact>
+            <LandingPage exampleProps={{ example: true }} />
+            {/* ^ this is v5 react router way to pass props without a cb */}
+          </Route>
 
-        <Route path="/map">
-          <Map exampleProps={{ example: true }} />
-        </Route>
+          <Route path="/map" exact>
+            <Map exampleProps={{ example: true }} />
+          </Route>
 
-        <Route path="/itinerary">
-          <Itinerary exampleProps={{ example: true }} />
-        </Route>
+          <Route path="/itinerary/:id" exact>
+            <Itinerary exampleProps={{ example: true }} />
+          </Route>
+        </Switch>
       </Router>
     </>
   );
-};
+}; 
 
 export default App;
