@@ -8,6 +8,11 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  
+  devServer: {
+    historyApiFallback: true,
+  },
+
   module: {
     rules: [
       {
@@ -15,7 +20,7 @@ const config = {
         use: 'babel-loader',
         exclude: /node_modules/
       }
-    ]
+    ],
   },
   resolve: {
     extensions: [
