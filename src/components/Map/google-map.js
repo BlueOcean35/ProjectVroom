@@ -3,12 +3,18 @@ import Helmet from "react-helmet";
 const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
+	constructor (props) {
+		super(props)
+	}
+
 	componentDidMount() {
 		this.renderMap();
-	}
+	};
+
 	renderMap = () => {
 		window.initMap = this.initMap;
 	};
+
 	initMap = () => {
 		let latitude = 40.674;
 		let longitude = -73.945;
@@ -33,12 +39,11 @@ class GoogleMap extends Component {
 		);
 
 		map.addListener("click", (mouseEvent) => {
-			console.log(mouseEvent.latLng.lat());
-			console.log(mouseEvent.latLng.lng());
+			const x = JSON.stringify(mouseEvent.latLng.lat());
+			const y = JSON.stringify(mouseEvent.latLng.lng());
+			this.props.getNearby(x, y);
 		});
 	};
-
-	// `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=30&type=${type}&key=${API_KEY}`
 
 	render() {
 		return (

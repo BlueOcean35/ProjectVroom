@@ -19,9 +19,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
+import NearbyTabsContainer from "./Suggestions/Nearby-Tabs-Container.js";
 import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
 import SuggestionsListItems from "./Suggestions/List-Items.js";
-import GoogleMap from "../Map/google-map.js";
+import GoogleMapContainer from "../Map/GoogleMapContainer.js";
 
 function Copyright() {
 	return (
@@ -186,7 +187,7 @@ export default function Dashboard() {
 			</Drawer>
 			<main className={classes.content}>
 				{/* <div className={classes.appBarSpacer} /> */}
-				<GoogleMap />
+				<GoogleMapContainer />
 			</main>
 		</div>
 	);

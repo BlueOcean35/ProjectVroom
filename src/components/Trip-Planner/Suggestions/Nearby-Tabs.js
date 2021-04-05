@@ -16,7 +16,8 @@ import nearbyPlaces from "../../../../sample-data/nearby-places.js";
 import NearbyListItems from "./List-Items.js";
 import SuggestionsListItemsContainer from "./List-Items-Container.js";
 
-function TabPanel(props) {
+function TabPanel(props, {nearbyFood}) {
+	console.log(nearbyFood);
 	const { children, value, index, ...other } = props;
 
 	return (
@@ -83,7 +84,7 @@ export default function NearbyTabs() {
 				<FilterRadioButtons />
 				<FilterSlider />
 				<List>
-					{nearbyPlaces.results.map((p) => {
+					{nearbyPlaces.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
 					})}
 				</List>
