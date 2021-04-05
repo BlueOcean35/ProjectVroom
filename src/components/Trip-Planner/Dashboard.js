@@ -21,6 +21,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
 import SuggestionsListItems from "./Suggestions/List-Items.js";
+import GoogleMap from "../Map/google-map.js";
 
 function Copyright() {
 	return (
@@ -185,8 +186,7 @@ export default function Dashboard() {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.appBarSpacer} />
-				This is where the map will go. Any any component or div in this space to
-				get started
+				<GoogleMap />
 			</main>
 		</div>
 	);

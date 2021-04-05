@@ -22,7 +22,7 @@ const NearbyListItems = ({
 	addStop,
 }) => {
 	return (
-		<ListItem button onClick={toggleStop}>
+		<ListItem button>
 			<ListItemIcon>
 				<FastfoodIcon fontSize="large" />
 			</ListItemIcon>

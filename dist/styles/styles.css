@@ -1,26 +1,31 @@
 /* example css */
 body {
-  position: relative;
-  height: 200px;
-  text-align:center;
-  color: red;
+	position: relative;
+	height: 200px;
+	text-align: center;
+	color: red;
 }
 
 #counter {
-  color: darkred;
-  font-size: 200px;
-  padding: 50px;
-  /* margin-top: 20%; */
-  background-color: gray;
-  border-radius: 20px;
-  box-shadow: 0.5px 0.5px 5px gray;
+	color: darkred;
+	font-size: 200px;
+	padding: 50px;
+	/* margin-top: 20%; */
+	background-color: gray;
+	border-radius: 20px;
+	box-shadow: 0.5px 0.5px 5px gray;
 }
 
 #counter:focus {
-  outline: none;
+	outline: none;
 }
 
 #counter:hover {
-  cursor: pointer;
-  box-shadow: 5px 5px 5px gray;
+	cursor: pointer;
+	box-shadow: 5px 5px 5px gray;
+}
+
+.map-container {
+	position: unset !important;
+	overflow: visible !important;
 }
