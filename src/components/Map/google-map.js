@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import API_KEY from "../../../config.js";
+import API_KEY from "../../../.env";
 
 class GoogleMap extends Component {
 	componentDidMount() {
@@ -29,25 +29,26 @@ class GoogleMap extends Component {
 				gestureHandling: "cooperative",
 			}
 		);
+
+		map.addListener("click", (me) => {
+			// console.log(me.latLng.lat());
+			console.log(me);
+		});
 	};
 
-	getLatLngFromClick = (mapClickEvent) => {
-		console.log("click", mapClickEvent.latLng);
-	};
+	// getLatLngFromClick = (mapClickEvent) => {
+	// 	console.log("click", mapClickEvent);
+	// };
 
 	render() {
 		return (
-			<section className="map-wrapper-container">
-				<div className="map-top-container">
+			<div className="map-wrapper-container">
+				{/* <div className="map-top-container">
 					<h2>Google Map</h2>
 					<span>Location at your fingertips</span>
-				</div>
+				</div> */}
 				<div className="map-wrapper">
-					<div
-						className="map-container"
-						id="google-map"
-						onClick={this.getLatLngFromClick}
-					></div>
+					<div className="map-container" id="google-map"></div>
 					<Helmet className="helmet">
 						<script
 							type="text/javascript"
@@ -58,7 +59,7 @@ class GoogleMap extends Component {
 						/>
 					</Helmet>
 				</div>
-			</section>
+			</div>
 		);
 	}
 }

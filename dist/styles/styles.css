@@ -20,7 +20,7 @@
 }
 body {
 	position: relative;
-	height: 200px;
+	height: 100%;
 	text-align: center;
 	color: red;
 }

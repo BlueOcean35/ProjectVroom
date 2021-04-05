@@ -185,7 +185,7 @@ export default function Dashboard() {
 				</>
 			</Drawer>
 			<main className={classes.content}>
-				<div className={classes.appBarSpacer} />
+				{/* <div className={classes.appBarSpacer} /> */}
 				<GoogleMap />
 			</main>
 		</div>
