@@ -31,6 +31,10 @@ class GoogleMap extends Component {
 		);
 	};
 
+	getLatLngFromClick = (mapClickEvent) => {
+		console.log("click", mapClickEvent.latLng);
+	};
+
 	render() {
 		return (
 			<section className="map-wrapper-container">
@@ -39,7 +43,11 @@ class GoogleMap extends Component {
 					<span>Location at your fingertips</span>
 				</div>
 				<div className="map-wrapper">
-					<div className="map-container" id="google-map"></div>
+					<div
+						className="map-container"
+						id="google-map"
+						onClick={this.getLatLngFromClick}
+					></div>
 					<Helmet className="helmet">
 						<script
 							type="text/javascript"

@@ -10,6 +10,11 @@
 	box-sizing: border-box;
 }
 
+.map-container {
+	overflow: visible !important;
+	position: unset !important;
+}
+
 .MuiTypography-h3 {
 	font-family: "Metal Mania", cursive;
 }
