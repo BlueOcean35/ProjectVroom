@@ -14,6 +14,7 @@ import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
 import nearbyPlaces from "../../../../sample-data/nearby-places.js";
 import NearbyListItems from "./List-Items.js";
+import SuggestionsListItemsContainer from "./List-Items-Container.js";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -83,7 +84,7 @@ export default function NearbyTabs() {
 				<FilterSlider />
 				<List>
 					{nearbyPlaces.results.map((p) => {
-						return <NearbyListItems place={p} key={p.place_id} />;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
 					})}
 				</List>
 			</TabPanel>

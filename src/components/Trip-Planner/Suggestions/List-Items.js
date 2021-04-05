@@ -14,9 +14,15 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 
 const calcProxmity = () => {};
 
-const NearbyListItems = ({ place }) => {
+const NearbyListItems = ({
+	place,
+	travelSoFarStops,
+	stopButton,
+	toggleStopButton,
+	addStop,
+}) => {
 	return (
-		<ListItem button>
+		<ListItem button onClick={toggleStop}>
 			<ListItemIcon>
 				<FastfoodIcon fontSize="large" />
 			</ListItemIcon>
@@ -31,7 +37,7 @@ const NearbyListItems = ({ place }) => {
 				}
 			/>
 			<ListItemIcon>
-				<AddBoxIcon fontSize="large" />
+				<AddBoxIcon fontSize="large" onClick={toggleStopButton} />
 			</ListItemIcon>
 		</ListItem>
 	);

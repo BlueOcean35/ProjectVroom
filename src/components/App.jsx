@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import Example from '../containers/exampleCounterContainer.js';
+import Example from './exampleCounterContainer.js';
 
 const App = ({name}) => {
   return (

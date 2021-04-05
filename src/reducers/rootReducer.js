@@ -1,10 +1,12 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 // import all reducers here
-import exampleCounterReducer from './exampleCounterReducer.js';
+import updateStopReducer from "./Trip-Planner/updateStopReducer.js";
+import toggleStopButtonReducer from "./Trip-Planner/toggleStopButtonReducer.js";
 
 const rootReducer = combineReducers({
-  count: exampleCounterReducer
+	travelSoFarStops: updateStopReducer,
+	toggleStopButton: toggleStopButtonReducer,
 });
 
 export default rootReducer;
