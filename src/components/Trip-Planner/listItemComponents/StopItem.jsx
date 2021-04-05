@@ -23,14 +23,43 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import CreateIcon from '@material-ui/icons/Create';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
-export default function StopItem (props) {
-
-  var listText;
+export default class StopItem extends React.Component  {
 
 
+constructor(props) {
+  super(props)
+  this.state = {
+    commentDisplay: 'none',
+    commentText: ''
+  }
+  this.toggleCommentDisplay = this.toggleCommentDisplay.bind(this);
+  this.handleCommentChage = this.handleCommentChage.bind(this);
 
+}
+
+toggleCommentDisplay() {
+  console.log(this.state.commentDisplay)
+  if (this.state.commentDisplay === 'none') {
+    this.setState({commentDisplay: 'inline'});
+  } else {
+
+      this.setState({commentDisplay: 'none'})
+
+  }
+}
+
+
+handleCommentChage(event) {
+  this.setState({commentText: event.target.value});
+}
+
+
+
+render(){
 
   var icons = {
     food: FastfoodIcon,
@@ -40,10 +69,10 @@ export default function StopItem (props) {
 
   var StopIcon ;
 
-  if (icons[props.stopType] === undefined) {
+  if (icons[this.props.stopType] === undefined) {
     StopIcon = ExploreIcon;
   } else {
-    StopIcon = icons[props.stopType]
+    StopIcon = icons[this.props.stopType]
   }
 
 	return (
@@ -52,10 +81,10 @@ export default function StopItem (props) {
 			<ListItemIcon>
 				<StopIcon />
 			</ListItemIcon>
-			<ListItemText primary={`Stop: ${props.address}`} />
+			<ListItemText primary={<div><span>Stop: {this.props.address}</span> <br></br> <span style = {{fontSize: '.8rem', fontStyle: 'italic' }}>{this.state.commentText}</span></div>} />
 
     <Tooltip title={<span style = {{fontSize: '15px'}}>Write Comment</span>} >
-      <IconButton aria-label = 'write-comment'>
+      <IconButton onClick = {this.toggleCommentDisplay} aria-label = 'write-comment'>
         <CreateIcon />
       </IconButton>
     </Tooltip>
@@ -66,12 +95,19 @@ export default function StopItem (props) {
       </IconButton>
     </Tooltip>
 
-
 		</ListItem>
+
+    <ListItem style = {{display: this.state.commentDisplay}}>
+    <TextField value = {this.state.commentText} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px'}}>Comment</span>} />
+     {/* <Button variant="contained">
+        Add Comment
+      </Button> */}
+    </ListItem>
 
 
     </div>
 	  )
+  }
 	};
 
 
