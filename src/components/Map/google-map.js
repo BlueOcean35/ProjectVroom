@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import API_KEY from "../../../.env";
+const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
 	componentDidMount() {
@@ -12,6 +12,8 @@ class GoogleMap extends Component {
 	initMap = () => {
 		let latitude = 40.674;
 		let longitude = -73.945;
+		var directionsService = new google.maps.DirectionsService();
+		var directionsRenderer = new google.maps.DirectionsRenderer();
 		const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
 			{
@@ -30,23 +32,17 @@ class GoogleMap extends Component {
 			}
 		);
 
-		map.addListener("click", (me) => {
-			// console.log(me.latLng.lat());
-			console.log(me);
+		map.addListener("click", (mouseEvent) => {
+			console.log(mouseEvent.latLng.lat());
+			console.log(mouseEvent.latLng.lng());
 		});
 	};
 
-	// getLatLngFromClick = (mapClickEvent) => {
-	// 	console.log("click", mapClickEvent);
-	// };
+	// `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=30&type=${type}&key=${API_KEY}`
 
 	render() {
 		return (
 			<div className="map-wrapper-container">
-				{/* <div className="map-top-container">
-					<h2>Google Map</h2>
-					<span>Location at your fingertips</span>
-				</div> */}
 				<div className="map-wrapper">
 					<div className="map-container" id="google-map"></div>
 					<Helmet className="helmet">
