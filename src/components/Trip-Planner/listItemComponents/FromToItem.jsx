@@ -34,7 +34,7 @@ export default function FromToItem (props) {
           <RoomIcon />
         </ListItemIcon>
         <Typography variant= 'body1' >
-          <Box fontWeight = 'fontWeightBold'>{listText}</Box>
+          <Box fontWeight = 'fontWeightBold' fontSize = '1.35rem'>{listText}</Box>
         </Typography>
       </ListItem>
 
