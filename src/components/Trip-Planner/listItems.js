@@ -15,7 +15,8 @@ import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import MapIcon from '@material-ui/icons/Map';
 import RoomIcon from '@material-ui/icons/Room';
-import FromToItem from './FromToItem.jsx'
+import FromToItem from './listItemComponents/FromToItem.jsx';
+import StopItem from './listItemComponents/StopItem.jsx';
 
 
 
@@ -36,20 +37,9 @@ export function mainListItems () {
 
 	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
 		<FromToItem type = 'from' from = {{address: 'Boston'}} />
+		<StopItem stopType = 'food' address = "Ralph Waldo Emerson's House"/>
 
-		<ListItem >
-			<ListItemIcon>
-				<PeopleIcon />
-			</ListItemIcon>
-			<ListItemText primary="Stop: Ralph Waldo Emerson's House" />
-		</ListItem>
 
-		<ListItem >
-			<ListItemIcon>
-				<BarChartIcon />
-			</ListItemIcon>
-			<ListItemText primary="Stop: Key West" />
-		</ListItem>
 
 		<FromToItem type = 'to' to = {{address: 'Miami'}} from = {{address: 'Boston'}} />
 	</div>
