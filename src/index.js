@@ -4,7 +4,7 @@ import App from "./components/App.jsx";
 import { Provider } from 'react-redux';
 import {store} from './store.js';
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <Provider store={store}>
       <App />
   </Provider>,

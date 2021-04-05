@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./MainComponents/LandingPage_Components/LandingPage.jsx";
 import Map from "./MainComponents/Map_Components/Map.jsx";
 import Itinerary from "./MainComponents/Itinerary_Components/Itinerary.jsx";
+import Banner from "./Banner/Banner.jsx";
 
 const App = ({ name }) => {
   return (
@@ -16,11 +17,13 @@ const App = ({ name }) => {
 
         <Switch>
           <Route path="/" exact>
+            <Banner />
             <LandingPage exampleProps={{ example: true }} />
             {/* ^ this is v5 react router way to pass props without a cb */}
           </Route>
 
           <Route path="/map" exact>
+            <Banner />
             <Map exampleProps={{ example: true }} />
           </Route>
 
@@ -31,6 +34,6 @@ const App = ({ name }) => {
       </Router>
     </>
   );
-}; 
+};
 
 export default App;
