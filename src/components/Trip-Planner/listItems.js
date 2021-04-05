@@ -1,4 +1,8 @@
 import React from "react";
+import Box from '@material-ui/core/Box';
+import { typography } from '@material-ui/system';
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -9,41 +13,48 @@ import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import MapIcon from '@material-ui/icons/Map';
+import RoomIcon from '@material-ui/icons/Room';
+import FromToItem from './FromToItem.jsx'
 
-export const mainListItems = (
+
+
+const useStyles = makeStyles((theme) => ({
+
+	listText: {
+		float: 'left',
+		marginLeft: '16px',
+		marginRight: '16px',
+		marginBottom: '16px'
+	}
+}));
+
+export function mainListItems () {
+	const classes = useStyles();
+	return (
 	<div>
-		<ListItem button>
-			<ListItemIcon>
-				<DashboardIcon />
-			</ListItemIcon>
-			<ListItemText primary="Your Trip Details" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<ShoppingCartIcon />
-			</ListItemIcon>
-			<ListItemText primary="From: Boston" />
-		</ListItem>
-		<ListItem button>
+
+	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
+		<FromToItem type = 'from' from = {{address: 'Boston'}} />
+
+		<ListItem >
 			<ListItemIcon>
 				<PeopleIcon />
 			</ListItemIcon>
 			<ListItemText primary="Stop: Ralph Waldo Emerson's House" />
 		</ListItem>
-		<ListItem button>
+
+		<ListItem >
 			<ListItemIcon>
 				<BarChartIcon />
 			</ListItemIcon>
 			<ListItemText primary="Stop: Key West" />
 		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<LayersIcon />
-			</ListItemIcon>
-			<ListItemText primary="Destination: Miami" />
-		</ListItem>
+
+		<FromToItem type = 'to' to = {{address: 'Miami'}} from = {{address: 'Boston'}} />
 	</div>
-);
+	)
+	};
 
 export const secondaryListItems = (
 	<div>
@@ -52,7 +63,7 @@ export const secondaryListItems = (
 			<ListItemIcon>
 				<AssignmentIcon />
 			</ListItemIcon>
-			<ListItemText primary="Current month" />
+			<ListItemText primary="Current month" className = {'primaryDestination'}/>
 		</ListItem>
 		<ListItem button>
 			<ListItemIcon>
