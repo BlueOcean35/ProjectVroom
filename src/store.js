@@ -25,7 +25,9 @@ var initialState = {
   nearbyAttractions: [],
   nearbyFuel: [],
   nearbyIsAdded: false,
-  legs: []
+  legs: [],
+  start: {},
+  end: {}
   // map? route? selectedLocation?
 };
 
