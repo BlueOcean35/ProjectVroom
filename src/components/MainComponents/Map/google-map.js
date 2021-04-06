@@ -47,12 +47,12 @@ class GoogleMap extends Component {
       preserveViewport: true
     })
 
-    function calcRoute() {
-      var start = "New+York,NY";
-      var end = "Boston,MA"
-      console.log('CALC ROUTE PROPS', this.props)
-      // var start = this.props?.addressObjFrom?.David_format 
-      // var end = this.props?.addressObjTo?.David_format
+    function calcRoute(props) {
+      // var start = "New+York,NY";
+      // var end = "Boston,MA"
+      console.log('CALC ROUTE PROPS', props)
+      var start = props.addressObjFrom.David_format 
+      var end = props.addressObjTo.David_format
       var request = {
         origin:start,
         destination:end,
@@ -66,11 +66,13 @@ class GoogleMap extends Component {
         if (status == 'OK') {
           console.log(response);
           directionsRenderer.setDirections(response);
+        } else {
+          console.log(status);
         }
       });
     }
 
-    calcRoute()
+    calcRoute(this.props)
 
 		map.addListener("dblclick", (mouseEvent) => {
 			const x = JSON.stringify(mouseEvent.latLng.lat());
