@@ -20,7 +20,7 @@ const App = ({ name }) => {
         {/* component={ LandingPage }  */}
 
         <Switch>
-          <Route exact path="/">
+          <Route path="/" exact>
             <LandingPage />
           </Route>
 
