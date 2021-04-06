@@ -26,8 +26,10 @@ var initialState = {
   nearbyFuel: [],
   nearbyIsAdded: false,
   legs: [],
-  start: {},
-  end: {}
+  locationFrom: {},
+  locationTo: {},
+  addressObjFrom: {},
+  addressObjTo: {}
   // map? route? selectedLocation?
 };
 

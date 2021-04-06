@@ -67,3 +67,9 @@ body {
 .landing-page-btn {
   width: 200px;
 }
+
+.autocomplete-dropdown-container {
+  color: white;
+  position: absolute;
+  z-index: 2;
+}
