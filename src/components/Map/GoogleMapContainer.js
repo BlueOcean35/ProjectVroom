@@ -4,8 +4,9 @@ import GoogleMap from "./google-map.js";
 
 var mapStoreToProps = (state) => ({
 	nearbyFood: state.nearbyFood,
-  start: state.start,
-  end: state.end
+  addressObjFrom: state.addressObjFrom,
+  addressObjTo: state.addressObjTo,
+  waypoints: state.waypoints
 });
 
 var mapDispatchToProps = (dispatch) => ({

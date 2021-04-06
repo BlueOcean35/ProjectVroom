@@ -82,3 +82,11 @@ body {
 .MuiList-root {
   height: 400px !important;
 } 
+.autocomplete-dropdown-container {
+  color: white;
+  position: absolute;
+  z-index: 2;
+}
+.suggestion {
+  display: block;
+}

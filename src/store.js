@@ -20,16 +20,20 @@ import thunk from "redux-thunk";
 
 // add in any state you need here
 var initialState = {
-	nearbyFood: [],
-	nearbyLodging: [],
-	nearbyAttractions: [],
-	nearbyFuel: [],
-	nearbyIsAdded: false,
-	legs: [],
-	travelSoFarStops: [],
+
+  nearbyFood: [],
+  nearbyLodging: [],
+  nearbyAttractions: [],
+  nearbyFuel: [],
+  nearbyIsAdded: false,
+  waypoints: [],
+  travelSoFarStops: [],
 	toggleStopButton: false,
-  start: "New+York,NY",
-  end: "Boston,MA"
+  locationFrom: {}, //start loc validated by api
+  locationTo: {}, //end loc validated by api
+  addressObjFrom: {}, //from the login page start text field
+  addressObjTo: {} //from the login page destination text field
+
 };
 
 const store = createStore(
