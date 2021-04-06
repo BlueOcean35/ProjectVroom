@@ -9,59 +9,38 @@ import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
-// import nearbyPlaces from "../../../../sample-data/nearby-places.js";
+import FastfoodIcon from "@material-ui/icons/Fastfood";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 
-//this did not work how expected
-const NearbyListItems = ({ listofplaces }) => {
+const calcProxmity = () => {};
+
+const NearbyListItems = ({
+	place,
+	travelSoFarStops,
+	stopButton,
+	toggleStopButton,
+	addStop,
+}) => {
 	return (
-		<>
-			{listofplaces.map((p) => {
-				<ListItem button>
-					<ListItemIcon>
-						<DashboardIcon />
-					</ListItemIcon>
-					<ListItemText primary={p.name} />
-				</ListItem>;
-			})}
-		</>
+		<ListItem button>
+			<ListItemIcon>
+				<FastfoodIcon fontSize="large" />
+			</ListItemIcon>
+			<ListItemText
+				primary={place.name}
+				secondary={
+					<div>
+						Rating: {place.rating} <br />
+						Price Level: {place.price_level} <br />
+						Proximity:
+					</div>
+				}
+			/>
+			<ListItemIcon>
+				<AddBoxIcon fontSize="large" onClick={toggleStopButton} />
+			</ListItemIcon>
+		</ListItem>
 	);
 };
 
 export default NearbyListItems;
-
-// const SuggestionsListItems = (
-// 	<div>
-// 		<ListItem button>
-// 			<ListItemIcon>
-// 				<DashboardIcon />
-// 			</ListItemIcon>
-// 			<ListItemText primary="Your Trip Details" />
-// 		</ListItem>
-// 		<ListItem button>
-// 			<ListItemIcon>
-// 				<ShoppingCartIcon />
-// 			</ListItemIcon>
-// 			<ListItemText primary="From: Boston" />
-// 		</ListItem>
-// 		<ListItem button>
-// 			<ListItemIcon>
-// 				<PeopleIcon />
-// 			</ListItemIcon>
-// 			<ListItemText primary="Stop: Ralph Waldo Emerson's House" />
-// 		</ListItem>
-// 		<ListItem button>
-// 			<ListItemIcon>
-// 				<BarChartIcon />
-// 			</ListItemIcon>
-// 			<ListItemText primary="Stop: Key West" />
-// 		</ListItem>
-// 		<ListItem button>
-// 			<ListItemIcon>
-// 				<LayersIcon />
-// 			</ListItemIcon>
-// 			<ListItemText primary="Destination: Miami" />
-// 		</ListItem>
-// 	</div>
-// );
-
-// export default SuggestionsListItems;

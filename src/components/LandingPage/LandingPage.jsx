@@ -231,13 +231,13 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
                     ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
                     : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
                   return (
-                    <div key={`from-${suggestion}-${i}`}
+                    <div onClick={() => setAddressFrom(suggestion.description)} key={`from-${suggestion}-${i}`}
                       {...getSuggestionItemProps(suggestion, {
                         className,
                         style,
                       })}
                     >
-                      <span onClick={() => setAddressFrom(suggestion.description)}>{suggestion.description}</span>
+                      <span>{suggestion.description}</span>
                     </div>
                   );
                 })}
@@ -272,13 +272,13 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
               ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
                 : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
               return (
-                <div key={`to-${suggestion}-${i}`}
+                <div  onClick={() => setAddressTo(suggestion.description)} key={`to-${suggestion}-${i}`}
                   {...getSuggestionItemProps(suggestion, {
                     className,
                     style,
                   })}
                 >
-                  <span onClick={() => setAddressTo(suggestion.description)}>{suggestion.description}</span>
+                  <span>{suggestion.description}</span>
                 </div>
               );
             })}
