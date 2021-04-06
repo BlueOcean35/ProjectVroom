@@ -2,7 +2,7 @@ import Redux from 'redux';
 
 var showNearbyFuelReducer = (state=[], action) => {
   if (action.type === 'SHOW_NEARBY_FUEL') {
-    return [...state].concat(action.nearbyFuel)
+    return action.nearbyFuel;
   } else {
     return state;
   }
