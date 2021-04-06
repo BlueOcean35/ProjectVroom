@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
+import store from "../../../store"
 const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
@@ -21,7 +22,7 @@ class GoogleMap extends Component {
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRenderer = new google.maps.DirectionsRenderer();
 
-    console.warn('redux start: ', store.getState())
+    // console.warn('redux start: ', store.getState(), this.props)
 		
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
@@ -47,8 +48,11 @@ class GoogleMap extends Component {
     })
 
     function calcRoute() {
-      var start = "New York, NY";
-      var end = "Boston, MA"
+      var start = "New+York,NY";
+      var end = "Boston,MA"
+      console.log('CALC ROUTE PROPS', this.props)
+      // var start = this.props?.addressObjFrom?.David_format 
+      // var end = this.props?.addressObjTo?.David_format
       var request = {
         origin:start,
         destination:end,
@@ -71,7 +75,7 @@ class GoogleMap extends Component {
 		map.addListener("dblclick", (mouseEvent) => {
 			const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
-			this.props.getNearby(x, y);
+			// this.props.getNearby(x, y);
 		});
 	};
 
