@@ -28,7 +28,8 @@ var initialState = {
 	legs: [],
 	travelSoFarStops: [],
 	toggleStopButton: false,
-	// map? route? selectedLocation?
+  start: {},
+  end: {}
 };
 
 export const store = createStore(
