@@ -1,5 +1,4 @@
-import { combineReducers } from "redux";
-
+import { combineReducers } from 'redux';
 // import all reducers here
 import updateStopReducer from "./Trip-Planner/updateStopReducer.js";
 import toggleStopButtonReducer from "./Trip-Planner/toggleStopButtonReducer.js";
@@ -12,6 +11,7 @@ import getAddressObjFromReducer from './getAddressObjFromReducer.js';
 import getAddressObjToReducer from './getAddressObjToReducer.js';
 import changeLocationFromReducer from './changeLocationFromReducer';
 import changeLocationToReducer from './changeLocationToReducer';
+<<<<<<< HEAD
 import updateWaypointsReducer from './Trip-Planner/updateWaypointsReducer.js';
 
 
@@ -21,6 +21,15 @@ const rootReducer = combineReducers({
   locationTo: changeLocationToReducer,
   addressObjTo: getAddressObjToReducer,
   addressObjFrom: getAddressObjFromReducer,
+=======
+import updateStopReducer from "./Trip-Planner/updateStopReducer.js";
+import toggleStopButtonReducer from "./Trip-Planner/toggleStopButtonReducer.js";
+import showNearbyFoodReducer from "./Trip-Planner/showNearbyFoodReducer.js";
+import showNearbyAttractionsReducer from "./Trip-Planner/showNearbyAttractionsReducer.js";
+import showNearbyFuelReducer from "./Trip-Planner/showNearbyFuelReducer.js";
+import showNearbyLodgingReducer from "./Trip-Planner/showNearbyLodgingReducer.js";
+
+const rootReducer = combineReducers({
 	travelSoFarStops: updateStopReducer,
 	toggleStopButton: toggleStopButtonReducer,
 	nearbyFood: showNearbyFoodReducer,
@@ -28,6 +37,10 @@ const rootReducer = combineReducers({
 	nearbyFuel: showNearbyFuelReducer,
 	nearbyLodging: showNearbyLodgingReducer,
 	waypoints: updateWaypointsReducer,
+  locationFrom: changeLocationFromReducer,
+  locationTo: changeLocationToReducer,
+  addressObjTo: getAddressObjToReducer,
+  addressObjFrom: getAddressObjFromReducer
 });
 
 export default rootReducer;

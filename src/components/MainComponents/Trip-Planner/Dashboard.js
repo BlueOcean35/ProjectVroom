@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
 		}),
+		background: `linear-gradient(to right, #8e0e00, #1f1c18)`
 	},
 	appBarShift: {
 		marginLeft: drawerWidth,
@@ -68,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
 		}),
+		background: `linear-gradient(to right, #8e0e00, #1f1c18)`,
 	},
 	menuButton: {
 		marginRight: 36,
@@ -86,6 +88,9 @@ const useStyles = makeStyles((theme) => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
 		}),
+	},
+	tabs: {
+		background: `linear-gradient(to right, #8e0e00, #1f1c18)`
 	},
 	drawerPaperClose: {
 		overflowX: "hidden",
@@ -109,6 +114,7 @@ const useStyles = makeStyles((theme) => ({
 		paddingBottom: theme.spacing(4),
 	},
 	paper: {
+
 		padding: theme.spacing(2),
 		display: "flex",
 		overflow: "auto",
@@ -142,6 +148,7 @@ export default function Dashboard() {
 			<AppBar
 				position="absolute"
 				className={clsx(classes.appBar, open && classes.appBarShift)}
+
 			>
 				<Toolbar className={classes.toolbar}>
 					<IconButton
@@ -176,9 +183,6 @@ export default function Dashboard() {
 				open={open}
 			>
 				<div className={classes.toolbarIcon}>
-					<IconButton onClick={handleDrawerClose}>
-						<ChevronLeftIcon />
-					</IconButton>
 				</div>
 				<Divider />
 				<>
@@ -186,8 +190,8 @@ export default function Dashboard() {
 					{"<List>{mainListItems}</List> "}
 					<List>{mainListItems()}</List>
 					<List>{secondaryListItems}</List>
-					<Divider />
-					<NearbyTabsContainer />
+					<Divider  />
+					<NearbyTabsContainer  />
 				</>
 			</Drawer>
 			<main className={classes.content}>
