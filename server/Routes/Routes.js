@@ -2,8 +2,7 @@ var express = require("express");
 var router = express.Router();
 const path = require("path");
 
-router.get("/map", (req, res) => {
-    console.log('map route!')
+router.get("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "../../dist/index.html"));
 });
 

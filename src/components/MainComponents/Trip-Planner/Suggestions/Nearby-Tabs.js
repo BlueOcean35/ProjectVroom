@@ -12,7 +12,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
-import nearbyPlaces from "../../../../sample-data/nearby-places.js";
+import nearbyPlaces from "../../../../../sample-data/nearby-places.js";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 
 function TabPanel(props) {
