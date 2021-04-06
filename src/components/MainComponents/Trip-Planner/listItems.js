@@ -17,6 +17,7 @@ import MapIcon from '@material-ui/icons/Map';
 import RoomIcon from '@material-ui/icons/Room';
 import FromToItem from './listItemComponents/FromToItem.jsx';
 import StopItem from './listItemComponents/StopItem.jsx';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -42,6 +43,12 @@ export function mainListItems () {
 
 
 		<FromToItem type = 'to' to = {{address: 'Miami'}} from = {{address: 'Boston'}} />
+
+		<ListItem>
+			  <Button variant="contained" color = "secondary">
+        Add New Stop
+      </Button>
+		</ListItem>
 	</div>
 	)
 	};
@@ -67,5 +74,6 @@ export const secondaryListItems = (
 			</ListItemIcon>
 			<ListItemText primary="Year-end sale" />
 		</ListItem>
+
 	</div>
 );
