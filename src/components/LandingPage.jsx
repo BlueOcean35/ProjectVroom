@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import clsx from "clsx";
 import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, Link, CssBaseline, Button, Tooltip } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
@@ -139,27 +139,29 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
     evt.preventDefault();
   }
 
-  function handleSelectFrom(evt, from) {
-    setAddressFrom(evt);
-    return geocodeByAddress(from)
+  function handleSelectFrom(from) {
+      geocodeByAddress(from)
       .then((results) => {
+
         submitAddressFrom(results)
+        console.log(results)
         return getLatLng(results[0])})
       .then((latLng) => {
         submitCoordinatesFrom(latLng)
-        console.log(store.getState())
+        console.log(latLng)
     })
       .catch(error => console.error('Error', error));
   };
 
-  function handleSelectTo(evt, To) {
-    setAddressTo(evt);
-    return geocodeByAddress(To)
+  function handleSelectTo(To) {
+      geocodeByAddress(To)
       .then((results) => {
         submitAddressTo(results)
-        return getLatLng(results[0])})
+        return getLatLng(results[0])
+      })
       .then((latLng) => {
         submitCoordinatesTo(latLng)
+        console.log(latLng)
     })
       .catch(error => console.error('Error', error));
   };
@@ -168,7 +170,7 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position)
-        return axios.get(`http://maps.googleapis.com/maps/api/geocode/key=[KEY GOES HERE]&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false").then((data) => {
+        return axios.get(`http://maps.googleapis.com/maps/api/geocode/libraries&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false&"+ `key=[KEY GOES HERE]`).then((data) => {
           console.log(data)
           // 1. set the reverse geocode address to be the state in our redux store
           // 2. auto complete our from field
@@ -235,7 +237,7 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
                         style,
                       })}
                     >
-                      <span>{suggestion.description}</span>
+                      <span onClick={() => setAddressFrom(suggestion.description)}>{suggestion.description}</span>
                     </div>
                   );
                 })}
@@ -276,7 +278,7 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
                     style,
                   })}
                 >
-                  <span>{suggestion.description}</span>
+                  <span onClick={() => setAddressTo(suggestion.description)}>{suggestion.description}</span>
                 </div>
               );
             })}
