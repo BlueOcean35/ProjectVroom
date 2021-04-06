@@ -20,6 +20,8 @@ class GoogleMap extends Component {
 		let longitude = -74.0060;
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRenderer = new google.maps.DirectionsRenderer();
+
+    console.warn('redux start: ', this.props)
 		
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
@@ -66,7 +68,7 @@ class GoogleMap extends Component {
 
     calcRoute()
 
-		map.addListener("click", (mouseEvent) => {
+		map.addListener("dblclick", (mouseEvent) => {
 			const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
 			this.props.getNearby(x, y);

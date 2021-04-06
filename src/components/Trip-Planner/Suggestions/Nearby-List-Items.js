@@ -14,6 +14,7 @@ const NearbyListItems = ({
 	stopButton,
 	toggleStopButton,
 	addStop,
+  fetchNewRoute
 }) => {
 	return (
 		<ListItem button>
@@ -31,7 +32,11 @@ const NearbyListItems = ({
 				}
 			/>
 			<ListItemIcon>
-				<AddBoxIcon fontSize="large" onClick={toggleStopButton} />
+				<AddBoxIcon fontSize="large" onClick={() => {
+          var waypoint = `${place.geometry.location.lat},${place.geometry.location.lng}`
+          console.log(waypoint);
+          fetchNewRoute("New+York,NY","Boston,MA", waypoint)
+        }} />
 			</ListItemIcon>
 		</ListItem>
 	);

@@ -22,7 +22,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import NearbyTabsContainer from "./Suggestions/Nearby-Tabs-Container.js";
 import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
-import SuggestionsListItems from "./Suggestions/List-Items.js";
+import SuggestionsListItems from "./Suggestions/Nearby-List-Items.js";
 import GoogleMapContainer from "../Map/GoogleMapContainer.js";
 
 function Copyright() {

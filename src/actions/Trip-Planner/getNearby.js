@@ -3,13 +3,13 @@ import showNearbyFood from './showNearbyFood.js';
 import showNearbyFuel from './showNearbyFuel.js';
 import showNearbyAttractions from './showNearbyAttractions.js';
 import showNearbyLodging from './showNearbyLodging.js';
-import {store} from '../../store.js';
+import  '../../store.js';
 import thunk from 'redux-thunk';
 
 var getNearby = (lat, lng) => {
 
   const getQuery = (type) => {
-    return `/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=${type}`;
+    return `/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=48000&type=${type}`;
   };
 
   return (dispatch) => {

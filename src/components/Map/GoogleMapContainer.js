@@ -3,7 +3,9 @@ import getNearby from "../../actions/Trip-Planner/getNearby.js";
 import GoogleMap from "./google-map.js";
 
 var mapStoreToProps = (state) => ({
-	nearbyFood: state.nearbyFood
+	nearbyFood: state.nearbyFood,
+  start: state.start,
+  end: state.end
 });
 
 var mapDispatchToProps = (dispatch) => ({

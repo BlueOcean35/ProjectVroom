@@ -28,15 +28,17 @@ var initialState = {
 	legs: [],
 	travelSoFarStops: [],
 	toggleStopButton: false,
-  start: {},
-  end: {}
+  start: "New+York,NY",
+  end: "Boston,MA"
 };
 
-export const store = createStore(
+const store = createStore(
 	rootReducer,
 	// persistedReducer,
 	initialState,
 	applyMiddleware(thunk)
 );
+
+export default store;
 
 //  export const persistor = persistStore(store);
