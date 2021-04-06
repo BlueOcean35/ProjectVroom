@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 const API_KEY = process.env.API_KEY;
+import store from "../../../"
 
 class GoogleMap extends Component {
 	constructor (props) {
@@ -21,7 +22,7 @@ class GoogleMap extends Component {
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRenderer = new google.maps.DirectionsRenderer();
 
-    console.warn('redux start: ', this.props)
+    console.warn('redux start: ', store.getState())
 		
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
