@@ -16,11 +16,12 @@ class GoogleMap extends Component {
 	};
 
 	initMap = () => {
-		let latitude = 40.674;
-		let longitude = -73.945;
+		let latitude = 40.7128;
+		let longitude = -74.0060;
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRenderer = new google.maps.DirectionsRenderer();
-		const map = new window.google.maps.Map(
+		
+    const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
 			{
 				center: new window.google.maps.LatLng(latitude, longitude),
@@ -38,6 +39,32 @@ class GoogleMap extends Component {
 			}
 		);
 
+    directionsRenderer.setMap(map);
+    directionsRenderer.setOptions({
+      preserveViewport: true
+    })
+
+    function calcRoute() {
+      var start = "New York, NY";
+      var end = "Boston, MA"
+      var request = {
+        origin:start,
+        destination:end,
+        waypoints: [{
+          location: { lat: 41.03, lng: -73.76 }
+        }],
+        optimizeWaypoints: true,
+        travelMode: 'DRIVING'
+      };
+      directionsService.route(request, function(response, status) {
+        if (status == 'OK') {
+          directionsRenderer.setDirections(response);
+        }
+      });
+    }
+
+    calcRoute()
+
 		map.addListener("click", (mouseEvent) => {
 			const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
@@ -50,6 +77,7 @@ class GoogleMap extends Component {
 			<div className="map-wrapper-container">
 				<div className="map-wrapper">
 					<div className="map-container" id="google-map"></div>
+          <div id="directionsPanel"></div>
 					<Helmet className="helmet">
 						<script
 							type="text/javascript"
