@@ -13,7 +13,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
 import nearbyPlaces from "../../../../sample-data/nearby-places.js";
-import FastfoodIcon from "@material-ui/icons/Fastfood";
+import NearbyListItems from "./List-Items.js";
+import SuggestionsListItemsContainer from "./List-Items-Container.js";
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -55,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function NearbyTabs() {
+export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, nearbyLodging}) {
+
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
 
@@ -82,23 +84,8 @@ export default function NearbyTabs() {
 				<FilterRadioButtons />
 				<FilterSlider />
 				<List>
-					{nearbyPlaces.results.map((p) => {
-						return (
-							<ListItem button>
-								<ListItemIcon>
-									<FastfoodIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={p.name}
-									secondary={
-										<div>
-											Rating: {p.rating} <br />
-											Price Level: {p.price_level}
-										</div>
-									}
-								/>
-							</ListItem>
-						);
+					{nearbyFood.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
 					})}
 				</List>
 			</TabPanel>
@@ -106,16 +93,31 @@ export default function NearbyTabs() {
 				Lodging <br />
 				<FilterRadioButtons />
 				<FilterSlider />
+				<List>
+					{nearbyLodging.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+					})}
+				</List>
 			</TabPanel>
 			<TabPanel value={value} index={2}>
 				Attractions <br />
 				<FilterRadioButtons />
 				<FilterSlider />
+				<List>
+					{nearbyAttractions.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+					})}
+				</List>
 			</TabPanel>
 			<TabPanel value={value} index={3}>
 				Fuel <br />
 				<FilterRadioButtons />
 				<FilterSlider />
+				<List>
+					{nearbyFuel.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+					})}
+				</List>
 			</TabPanel>
 		</div>
 	);
