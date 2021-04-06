@@ -38,9 +38,7 @@ body {
   cursor: pointer;
   box-shadow: 5px 5px 5px gray;
 }
-<<<<<<< HEAD
 
-=======
 .landing-page-inputs {
   display: flex;
   align-items: center;
@@ -70,4 +68,4 @@ body {
 .landing-page-btn {
   width: 200px;
 }
->>>>>>> 0d2cbf61802f0c9150b368e4ac0d61cbdb091864
+
