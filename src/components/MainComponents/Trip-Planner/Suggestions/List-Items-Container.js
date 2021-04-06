@@ -1,6 +1,7 @@
 import { connect, dispatch } from "react-redux";
 import toggleStopButton from "../../../../actions/Trip-Planner/toggleStopButton.js";
 import addStop from "../../../../actions/Trip-Planner/addStop.js";
+import fetchNewRoute from "../../../../actions/Trip-Planner/distNewWaypoints"
 import NearbyListItems from "./List-Items.js";
 
 var mapStoreToProps = (state) => ({
@@ -15,6 +16,9 @@ var mapDispatchToProps = (dispatch) => ({
 	addStop: () => {
 		dispatch(addStop);
 	},
+  fetchNewRoute: (start, end, waypoints) => {
+    dispatch(fetchNewRoute)
+  }
 });
 
 var SuggestionsListItemsContainer = connect(

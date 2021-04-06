@@ -76,6 +76,11 @@ body {
 	width: 200px;
 }
 
+
+/* Suggestions Styles*/
+.MuiList-root {
+  height: 400px !important;
+} 
 .autocomplete-dropdown-container {
   color: white;
   position: absolute;

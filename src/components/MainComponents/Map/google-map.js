@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
+import store from "../../../store"
 const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
@@ -9,12 +10,10 @@ class GoogleMap extends Component {
 
 	componentDidMount() {
 		this.renderMap();
-
 	};
 
 	renderMap = () => {
 		window.initMap = this.initMap;
-
 	};
 
 	initMap = () => {
@@ -23,11 +22,13 @@ class GoogleMap extends Component {
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRenderer = new google.maps.DirectionsRenderer();
 
+    // console.warn('redux start: ', store.getState(), this.props)
+		
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
 			{
 				center: new window.google.maps.LatLng(latitude, longitude),
-				zoom: 10,
+				zoom: 7,
 				mapTypeId: window.google.maps.MapTypeId.ROADMAP,
 				zoomControl: true,
 				mapTypeControl: false,
@@ -46,9 +47,12 @@ class GoogleMap extends Component {
       preserveViewport: true
     })
 
-    function calcRoute() {
-      var start = "New York, NY";
-      var end = "Boston, MA"
+    function calcRoute(props) {
+      // var start = "New+York,NY";
+      // var end = "Boston,MA"
+      console.log('CALC ROUTE PROPS', props)
+      var start = props.addressObjFrom.David_format 
+      var end = props.addressObjTo.David_format
       var request = {
         origin:start,
         destination:end,
@@ -60,17 +64,20 @@ class GoogleMap extends Component {
       };
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
+          console.log(response);
           directionsRenderer.setDirections(response);
+        } else {
+          console.log(status);
         }
       });
     }
 
-    calcRoute()
+    calcRoute(this.props)
 
-		map.addListener("click", (mouseEvent) => {
+		map.addListener("dblclick", (mouseEvent) => {
 			const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
-			this.props.getNearby(x, y);
+			// this.props.getNearby(x, y);
 		});
 	};
 

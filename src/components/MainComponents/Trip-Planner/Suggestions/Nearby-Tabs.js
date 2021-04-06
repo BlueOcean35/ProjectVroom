@@ -12,7 +12,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
-import nearbyPlaces from "../../../../../sample-data/nearby-places.js";
+// import nearbyPlaces from "../../../../sample-data/nearby-places.js";
 import NearbyListItems from "./List-Items.js";
 import SuggestionsListItemsContainer from "./List-Items-Container.js";
 
@@ -79,7 +79,7 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 					<Tab label="Fuel" {...a11yProps(3)} />
 				</Tabs>
 			</AppBar>
-			<TabPanel value={value} index={0}>
+			<TabPanel value={value} index={0} >
 				Food <br />
 				<FilterRadioButtons />
 				<FilterSlider />
