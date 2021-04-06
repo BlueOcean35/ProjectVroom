@@ -1,5 +1,5 @@
 import { connect, dispatch } from 'react-redux';
-import LandingPage from '../components/LandingPage';
+import LandingPage from '../components/LandingPage/LandingPage';
 import getAddressObjFrom from '../actions/getAddressObjFrom';
 import getAddressObjTo from '../actions/getAddressObjTo';
 import getLocationFrom from '../actions/getLocationFrom';

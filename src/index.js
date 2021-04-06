@@ -8,8 +8,8 @@ import LandingPageContainer from './containers/LandingPageContainer'
 
 ReactDOM.render(
 	<Provider store={store}>
-		<LandingPageContainer />
-		<Dashboard />
+	<LandingPageContainer />
+		{/* <Dashboard /> */}
 	</Provider>,
 	document.getElementById("app")
 );

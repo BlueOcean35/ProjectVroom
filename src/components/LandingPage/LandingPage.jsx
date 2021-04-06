@@ -12,7 +12,6 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 // import MapContainer from "./Map.js";
 // import GoogleMaps from "./Map-Pure-JS";
-import { store } from '../store';
 import axios from 'axios';
 
 
@@ -142,13 +141,10 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
   function handleSelectFrom(from) {
       geocodeByAddress(from)
       .then((results) => {
-
         submitAddressFrom(results)
-        console.log(results)
         return getLatLng(results[0])})
       .then((latLng) => {
         submitCoordinatesFrom(latLng)
-        console.log(latLng)
     })
       .catch(error => console.error('Error', error));
   };
@@ -170,7 +166,7 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position)
-        return axios.get(`http://maps.googleapis.com/maps/api/geocode/libraries&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false&"+ `key=[KEY GOES HERE]`).then((data) => {
+        return axios.get(`http://maps.googleapis.com/maps/api/geocode/libraries&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false&"+ `key=[KEYGOESHERE]`).then((data) => {
           console.log(data)
           // 1. set the reverse geocode address to be the state in our redux store
           // 2. auto complete our from field
