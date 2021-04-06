@@ -28,7 +28,7 @@ const App = ({ name }) => {
           </Route>
 
           <Route exact path="/itinerary/:id">
-            <Itinerary exampleProps={{ example: true }} />
+           {/* a component will be here when ready */}
           </Route>
         </Switch>
       </Router>

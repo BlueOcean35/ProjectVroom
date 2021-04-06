@@ -1,5 +1,5 @@
 import { connect, dispatch } from "react-redux";
-import getNearby from "../Trip-Planner/getNearby.js";
+import getNearby from '../../../actions/Trip-Planner/getNearby.js';
 import GoogleMap from "./google-map.js";
 
 var mapStoreToProps = (state) => ({
