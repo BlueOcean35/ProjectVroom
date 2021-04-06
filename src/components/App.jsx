@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { connect } from "react-redux";
+import React, {Fragment} from "react";
+import Example from './exampleCounterContainer.js';
 
 import {
   BrowserRouter as Router,
