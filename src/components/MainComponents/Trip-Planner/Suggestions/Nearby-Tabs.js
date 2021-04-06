@@ -12,8 +12,13 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
+<<<<<<< HEAD:src/components/Trip-Planner/Suggestions/Nearby-Tabs.js
 import nearbyPlaces from "../../../../sample-data/nearby-places.js";
 import NearbyListItems from "./Nearby-List-Items.js";
+=======
+import nearbyPlaces from "../../../../../sample-data/nearby-places.js";
+import NearbyListItems from "./List-Items.js";
+>>>>>>> 032ed0a4d572970c844bd3c12354474e683edce5:src/components/MainComponents/Trip-Planner/Suggestions/Nearby-Tabs.js
 import SuggestionsListItemsContainer from "./List-Items-Container.js";
 
 function TabPanel(props) {
