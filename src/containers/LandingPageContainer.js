@@ -5,6 +5,11 @@ import getAddressObjTo from '../actions/getAddressObjTo';
 import getLocationFrom from '../actions/getLocationFrom';
 import getLocationTo from '../actions/getLocationTo';
 
+var mapStoreToProps = (state) => ({
+  storeFrom: state.addressObjFrom,
+  storeTo: state.addressObjTo
+})
+
 var mapDispatchToProps = (dispatch) => ({
     submitAddressFrom: (coordinatesObj) => {
       dispatch(getAddressObjFrom(coordinatesObj))
@@ -20,6 +25,6 @@ var mapDispatchToProps = (dispatch) => ({
     }
 });
 
-var LandingPageContainer = connect(null, mapDispatchToProps)(LandingPage);
+var LandingPageContainer = connect(mapStoreToProps, mapDispatchToProps)(LandingPage);
 
 export default LandingPageContainer;

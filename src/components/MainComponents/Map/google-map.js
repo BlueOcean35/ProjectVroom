@@ -9,10 +9,12 @@ class GoogleMap extends Component {
 
 	componentDidMount() {
 		this.renderMap();
+
 	};
 
 	renderMap = () => {
 		window.initMap = this.initMap;
+
 	};
 
 	initMap = () => {
@@ -20,7 +22,7 @@ class GoogleMap extends Component {
 		let longitude = -74.0060;
 		var directionsService = new google.maps.DirectionsService();
 		var directionsRenderer = new google.maps.DirectionsRenderer();
-		
+
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
 			{
