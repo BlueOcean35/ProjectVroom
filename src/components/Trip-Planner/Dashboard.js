@@ -1,4 +1,5 @@
 import React from "react";
+import { typography } from '@material-ui/system';
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -114,6 +115,10 @@ const useStyles = makeStyles((theme) => ({
 	fixedHeight: {
 		height: 240,
 	},
+	primaryDestination: {
+		fontWeight: 'bold',
+		color: 'red'
+	}
 }));
 
 export default function Dashboard() {
@@ -177,8 +182,8 @@ export default function Dashboard() {
 				<>
 					Your travel so far list contained in the div below called
 					{"<List>{mainListItems}</List> "}
-					<List>{mainListItems}</List>
-					<List>{mainListItems}</List>
+					<List>{mainListItems()}</List>
+					<List>{secondaryListItems}</List>
 					<Divider />
 					<NearbyTabs />
 				</>
