@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import clsx from "clsx";
-import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, Link, CssBaseline, Button, Tooltip } from '@material-ui/core';
+import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -13,6 +13,7 @@ import PlacesAutocomplete, {
 // import MapContainer from "./Map.js";
 // import GoogleMaps from "./Map-Pure-JS";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 function Copyright() {
@@ -119,7 +120,18 @@ const useStyles = makeStyles((theme) => ({
 	},
 	fixedHeight: {
 		height: 240,
-	},
+  },
+  link: {
+    textDecoration: 'none',
+    width: '100%',
+    height: "100%",
+    color: 'white'
+
+  },
+  buttonContainer: {
+    height: '75px',
+    width: `200px`,
+  },
 }));
 
 // to format the names of the cities
@@ -128,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
 // [0] = x[0].join('+')
 //x = `${x[0]},${x[1]}`
 
-let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo}) => {
+let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo}) => {
   const classes = useStyles();
 
   const [addressFrom, setAddressFrom] = useState('');
@@ -285,7 +297,12 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
 
  </form>
 
- <Button form="landing-form" type="submit" className={classes.rideButton}>Let's Ride</Button>
+
+        <Button style={{padding: 0, height: '100%'}} form="landing-form" type="submit" className={classes.rideButton} >{storeFrom.formatted_address && storeTo.formatted_address ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
+
+
+
+
 
   </div>
 
