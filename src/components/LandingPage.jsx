@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-
 import PlacesAutocomplete, {
   geocodeByAddress,
   geocodeByPlaceId,
@@ -169,7 +168,7 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position)
-        return axios.get(`http://maps.googleapis.com/maps/api/geocode/key=[]&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false").then((data) => {
+        return axios.get(`http://maps.googleapis.com/maps/api/geocode/key=[KEY GOES HERE]&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false").then((data) => {
           console.log(data)
           // 1. set the reverse geocode address to be the state in our redux store
           // 2. auto complete our from field
@@ -203,85 +202,86 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
   <div className="landing-page-interactions">
 
   <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
+    <Tooltip className={classes.Tooltip} title="use current location">
+    <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
+    </Tooltip>
 
-  <Tooltip className={classes.Tooltip} title="use current location">
-  <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
-  </Tooltip>
-
-  <PlacesAutocomplete
-        value={addressFrom}
-        onChange={setAddressFrom}
-        onSelect={handleSelectFrom}
-
+    <PlacesAutocomplete
+      value={addressFrom}
+      onChange={setAddressFrom}
+      onSelect={handleSelectFrom}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
-          <InputLabel  className={classes.inputLabel} >From:<Input className={classes.input}  {...getInputProps({
-                placeholder: "NYC",
-                required: true
-              })}  /></InputLabel>
-
-            <div className="autocomplete-dropdown-container">
-              {loading ? <div>Loading...</div> : null}
-              {suggestions.map((suggestion, i) => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                const style = suggestion.active
-                  ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
-                  : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
-                return (
-                  <div key={`from-${suggestion}-${i}`}
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
+            <InputLabel  className={classes.inputLabel} >From:
+              <Input className={classes.input}  {...getInputProps({
+                    placeholder: "NYC",
+                    required: true
+                  })} />
+            </InputLabel>
+              <div className="autocomplete-dropdown-container">
+                {loading ? <div>Loading...</div> : null}
+                {suggestions.map((suggestion, i) => {
+                  const className = suggestion.active
+                    ? 'suggestion-item--active'
+                    : 'suggestion-item';
+                  const style = suggestion.active
+                    ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
+                    : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
+                  return (
+                    <div key={`from-${suggestion}-${i}`}
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style,
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
           </div>
         )}
-      </PlacesAutocomplete>
+    </PlacesAutocomplete>
 
 
 
-  <PlacesAutocomplete
-        value={addressTo}
-        onChange={setAddressTo}
-        onSelect={handleSelectTo}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-          <InputLabel  className={classes.inputLabel} >To:<Input className={classes.input} {...getInputProps({
-                placeholder: "LA",
-                required: true
-              })}  /></InputLabel>
+    <PlacesAutocomplete
+      value={addressTo}
+      onChange={setAddressTo}
+      onSelect={handleSelectTo}
+    >
+      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        <div>
+          <InputLabel  className={classes.inputLabel} >To:
+            <Input className={classes.input} {...getInputProps({
+              placeholder: "LA",
+              required: true
+            })} />
+          </InputLabel>
 
-            <div className="autocomplete-dropdown-container">
-              {loading ? <div>Loading...</div> : null}
-              {suggestions.map((suggestion, i) => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                const style = suggestion.active
-                ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
-                  : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
-                return (
-                  <div key={`to-${suggestion}-${i}`}
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="autocomplete-dropdown-container">
+            {loading ? <div>Loading...</div> : null}
+            {suggestions.map((suggestion, i) => {
+              const className = suggestion.active
+                ? 'suggestion-item--active'
+                : 'suggestion-item';
+              const style = suggestion.active
+              ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
+                : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
+              return (
+                <div key={`to-${suggestion}-${i}`}
+                  {...getSuggestionItemProps(suggestion, {
+                    className,
+                    style,
+                  })}
+                >
+                  <span>{suggestion.description}</span>
+                </div>
+              );
+            })}
           </div>
+        </div>
         )}
       </PlacesAutocomplete>
 
