@@ -8,19 +8,17 @@ import {
   withRouter,
 } from "react-router-dom";
 
-import LandingPage from "./MainComponents/LandingPage_Components/LandingPage";
+import LandingPageContainer from "../containers/LandingPageContainer";
 import Dashboard from "./MainComponents/Trip-Planner/Dashboard";
 
 const App = ({ name }) => {
   return (
     <>
       <Router>
-        {/* <h1>How many times can you say "Big Bad Boston Bikers" fast?</h1> */}
-        {/* component={ LandingPage }  */}
 
         <Switch>
           <Route path="/" exact>
-            <LandingPage />
+            <LandingPageContainer />
           </Route>
 
           <Route path="/dashboard" exact>

@@ -1,6 +1,10 @@
-import { combineReducers } from "redux";
-
+import { combineReducers } from 'redux';
 // import all reducers here
+import exampleCounterReducer from './exampleCounterReducer.js';
+import getAddressObjFromReducer from './getAddressObjFromReducer.js';
+import getAddressObjToReducer from './getAddressObjToReducer.js';
+import changeLocationFromReducer from './changeLocationFromReducer';
+import changeLocationToReducer from './changeLocationToReducer';
 import updateStopReducer from "./Trip-Planner/updateStopReducer.js";
 import toggleStopButtonReducer from "./Trip-Planner/toggleStopButtonReducer.js";
 import showNearbyFoodReducer from "./Trip-Planner/showNearbyFoodReducer.js";
@@ -14,7 +18,13 @@ const rootReducer = combineReducers({
 	nearbyFood: showNearbyFoodReducer,
 	nearbyAttractions: showNearbyAttractionsReducer,
 	nearbyFuel: showNearbyFuelReducer,
-	nearbyLodging: showNearbyLodgingReducer
+	nearbyLodging: showNearbyLodgingReducer,
+  count: exampleCounterReducer,
+  locationFrom: changeLocationFromReducer,
+  locationTo: changeLocationToReducer,
+  addressObjTo: getAddressObjToReducer,
+  addressObjFrom: getAddressObjFromReducer
+
 });
 
 export default rootReducer;

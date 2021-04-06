@@ -58,7 +58,6 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 1;
 }
 .landingPage {
 	position: relative;
@@ -75,4 +74,13 @@ body {
 }
 .landing-page-btn {
 	width: 200px;
+}
+
+.autocomplete-dropdown-container {
+  color: white;
+  position: absolute;
+  z-index: 2;
+}
+.suggestion {
+  display: block;
 }
