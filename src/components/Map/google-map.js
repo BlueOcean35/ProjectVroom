@@ -3,9 +3,14 @@ import Helmet from "react-helmet";
 const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
+	constructor (props) {
+		super(props)
+	}
+
 	componentDidMount() {
 		this.renderMap();
-	}
+	};
+
 	renderMap = () => {
 		window.initMap = this.initMap;
 	};
@@ -61,9 +66,10 @@ class GoogleMap extends Component {
 
     calcRoute()
 
-		map.addListener("dblclick", (mouseEvent) => {
-			console.log(mouseEvent.latLng.lat());
-			console.log(mouseEvent.latLng.lng());
+		map.addListener("click", (mouseEvent) => {
+			const x = JSON.stringify(mouseEvent.latLng.lat());
+			const y = JSON.stringify(mouseEvent.latLng.lng());
+			this.props.getNearby(x, y);
 		});
 	};
 

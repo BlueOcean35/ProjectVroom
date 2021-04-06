@@ -56,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function NearbyTabs() {
+export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, nearbyLodging}) {
+
 	const classes = useStyles();
 	const [value, setValue] = React.useState(0);
 
@@ -83,7 +84,7 @@ export default function NearbyTabs() {
 				<FilterRadioButtons />
 				<FilterSlider />
 				<List>
-					{nearbyPlaces.results.map((p) => {
+					{nearbyFood.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
 					})}
 				</List>
@@ -92,16 +93,31 @@ export default function NearbyTabs() {
 				Lodging <br />
 				<FilterRadioButtons />
 				<FilterSlider />
+				<List>
+					{nearbyLodging.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+					})}
+				</List>
 			</TabPanel>
 			<TabPanel value={value} index={2}>
 				Attractions <br />
 				<FilterRadioButtons />
 				<FilterSlider />
+				<List>
+					{nearbyAttractions.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+					})}
+				</List>
 			</TabPanel>
 			<TabPanel value={value} index={3}>
 				Fuel <br />
 				<FilterRadioButtons />
 				<FilterSlider />
+				<List>
+					{nearbyFuel.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+					})}
+				</List>
 			</TabPanel>
 		</div>
 	);
