@@ -75,3 +75,9 @@ body {
 .landing-page-btn {
 	width: 200px;
 }
+
+
+/* Suggestions Styles*/
+.MuiList-root {
+  height: 400px !important;
+} 

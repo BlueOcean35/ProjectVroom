@@ -20,7 +20,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
-import SuggestionsListItems from "./Suggestions/List-Items.js";
+import SuggestionsListItems from "./Suggestions/Nearby-List-Items.js";
 import GoogleMap from "../Map/google-map.js";
 
 function Copyright() {
@@ -28,7 +28,7 @@ function Copyright() {
 		<Typography variant="body2" color="textSecondary" align="center">
 			{"Copyright © "}
 			<Link color="inherit" href="https://material-ui.com/">
-				Your Website
+				Big Bad Boston Bikers
 			</Link>{" "}
 			{new Date().getFullYear()}
 			{"."}

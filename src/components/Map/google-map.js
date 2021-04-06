@@ -20,7 +20,7 @@ class GoogleMap extends Component {
 			document.getElementById("google-map"),
 			{
 				center: new window.google.maps.LatLng(latitude, longitude),
-				zoom: 10,
+				zoom: 7,
 				mapTypeId: window.google.maps.MapTypeId.ROADMAP,
 				zoomControl: true,
 				mapTypeControl: false,
@@ -53,6 +53,7 @@ class GoogleMap extends Component {
       };
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
+          console.log(response);
           directionsRenderer.setDirections(response);
         }
       });
@@ -60,7 +61,7 @@ class GoogleMap extends Component {
 
     calcRoute()
 
-		map.addListener("click", (mouseEvent) => {
+		map.addListener("dblclick", (mouseEvent) => {
 			console.log(mouseEvent.latLng.lat());
 			console.log(mouseEvent.latLng.lng());
 		});

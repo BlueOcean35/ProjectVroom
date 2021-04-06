@@ -1,7 +1,7 @@
 import { connect, dispatch } from "react-redux";
 import toggleStopButton from "../../../actions/Trip-Planner/toggleStopButton.js";
 import addStop from "../../../actions/Trip-Planner/addStop.js";
-import NearbyListItems from "./List-Items.js";
+import NearbyListItems from "./Nearby-List-Items.js";
 
 var mapStoreToProps = (state) => ({
 	travelSoFarStops: state.travelSoFarStops,
