@@ -17,7 +17,7 @@ export default function FilterRadioButtons({
 
 	return (
 		<FormControl component="fieldset">
-			<FormLabel component="legend">Sort by: </FormLabel>
+			<FormLabel component="legend">S by: </FormLabel>
 			<RadioGroup row aria-label="position" name="position" defaultValue="top">
 				<FormControlLabel
 					value="price"
@@ -31,9 +31,7 @@ export default function FilterRadioButtons({
 					control={<Radio color="primary" />}
 					label="proximity"
 					labelPlacement="top"
-          onClick = {()=> {
-            filterByProximity(locationFrom)
-          }}
+          onClick = {filterByProximity}
 				/>
 				<FormControlLabel
 					value="rating"
