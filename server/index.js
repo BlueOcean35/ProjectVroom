@@ -6,7 +6,8 @@ const morgan = require("morgan");
 const axios = require('axios');
 require('dotenv').config();
 const { router } = require('./Routes/Routes');
-const API_KEY = 'AIzaSyC4JTb8HXtNdYA6ero9OZ5AZSVB7BUGFpk';
+const API_KEY = process.env.API_KEY;
+
 
 app.use(morgan('dev'));
 app.use(express.json());
