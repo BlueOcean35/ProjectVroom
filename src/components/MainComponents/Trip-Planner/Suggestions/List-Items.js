@@ -66,8 +66,10 @@ const NearbyListItems = ({
   locationFrom,
   locationTo, 
 }) => {
-  console.warn('LOCATION FROM', locationFrom)
-	return (
+  //console.warn('LOCATION FROM', locationFrom)
+	
+  
+  return (
 		<ListItem button>
       {selectTypeIcon(type)}
 			<ListItemText
