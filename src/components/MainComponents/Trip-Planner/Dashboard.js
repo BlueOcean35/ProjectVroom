@@ -16,6 +16,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Link from "@material-ui/core/Link";
+import {ThemeProvider} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -24,6 +25,7 @@ import NearbyTabsContainer from "./Suggestions/Nearby-Tabs-Container.js";
 import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
 import SuggestionsListItems from "./Suggestions/List-Items.js";
 import GoogleMapContainer from "../Map/GoogleMapContainer.js";
+import theme from '../../theme';
 
 function Copyright() {
 	return (
@@ -143,6 +145,7 @@ export default function Dashboard() {
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	return (
+		<ThemeProvider theme={theme}>
 		<div className={classes.root}>
 			<CssBaseline />
 			<AppBar
@@ -199,5 +202,6 @@ export default function Dashboard() {
 				<GoogleMapContainer />
 			</main>
 		</div>
+		</ThemeProvider>
 	);
 }

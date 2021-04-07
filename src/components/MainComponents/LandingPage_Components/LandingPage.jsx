@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import clsx from "clsx";
-import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip } from '@material-ui/core';
+import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip, ThemeProvider } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -13,6 +13,7 @@ import PlacesAutocomplete, {
 // import MapContainer from "./Map.js";
 // import GoogleMaps from "./Map-Pure-JS";
 import axios from 'axios';
+import theme from '../../theme';
 import { Link } from "react-router-dom";
 
 
@@ -51,34 +52,6 @@ const useStyles = makeStyles((theme) => ({
     background: `linear-gradient(to right, #8e0e00, #1f1c18)`
 	},
 
-	rideButton: {
-    marginTop: '15px',
-    height: '75px',
-    width: `35%`,
-    fontSize: "30px",
-    backgroundColor: "#8e0e00",
-    color: '#fff',
-    fontFamily: "Helvetica",
-    '&:hover': {
-      opacity: `0.9`,
-      color: '#211C17',
-      backgroundColor: "#DB1200"
-    },
-    transition: "all 0.5s"
-
-
-  },
-  Tooltip: {
-    marginRight: '10px',
-    color: 'white',
-    backgroundColor: "#8e0e00",
-    '&:hover': {
-      opacity: `0.9`,
-      color: '#211C17',
-      backgroundColor: "#DB1200"
-    },
-    transition: "all 0.4s",
-  },
 	title: {
     flexGrow: 1,
     fontFamily: 'Metal Mania'
@@ -99,14 +72,6 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '2px 10px -14px 14px #FFF'
   },
   input: {
-    marginRight: '10px',
-    marginLeft: '10px',
-    color:'#fff',
-    height: '55px',
-    fontSize: '20px',
-    '&:after': {
-      borderBottom: '2px solid #DB1200',
-    },
   },
 	container: {
 		paddingTop: theme.spacing(4),
@@ -134,11 +99,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// to format the names of the cities
-// x = x.split(', ')
-// x[0] = x[0].split(' ')
-// [0] = x[0].join('+')
-//x = `${x[0]},${x[1]}`
 
 let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo}) => {
   const classes = useStyles();
@@ -189,6 +149,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
 
 
   return(
+    <ThemeProvider theme={theme}>
     <div className="landingPage">
 
     <AppBar
@@ -212,7 +173,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
   <div className="landing-page-interactions">
 
   <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
-    <Tooltip className={classes.Tooltip} title="use current location">
+    <Tooltip title="use current location">
     <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
     </Tooltip>
 
@@ -298,7 +259,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
  </form>
 
 
-        <Button style={{padding: 0, height: '100%'}} form="landing-form" type="submit" className={classes.rideButton} >{storeFrom.formatted_address && storeTo.formatted_address ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
+        <Button style={{padding: 0, height: '100%'}} form="landing-form" type="submit" >{storeFrom.formatted_address && storeTo.formatted_address ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
 
 
 
@@ -309,6 +270,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
 
 
     </div>
+    </ThemeProvider>
   )
 
 }
