@@ -26,8 +26,10 @@ const App = ({ name }) => {
             <Dashboard />
           </Route>
 
-          <Route path="/itinerary/:id">
-            <ItineraryPage />
+          <Route path="/itinerary/:id" render={(props) => {
+            return ( <ItineraryPage {...props} />)
+          }}>
+            {/* <ItineraryPage /> */}
           </Route>
         </Switch>
       </Router>
