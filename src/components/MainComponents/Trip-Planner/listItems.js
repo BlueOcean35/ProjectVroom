@@ -57,18 +57,7 @@ export default function mainListItems (props) {
 
 		<FromToItemContainer type = 'to' />
 
-		<ListItem>
-			  <Button variant="contained" color = "secondary" onClick = {() => {
-					props.fetchNewRoute({
-							name: 'Albany',
-							type: 'food', //curent type we're in
-							loc: `33.9071676,-118.0944974`,
-							place_id: '12345',
-					})
-				}}>
-        Add New Stop
-      </Button>
-		</ListItem>
+
 	</div>
 	)
 	};
