@@ -1,6 +1,9 @@
 import React from 'react'
-import '../../../../dist/styles/styles.css';
+import { useParams } from 'react-router-dom'
 
+const { id }  = useParams();
+
+console.log(id);
 
 let ItineraryPage = (props) => {
 

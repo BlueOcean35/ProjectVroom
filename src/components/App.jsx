@@ -10,7 +10,7 @@ import {
 
 import LandingPageContainer from "../containers/LandingPageContainer";
 import Dashboard from "./MainComponents/Trip-Planner/Dashboard";
-import ItineraryContainer from "./MainComponents/Itinerary/itinerary.js"
+import ItineraryPage from "./MainComponents/Itinerary/itinerary.js"
 
 const App = ({ name }) => {
   return (
@@ -26,8 +26,8 @@ const App = ({ name }) => {
             <Dashboard />
           </Route>
 
-          <Route path="/itinerary/:id" exact >
-            <ItineraryContainer />
+          <Route path="/itinerary/:id">
+            <ItineraryPage />
           </Route>
         </Switch>
       </Router>
