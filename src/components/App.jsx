@@ -10,7 +10,7 @@ import {
 
 import LandingPageContainer from "../containers/LandingPageContainer";
 import Dashboard from "./MainComponents/Trip-Planner/Dashboard";
-import ItineraryContainer from "./MainComponents/Itinerary/itinerary.jsx"
+import ItineraryContainer from "./MainComponents/Itinerary/itinerary.js"
 
 const App = ({ name }) => {
   return (
