@@ -12,9 +12,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
-// import nearbyPlaces from "../../../../sample-data/nearby-places.js";
 import NearbyListItems from "./List-Items.js";
 import SuggestionsListItemsContainer from "./List-Items-Container.js";
+import FilterByContainer from "./Filter-Radio-Container.js"
+import {useEffect} from "react";
+
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -82,8 +84,8 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			</AppBar>
 			<TabPanel value={value} index={0} >
 				Food <br />
-				<FilterRadioButtons />
-				<FilterSlider />
+				<FilterByContainer />
+				{/* <FilterSlider /> */}
 				<List>
 					{nearbyFood.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'food'} />;
@@ -92,8 +94,8 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				Lodging <br />
-				<FilterRadioButtons />
-				<FilterSlider />
+				<FilterByContainer />
+				{/* <FilterSlider /> */}
 				<List>
 					{nearbyLodging.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'lodging'}/>;
@@ -102,8 +104,8 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			</TabPanel>
 			<TabPanel value={value} index={2}>
 				Attractions <br />
-				<FilterRadioButtons />
-				<FilterSlider />
+				<FilterByContainer />
+				{/* <FilterSlider /> */}
 				<List>
 					{nearbyAttractions.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'attractions'}/>;
@@ -112,8 +114,8 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			</TabPanel>
 			<TabPanel value={value} index={3}>
 				Fuel <br />
-				<FilterRadioButtons />
-				<FilterSlider />
+				<FilterByContainer />
+				{/* <FilterSlider /> */}
 				<List>
 					{nearbyFuel.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'fuel'}/>;

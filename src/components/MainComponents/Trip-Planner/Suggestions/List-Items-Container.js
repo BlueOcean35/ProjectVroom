@@ -3,12 +3,14 @@ import toggleStopButton from "../../../../actions/Trip-Planner/toggleStopButton.
 import addStop from "../../../../actions/Trip-Planner/addStop.js";
 import fetchNewRoute from "../../../../actions/Trip-Planner/fetchNewRoute.js"
 import NearbyListItems from "./List-Items.js";
+import showNearbyFoodReducer from "../../../../reducers/Trip-Planner/showNearbyFoodReducer.js";
 
 var mapStoreToProps = (state) => ({
 	travelSoFarStops: state.travelSoFarStops,
 	stopButton: state.toggleStopButton,
   locationFrom: state.locationFrom,
-  locationTo: state.locationTo
+  locationTo: state.locationTo,
+  nearbyFood: state.nearbyFood
 });
 
 var mapDispatchToProps = (dispatch) => ({

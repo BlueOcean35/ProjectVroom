@@ -5,7 +5,14 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-export default function FilterRadioButtons() {
+export default function FilterRadioButtons({
+  nearbyFood, 
+  filterByPrice,
+  filterByRating,
+}) {
+
+  // console.warn('NEARBY FOOD', nearbyFood);
+
 	return (
 		<FormControl component="fieldset">
 			<FormLabel component="legend">Filter by: </FormLabel>
@@ -15,6 +22,7 @@ export default function FilterRadioButtons() {
 					control={<Radio color="primary" />}
 					label="price"
 					labelPlacement="top"
+          onClick = {filterByPrice}
 				/>
 				<FormControlLabel
 					value="proximity"
@@ -27,6 +35,7 @@ export default function FilterRadioButtons() {
 					control={<Radio color="primary" />}
 					label="rating"
 					labelPlacement="top"
+          onClick = {filterByRating}
 				/>
 			</RadioGroup>
 		</FormControl>

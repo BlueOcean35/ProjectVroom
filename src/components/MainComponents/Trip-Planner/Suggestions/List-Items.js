@@ -8,6 +8,8 @@ import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
 import RoomIcon from '@material-ui/icons/Room';
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import AddBoxIcon from "@material-ui/icons/AddBox";
+import { useEffect, useState } from 'react';
+
 
 //need the starting long and lat
 var calcProximity = (lat1, lon1, lat2, lon2) => {
@@ -60,8 +62,11 @@ const NearbyListItems = ({
   fetchNewRoute,
   type,
   locationFrom,
-  locationTo
+  locationTo, 
 }) => {
+
+  // console.warn('NEARBY FOOD', nearbyFood)
+
 	return (
 		<ListItem button>
       {selectTypeIcon(type)}
