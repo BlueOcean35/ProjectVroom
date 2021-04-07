@@ -67,13 +67,30 @@ class GoogleMap extends Component {
       console.log(props.waypoints)
 
       if (props.waypoints.length !== 0) {
-        var waypointsLoc = props.waypoints[0].loc
+        // var waypointsLoc = props.waypoints[0].loc
+        if (props.waypoints.length > 1) {
+          var waypointsLoc = props.waypoints.map((wp) => {
+            return {
+              location: wp.loc
+            }
+          })
+
+
+          // waypointsLoc = waypointsLoc.join('|')
+
+
+          
+        } else {
+          var waypointsLoc = [{
+            location: props.waypoints[0].loc
+          }]
+        }
+
+        console.log('waypoints loc: ', waypointsLoc)
         var request = {
           origin:start,
           destination:end,
-          waypoints: [{
-            location: waypointsLoc
-          }],
+          waypoints: waypointsLoc,
           optimizeWaypoints: true,
           travelMode: 'DRIVING'
         };

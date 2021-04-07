@@ -21,7 +21,7 @@ var mapDispatchToProps = (dispatch) => ({
 		dispatch(addStop());
 	},
   fetchNewRoute: (waypoint) => {
-    dispatch(fetchNewRoute())
+    dispatch(fetchNewRoute(waypoint))
   }
 });
 

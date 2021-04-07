@@ -5,6 +5,7 @@ import store from '../../store.js';
 import thunk from 'redux-thunk';
 
 var fetchNewRoute = (newWaypoint) => {
+    console.log('new waypoint: ', newWaypoint)
     var waypoints = store.getState().waypoints;
     console.log(newWaypoint, 'newWaypoint')
     if (newWaypoint !== undefined){

@@ -4,7 +4,6 @@ import fetchNewRoute from '../../../actions/Trip-Planner/fetchNewRoute.js';
 import GoogleMap from "./google-map.js";
 
 var mapStoreToProps = (state) => ({
-	nearbyFood: state.nearbyFood,
   addressObjFrom: state.addressObjFrom,
   addressObjTo: state.addressObjTo,
   waypoints: state.waypoints

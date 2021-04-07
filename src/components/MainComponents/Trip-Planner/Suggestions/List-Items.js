@@ -89,7 +89,7 @@ const NearbyListItems = ({
             name: place.name,
             type: type,
             place_id: place.place_id,
-            loc: `${place.geometry.location.lat},${place.geometry.location.lat}`
+            loc: `${place.geometry.location.lat},${place.geometry.location.lng}`
           }
           fetchNewRoute(waypoint)
         }} />
