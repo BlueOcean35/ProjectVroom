@@ -23,7 +23,7 @@ class GoogleMap extends Component {
 		var directionsRenderer = new google.maps.DirectionsRenderer();
 
     // console.warn('redux start: ', store.getState(), this.props)
-		
+
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
 			{
@@ -51,7 +51,7 @@ class GoogleMap extends Component {
       // var start = "New+York,NY";
       // var end = "Boston,MA"
       console.log('CALC ROUTE PROPS', props)
-      var start = props.addressObjFrom.David_format 
+      var start = props.addressObjFrom.David_format
       var end = props.addressObjTo.David_format
       var request = {
         origin:start,
