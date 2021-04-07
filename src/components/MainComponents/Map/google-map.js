@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import store from "../../../store"
-const API_KEY = process.env.API_KEY;
+const API_KEY = 'AIzaSyC4JTb8HXtNdYA6ero9OZ5AZSVB7BUGFpk';
 
 class GoogleMap extends Component {
 	constructor (props) {
@@ -9,14 +9,23 @@ class GoogleMap extends Component {
 	}
 
 	componentDidMount() {
+    console.log('render')
 		this.renderMap();
 	};
+
+  componentDidUpdate(prevProps) {
+
+    console.log('update')
+
+    this.initMap();
+  }
 
 	renderMap = () => {
 		window.initMap = this.initMap;
 	};
 
 	initMap = () => {
+    console.log('map rendered')
 		let latitude = 40.7128;
 		let longitude = -74.0060;
 		var directionsService = new google.maps.DirectionsService();
@@ -97,21 +106,26 @@ class GoogleMap extends Component {
 
 	render() {
 		return (
-			<div className="map-wrapper-container">
-				<div className="map-wrapper">
-					<div className="map-container" id="google-map"></div>
-          <div id="directionsPanel"></div>
-					<Helmet className="helmet">
-						<script
-							type="text/javascript"
-							charset="UTF-8"
-							async={true}
-							defer={true}
-							src={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`}
-						/>
-					</Helmet>
-				</div>
-			</div>
+      <div>
+        {this.props.waypoints.length}
+        <div className="map-wrapper-container">
+
+          <div className="map-wrapper">
+            <div className="map-container" id="google-map"></div>
+            <div id="directionsPanel"></div>
+            <Helmet className="helmet">
+              <script
+                type="text/javascript"
+                charset="UTF-8"
+                async={true}
+                defer={true}
+                src={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`}
+              />
+            </Helmet>
+          </div>
+
+        </div>
+      </div>
 		);
 	}
 }

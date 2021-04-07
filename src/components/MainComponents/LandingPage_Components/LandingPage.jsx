@@ -140,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
 // [0] = x[0].join('+')
 //x = `${x[0]},${x[1]}`
 
-let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo}) => {
+let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo, fetchNewRoute}) => {
   const classes = useStyles();
 
   const [addressFrom, setAddressFrom] = useState('');
@@ -298,7 +298,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
  </form>
 
 
-        <Button style={{padding: 0, height: '100%'}} form="landing-form" type="submit" className={classes.rideButton} >{storeFrom.formatted_address && storeTo.formatted_address ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
+        <Button onClick={fetchNewRoute} style={{padding: 0, height: '100%'}} form="landing-form" type="submit" className={classes.rideButton} > {storeFrom.formatted_address && storeTo.formatted_address ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>} </Button>
 
 
 

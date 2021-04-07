@@ -15,13 +15,13 @@ var mapStoreToProps = (state) => ({
 
 var mapDispatchToProps = (dispatch) => ({
 	toggleStopButton: () => {
-		dispatch(toggleStopButton);
+		dispatch(toggleStopButton());
 	},
 	addStop: () => {
-		dispatch(addStop);
+		dispatch(addStop());
 	},
   fetchNewRoute: (waypoint) => {
-    dispatch(fetchNewRoute)
+    dispatch(fetchNewRoute())
   }
 });
 
