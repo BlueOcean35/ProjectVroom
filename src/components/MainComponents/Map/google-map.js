@@ -23,7 +23,7 @@ class GoogleMap extends Component {
 		var directionsRenderer = new google.maps.DirectionsRenderer();
 
     // console.warn('redux start: ', store.getState(), this.props)
-		
+
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
 			{
@@ -38,6 +38,7 @@ class GoogleMap extends Component {
 				fullscreenControl: false,
 				scrollwheel: false,
 				draggable: true,
+				disableDoubleClickZoom: true,
 				gestureHandling: "cooperative",
 			}
 		);
@@ -51,7 +52,7 @@ class GoogleMap extends Component {
       // var start = "New+York,NY";
       // var end = "Boston,MA"
       console.log('CALC ROUTE PROPS', props)
-      var start = props.addressObjFrom.David_format 
+      var start = props.addressObjFrom.David_format
       var end = props.addressObjTo.David_format
       var request = {
         origin:start,
@@ -77,7 +78,8 @@ class GoogleMap extends Component {
 		map.addListener("dblclick", (mouseEvent) => {
 			const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
-			// this.props.getNearby(x, y);
+			console.log(x, y);
+			this.props.getNearby(x, y);
 		});
 	};
 
