@@ -1,14 +1,14 @@
 /* example css */
-@font-face {
+/* @font-face {
 	font-family: "Avestrava Tattoo";
 	src: url("Avestrata.ttf") format("truetype");
-}
+} */
 
-* {
+/* * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-}
+} */
 
 .map-container {
 	overflow: visible !important;
@@ -80,7 +80,7 @@ body {
 /* Suggestions Styles*/
 .MuiList-root {
   height: 400px !important;
-} 
+}
 .autocomplete-dropdown-container {
   color: white;
   position: absolute;

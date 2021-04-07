@@ -10,6 +10,7 @@ import {
 
 import LandingPageContainer from "../containers/LandingPageContainer";
 import Dashboard from "./MainComponents/Trip-Planner/Dashboard";
+import ItineraryContainer from "./MainComponents/Itinerary/itinerary.jsx"
 
 const App = ({ name }) => {
   return (
@@ -25,8 +26,8 @@ const App = ({ name }) => {
             <Dashboard />
           </Route>
 
-          <Route exact path="/itinerary/:id">
-           {/* a component will be here when ready */}
+          <Route path="/itinerary/:id" exact >
+            <ItineraryContainer />
           </Route>
         </Switch>
       </Router>
