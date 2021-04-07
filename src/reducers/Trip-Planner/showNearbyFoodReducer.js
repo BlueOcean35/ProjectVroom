@@ -1,5 +1,6 @@
 import Redux from 'redux';
 import nearbyPlaces from '../../../sample-data/nearby-places';
+import store from "../../store.js"
 
 
 var showNearbyFoodReducer = (state=[], action) => {
@@ -33,6 +34,9 @@ var showNearbyFoodReducer = (state=[], action) => {
     })
     
   } else if (action.type === 'FILTER_BY_PROXIMITY'){
+    // var lat1 = store.getState().locationFrom;
+    // console.log('latitude ', lat1);
+    
     // var newNearbyFood = state.slice()
     //  return newNearbyFood.sort((a,b) => {
     //   return a.pro - b.rating

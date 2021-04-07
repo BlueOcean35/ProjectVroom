@@ -53,6 +53,8 @@ var selectTypeIcon = (type) => {
 
 }
 
+
+
 const NearbyListItems = ({
 	place,
 	travelSoFarStops,
@@ -77,6 +79,7 @@ const NearbyListItems = ({
 						Rating: {place.rating} <br />
 						Price Level: {place.price_level} <br />
 						Proximity from origin:
+            
 					</div>
 				}
 			/>

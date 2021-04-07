@@ -9,6 +9,8 @@ export default function FilterRadioButtons({
   nearbyFood, 
   filterByPrice,
   filterByRating,
+  filterByProximity,
+  locationFrom,
 }) {
 
   // console.warn('NEARBY FOOD', nearbyFood);
@@ -29,6 +31,9 @@ export default function FilterRadioButtons({
 					control={<Radio color="primary" />}
 					label="proximity"
 					labelPlacement="top"
+          onClick = {()=> {
+            filterByProximity(locationFrom)
+          }}
 				/>
 				<FormControlLabel
 					value="rating"

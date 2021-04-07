@@ -74,15 +74,6 @@ class GoogleMap extends Component {
           travelMode: 'DRIVING'
         };
       }
-      // var request = {
-      //   origin:start,
-      //   destination:end,
-      //   waypoints: [{
-      //     location: waypointsLoc
-      //   }],
-      //   optimizeWaypoints: true,
-      //   travelMode: 'DRIVING'
-      // };
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
           console.log(response);
