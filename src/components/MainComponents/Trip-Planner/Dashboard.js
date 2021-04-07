@@ -191,7 +191,7 @@ export default function Dashboard() {
 					<List>{mainListItems()}</List>
 					<List>{secondaryListItems}</List>
 					<Divider  />
-					<NearbyTabsContainer  />
+					<NearbyTabsContainer />
 				</>
 			</Drawer>
 			<main className={classes.content}>

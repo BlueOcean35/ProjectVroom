@@ -53,15 +53,36 @@ class GoogleMap extends Component {
       console.log('CALC ROUTE PROPS', props)
       var start = props.addressObjFrom.David_format 
       var end = props.addressObjTo.David_format
-      var request = {
-        origin:start,
-        destination:end,
-        waypoints: [{
-          location: { lat: 41.03, lng: -73.76 }
-        }],
-        optimizeWaypoints: true,
-        travelMode: 'DRIVING'
-      };
+
+      console.log(props.waypoints)
+
+      if (props.waypoints.length !== 0) {
+        var waypointsLoc = props.waypoints[0].loc
+        var request = {
+          origin:start,
+          destination:end,
+          waypoints: [{
+            location: waypointsLoc
+          }],
+          optimizeWaypoints: true,
+          travelMode: 'DRIVING'
+        };
+      } else {
+        var request = {
+          origin:start,
+          destination:end,
+          travelMode: 'DRIVING'
+        };
+      }
+      // var request = {
+      //   origin:start,
+      //   destination:end,
+      //   waypoints: [{
+      //     location: waypointsLoc
+      //   }],
+      //   optimizeWaypoints: true,
+      //   travelMode: 'DRIVING'
+      // };
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
           console.log(response);
@@ -75,9 +96,10 @@ class GoogleMap extends Component {
     calcRoute(this.props)
 
 		map.addListener("dblclick", (mouseEvent) => {
-			const x = JSON.stringify(mouseEvent.latLng.lat());
+      const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
-			// this.props.getNearby(x, y);
+      console.log(x,y)
+			this.props.getNearby(x, y);
 		});
 	};
 

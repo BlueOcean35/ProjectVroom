@@ -89,3 +89,8 @@ body {
 .suggestion {
   display: block;
 }
+
+.tab-panel {
+  height: 400px;
+  overflow: scroll;
+}

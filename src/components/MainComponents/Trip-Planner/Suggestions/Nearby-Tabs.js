@@ -22,6 +22,7 @@ function TabPanel(props) {
 	return (
 		<div
 			role="tabpanel"
+      className = "tab-panel"
 			hidden={value !== index}
 			id={`simple-tabpanel-${index}`}
 			aria-labelledby={`simple-tab-${index}`}
@@ -85,7 +86,7 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 				<FilterSlider />
 				<List>
 					{nearbyFood.map((p) => {
-						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'food'} />;
 					})}
 				</List>
 			</TabPanel>
@@ -95,7 +96,7 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 				<FilterSlider />
 				<List>
 					{nearbyLodging.map((p) => {
-						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'lodging'}/>;
 					})}
 				</List>
 			</TabPanel>
@@ -105,7 +106,7 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 				<FilterSlider />
 				<List>
 					{nearbyAttractions.map((p) => {
-						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'attractions'}/>;
 					})}
 				</List>
 			</TabPanel>
@@ -115,7 +116,7 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 				<FilterSlider />
 				<List>
 					{nearbyFuel.map((p) => {
-						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'fuel'}/>;
 					})}
 				</List>
 			</TabPanel>
