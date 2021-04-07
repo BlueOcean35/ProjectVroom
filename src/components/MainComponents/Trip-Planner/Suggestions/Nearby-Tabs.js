@@ -72,7 +72,7 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
     if (nearbyFood.length === 0) {
       return (
       <div className='instructions'>
-        <h1 className='instructions-header'>Welcome to the Big Bad <br/>Biker Club Trip Planner!</h1>
+        <h1 className='instructions-header'>Welcome to the Big Bad <br/>Biker Trip Planner!</h1>
         <div classname='instructions-text'>
           <p>To get started, double click anywhere on the map to find <br/>food, fuel, lodging and attractions nearby</p>
         </div>
