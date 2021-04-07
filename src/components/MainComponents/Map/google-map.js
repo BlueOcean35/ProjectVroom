@@ -14,10 +14,12 @@ class GoogleMap extends Component {
 	};
 
   componentDidUpdate(prevProps) {
-
+    console.log(prevProps.waypoints, 'old waypoints')
+    console.log(this.props.waypoints, 'new waypoints')
     console.log('update')
-
-    this.initMap();
+    if (prevProps.waypoints.length !== this.props.waypoints.length){
+      this.initMap();
+    }
   }
 
 	renderMap = () => {
@@ -79,7 +81,7 @@ class GoogleMap extends Component {
           // waypointsLoc = waypointsLoc.join('|')
 
 
-          
+
         } else {
           var waypointsLoc = [{
             location: props.waypoints[0].loc

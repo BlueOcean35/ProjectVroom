@@ -6,7 +6,8 @@ import thunk from 'redux-thunk';
 
 var fetchNewRoute = (newWaypoint) => {
     console.log('new waypoint: ', newWaypoint)
-    var waypoints = store.getState().waypoints;
+    newWaypoint.comment = '';
+    var waypoints = store.getState().waypoints.slice();
     console.log(newWaypoint, 'newWaypoint')
     if (newWaypoint !== undefined){
       waypoints.push(newWaypoint)

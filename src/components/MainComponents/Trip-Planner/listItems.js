@@ -49,7 +49,7 @@ export default function mainListItems (props) {
 		{
 
 			props.waypoints.map((element, index) => {
-				return (<StopItem stopType = {element.type} address = {element.name} index = {index} removeFunc = {props.removeWaypoint} />)
+				return (<StopItem stopType = {element.type} address = {element.name} commentFunc = {props.updateWaypointComment} index = {index} removeFunc = {props.removeWaypoint} comment = {element.comment} />)
 			})
 		}
 

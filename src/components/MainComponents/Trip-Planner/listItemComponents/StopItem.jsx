@@ -33,8 +33,8 @@ export default class StopItem extends React.Component  {
 constructor(props) {
   super(props)
   this.state = {
-    commentDisplay: 'none',
-    commentText: ''
+    commentDisplay: 'none'
+
   }
   this.toggleCommentDisplay = this.toggleCommentDisplay.bind(this);
   this.handleCommentChage = this.handleCommentChage.bind(this);
@@ -54,7 +54,8 @@ toggleCommentDisplay() {
 
 
 handleCommentChage(event) {
-  this.setState({commentText: event.target.value});
+  console.log(this.props.comment, 'comment')
+  this.props.commentFunc(this.props.index, event.target.value)
 }
 
 
@@ -82,7 +83,7 @@ render(){
 			<ListItemIcon>
 				<StopIcon style= {{fontSize: '1.40rem' }} />
 			</ListItemIcon>
-			<ListItemText primary={<div><span>Stop: {this.props.address}</span> <br></br> <span style = {{fontSize: '.8rem', fontStyle: 'italic' }}>{this.state.commentText}</span></div>} />
+			<ListItemText primary={<div><span>Stop: {this.props.address}</span> <br></br> <span style = {{fontSize: '.8rem', fontStyle: 'italic' }}>{this.props.comment}</span></div>} />
 
     <Tooltip title={<span style = {{fontSize: '15px'}}>Write Comment</span>} >
       <IconButton onClick = {this.toggleCommentDisplay} aria-label = 'write-comment'>
@@ -99,7 +100,7 @@ render(){
 		</ListItem>
 
     <ListItem style = {{display: this.state.commentDisplay}}>
-    <TextField value = {this.state.commentText} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px'}}>Comment</span>} />
+    <TextField value = {this.props.comment} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px'}}>Comment</span>} />
      {/* <Button variant="contained">
         Add Comment
       </Button> */}
