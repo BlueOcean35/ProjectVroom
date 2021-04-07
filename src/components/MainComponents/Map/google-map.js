@@ -13,9 +13,11 @@ class GoogleMap extends Component {
 		this.renderMap();
 	};
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+
     console.log('update')
-    this.renderMap();
+
+    this.initMap();
   }
 
 	renderMap = () => {
@@ -23,6 +25,7 @@ class GoogleMap extends Component {
 	};
 
 	initMap = () => {
+    console.log('map rendered')
 		let latitude = 40.7128;
 		let longitude = -74.0060;
 		var directionsService = new google.maps.DirectionsService();
@@ -111,21 +114,26 @@ class GoogleMap extends Component {
 
 	render() {
 		return (
-			<div className="map-wrapper-container">
-				<div className="map-wrapper">
-					<div className="map-container" id="google-map"></div>
-          <div id="directionsPanel"></div>
-					<Helmet className="helmet">
-						<script
-							type="text/javascript"
-							charset="UTF-8"
-							async={true}
-							defer={true}
-							src={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`}
-						/>
-					</Helmet>
-				</div>
-			</div>
+      <div>
+        {this.props.waypoints.length}
+        <div className="map-wrapper-container">
+
+          <div className="map-wrapper">
+            <div className="map-container" id="google-map"></div>
+            <div id="directionsPanel"></div>
+            <Helmet className="helmet">
+              <script
+                type="text/javascript"
+                charset="UTF-8"
+                async={true}
+                defer={true}
+                src={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`}
+              />
+            </Helmet>
+          </div>
+
+        </div>
+      </div>
 		);
 	}
 }
