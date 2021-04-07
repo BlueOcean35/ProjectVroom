@@ -1,6 +1,7 @@
 import { connect, dispatch } from 'react-redux';
 import listItems from "../components/MainComponents/Trip-Planner/listItems.js";
 import fetchNewRoute from '../actions/Trip-Planner/fetchNewRoute.js';
+import removeWaypoint from '../actions/Trip-Planner/removeWaypoint.js';
 
 var mapStoreToProps = (state) => ({
   storeFrom: state.addressObjFrom,
@@ -10,9 +11,13 @@ var mapStoreToProps = (state) => ({
 
 var mapDispatchToProps = (dispatch) => ({
 
+  removeWaypoint: (index) => {
+    dispatch(removeWaypoint(index))
+  },
     fetchNewRoute: (newWaypoint) => {
       dispatch(fetchNewRoute(newWaypoint))
     }
+
 });
 
 var ListItemsContainer2 = connect(mapStoreToProps, mapDispatchToProps)(listItems);
