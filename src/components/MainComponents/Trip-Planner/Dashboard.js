@@ -194,9 +194,7 @@ export default function Dashboard() {
 					<List>{secondaryListItems}</List>
 					<Divider  />
 					<NearbyTabsContainer  />
-					<Button variant="contained" color = "secondary">
-        		<SaveItineraryContainer />
-      		</Button>
+        	<SaveItineraryContainer />
 				</>
 			</Drawer>
 			<main className={classes.content}>
