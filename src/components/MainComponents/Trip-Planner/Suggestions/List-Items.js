@@ -5,22 +5,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import HotelIcon from '@material-ui/icons/Hotel';
 import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
-import RoomIcon from '@material-ui/icons/Room';
+import ExploreIcon from '@material-ui/icons/Room';
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { useEffect, useState } from 'react';
 
 
 //need the starting long and lat
-var calcProximity = (lat1, lon1, lat2, lon2) => {
-  var p = 0.017453292519943295;    // Math.PI / 180
-  var c = Math.cos;
-  var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-          c(lat1 * p) * c(lat2 * p) * 
-          (1 - c((lon2 - lon1) * p))/2;
-
-  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
-}
 
 
 var selectTypeIcon = (type) => {
@@ -46,7 +37,7 @@ var selectTypeIcon = (type) => {
   } else if (type === 'attractions') {
     return (
       <ListItemIcon>
-        <RoomIcon fontSize="large" />
+        <ExploreIcon fontSize="large" />
      </ListItemIcon>
     )
   }
@@ -66,7 +57,21 @@ const NearbyListItems = ({
   locationFrom,
   locationTo, 
 }) => {
-  //console.warn('LOCATION FROM', locationFrom)
+  // console.warn('LOCATION FROM', locationFrom)
+
+  var calcProximity = (lat1, lon1, lat2, lon2) => {
+    console.warn('RUNNING CALC PROX')
+    var p = 0.017453292519943295;    // Math.PI / 180
+    var c = Math.cos;
+    var a = 0.5 - c((lat2 - lat1) * p)/2 + 
+            c(lat1 * p) * c(lat2 * p) * 
+            (1 - c((lon2 - lon1) * p))/2;
+  
+    var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
+    var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
+    console.warn('DIST IN MI ', distinMi);
+    return distinMi;
+  }
 	
   
   return (
@@ -78,8 +83,7 @@ const NearbyListItems = ({
 					<div>
 						Rating: {place.rating} <br />
 						Price Level: {place.price_level} <br />
-						Proximity from origin:
-            
+						Proximity: {calcProximity(locationFrom.lat, locationFrom.lng, place.geometry.location.lat, place.geometry.location.lng).toString().slice(0,4)}mi from origin
 					</div>
 				}
 			/>
@@ -89,7 +93,8 @@ const NearbyListItems = ({
             name: place.name,
             type: type,
             place_id: place.place_id,
-            loc: `${place.geometry.location.lat},${place.geometry.location.lng}`
+            loc: `${place.geometry.location.lat},${place.geometry.location.lng}`,
+            proximityFromOrigin: calcProximity(locationFrom.lat, locationFrom.lng, place.geometry.location.lat, place.geometry.location.lng)
           }
           fetchNewRoute(waypoint)
         }} />
