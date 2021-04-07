@@ -15,7 +15,6 @@ import PlacesAutocomplete, {
 import axios from 'axios';
 import { Link } from "react-router-dom";
 const API_KEY = process.env.API_KEY;
-console.log(API_KEY);
 
 function Copyright() {
 	return (
