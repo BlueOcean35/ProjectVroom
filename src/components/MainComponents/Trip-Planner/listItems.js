@@ -18,6 +18,7 @@ import RoomIcon from '@material-ui/icons/Room';
 import FromToItem from './listItemComponents/FromToItem.jsx';
 import StopItem from './listItemComponents/StopItem.jsx';
 import Button from '@material-ui/core/Button';
+import FromToItemContainer from '../../../containers/FromToItemContainer.js';
 
 
 
@@ -31,21 +32,40 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export function mainListItems () {
+export default function mainListItems (props) {
 	const classes = useStyles();
 	return (
 	<div>
 
 	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
-		<FromToItem type = 'from' from = {{address: 'Boston'}} />
-		<StopItem stopType = 'food' address = "Ralph Waldo Emerson's House"/>
+		<FromToItemContainer type = 'from'  />
+
+		{/* <StopItem stopType = 'food' address = "Mike's Best Burgers"/>
+		<StopItem stopType = 'fuel' address = "Mike's Brother's Gas Stop"/> */}
+{
+	console.log(props.waypoints)
+}
+
+		{
+
+			props.waypoints.map((element) => {
+				return (<StopItem stopType = {element.type} address = {element.name} />)
+			})
+		}
 
 
 
-		<FromToItem type = 'to' to = {{address: 'Miami'}} from = {{address: 'Boston'}} />
+		<FromToItemContainer type = 'to' />
 
 		<ListItem>
-			  <Button variant="contained" color = "secondary">
+			  <Button variant="contained" color = "secondary" onClick = {() => {
+					props.fetchNewRoute({
+							name: 'Albany',
+							type: 'food', //curent type we're in
+							loc: `33.9071676,-118.0944974`,
+							place_id: '12345',
+					})
+				}}>
         Add New Stop
       </Button>
 		</ListItem>
@@ -53,27 +73,4 @@ export function mainListItems () {
 	)
 	};
 
-export const secondaryListItems = (
-	<div>
-		<ListSubheader inset>Suggestions</ListSubheader>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Current month" className = {'primaryDestination'}/>
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Last quarter" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Year-end sale" />
-		</ListItem>
 
-	</div>
-);

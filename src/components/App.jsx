@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 
 import LandingPageContainer from "../containers/LandingPageContainer";
+
 import Dashboard from "./MainComponents/Trip-Planner/Dashboard";
 
 const App = ({ name }) => {

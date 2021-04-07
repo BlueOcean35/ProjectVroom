@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import store from "../../../store"
-const API_KEY = process.env.API_KEY;
+const API_KEY = 'AIzaSyC4JTb8HXtNdYA6ero9OZ5AZSVB7BUGFpk';
 
 class GoogleMap extends Component {
 	constructor (props) {
@@ -9,8 +9,14 @@ class GoogleMap extends Component {
 	}
 
 	componentDidMount() {
+    console.log('render')
 		this.renderMap();
 	};
+
+  componentDidUpdate() {
+    console.log('update')
+    this.renderMap();
+  }
 
 	renderMap = () => {
 		window.initMap = this.initMap;
@@ -23,7 +29,7 @@ class GoogleMap extends Component {
 		var directionsRenderer = new google.maps.DirectionsRenderer();
 
     // console.warn('redux start: ', store.getState(), this.props)
-		
+
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
 			{
@@ -51,7 +57,7 @@ class GoogleMap extends Component {
       // var start = "New+York,NY";
       // var end = "Boston,MA"
       console.log('CALC ROUTE PROPS', props)
-      var start = props.addressObjFrom.David_format 
+      var start = props.addressObjFrom.David_format
       var end = props.addressObjTo.David_format
 
       console.log(props.waypoints)

@@ -19,11 +19,13 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+import listItems from "./listItems";
 import NearbyTabsContainer from "./Suggestions/Nearby-Tabs-Container.js";
 import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
 import SuggestionsListItems from "./Suggestions/List-Items.js";
 import GoogleMapContainer from "../Map/GoogleMapContainer.js";
+import ListItemsContainer from './Suggestions/List-Items-Container.js';
+import ListItemsContainer2 from '../../../containers/listItemsContainer.js';
 
 function Copyright() {
 	return (
@@ -186,10 +188,9 @@ export default function Dashboard() {
 				</div>
 				<Divider />
 				<>
-					Your travel so far list contained in the div below called
-					{"<List>{mainListItems}</List> "}
-					<List>{mainListItems()}</List>
-					<List>{secondaryListItems}</List>
+
+					<ListItemsContainer2 />
+
 					<Divider  />
 					<NearbyTabsContainer />
 				</>
