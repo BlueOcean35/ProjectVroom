@@ -31,24 +31,7 @@ function Copyright() {
 const drawerWidth = 600;
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		display: "flex",
-	},
-	toolbarIcon: {
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "flex-end",
-		padding: "0 8px",
-		...theme.mixins.toolbar,
-	},
-	appBar: {
-		transition: theme.transitions.create(["width", "margin"], {
-			easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    padding: "10px",
-    background: `linear-gradient(to right, #8e0e00, #1f1c18)`
-	},
+
 
 	rideButton: {
     marginTop: '15px',
@@ -80,33 +63,10 @@ const useStyles = makeStyles((theme) => ({
   },
 	title: {
     flexGrow: 1,
-    fontFamily: 'Metal Mania'
+    fontSize: "20px"
+
 	},
 
-	appBarSpacer: theme.mixins.toolbar,
-	content: {
-		flexGrow: 1,
-		height: "100vh",
-		overflow: "auto",
-  },
-  inputLabel: {
-    marginRight: '10px',
-    background: '#211C17',
-    color:'#fff',
-    paddingLeft: '10px',
-    fontSize: '20px',
-    boxShadow: '2px 10px -14px 14px #FFF'
-  },
-  input: {
-    marginRight: '10px',
-    marginLeft: '10px',
-    color:'#fff',
-    height: '55px',
-    fontSize: '20px',
-    '&:after': {
-      borderBottom: '2px solid #DB1200',
-    },
-  },
 	container: {
 		paddingTop: theme.spacing(4),
 		paddingBottom: theme.spacing(4),
@@ -125,7 +85,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     width: '100%',
     height: "100%",
-    color: 'white'
+    color: "#DB1200",
+    '&:hover': {
+      color: '#fff',
+    },
 
   },
   buttonContainer: {
@@ -187,25 +150,72 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
 
 
   return(
-    <div className="landingPage">
+    <ThemeProvider theme={theme}>
 
-      <AppBar
-      position="relative"
-      className={clsx(classes.appBar)}
-    >
-      <Toolbar className={classes.toolbar}>
-        <Typography
-          component="h1"
-          variant="h3"
-          color="inherit"
-          noWrap
-          className={classes.title}
-        >
-          Big Bad Boston Bikers
-        </Typography>
-        <div> Logo </div>
-      </Toolbar>
-    </AppBar>
+      <div className="landingPage">
+            <AppBar
+            position="relative"
+            style={{height: '80px', background:`linear-gradient(to right, #8e0e00, #1f1c18)`}}
+            >
+            <Toolbar >
+              <Typography
+                component="h1"
+                variant="h3"
+                color="inherit"
+                noWrap
+                className={classes.title}
+              >
+              <a href="https://fontmeme.com/old-english-fonts/"><img src="https://fontmeme.com/permalink/210408/c4d47cc99a98e48ed869f59f25d94dbc.png" alt="old-english-fonts" border="0" /></a>
+
+              </Typography>
+              <div> Logo </div>
+            </Toolbar>
+          </AppBar>
+
+        <div className="landing-page-interactions">
+
+          <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
+            <Tooltip title="use current location">
+            <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
+            </Tooltip>
+
+            <PlacesAutocomplete
+              value={addressFrom}
+              onChange={setAddressFrom}
+              onSelect={handleSelectFrom}
+              >
+                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                  <div>
+                    <InputLabel  >From:
+                      <Input className={classes.input}  {...getInputProps({
+                            placeholder: "NYC",
+                            required: true
+                          })} />
+                    </InputLabel>
+                      <div className="autocomplete-dropdown-container">
+                        {loading ? <div>Loading...</div> : null}
+                        {suggestions.map((suggestion, i) => {
+                          const className = suggestion.active
+                            ? 'suggestion-item--active'
+                            : 'suggestion-item';
+                          const style = suggestion.active
+                            ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
+                            : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
+                          return (
+                            <div onClick={() => setAddressFrom(suggestion.description)} key={`from-${suggestion}-${i}`}
+                              {...getSuggestionItemProps(suggestion, {
+                                className,
+                                style,
+                              })}
+                            >
+                              <span>{suggestion.description}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                  </div>
+                )}
+            </PlacesAutocomplete>
 
     <div className="landing-page-interactions">
 
@@ -214,19 +224,20 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
         <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
         </Tooltip>
 
-        <PlacesAutocomplete
-          value={addressFrom}
-          onChange={setAddressFrom}
-          onSelect={handleSelectFrom}
-          >
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-              <div>
-                <InputLabel  className={classes.inputLabel} >From:
-                  <Input className={classes.input}  {...getInputProps({
-                        placeholder: "NYC",
-                        required: true
-                      })} />
-                </InputLabel>
+            <PlacesAutocomplete
+              value={addressTo}
+              onChange={setAddressTo}
+              onSelect={handleSelectTo}
+            >
+              {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                <div>
+                  <InputLabel  >To:
+                    <Input  {...getInputProps({
+                      placeholder: "LA",
+                      required: true
+                    })} />
+                  </InputLabel>
+
                   <div className="autocomplete-dropdown-container">
                     {loading ? <div>Loading...</div> : null}
                     {suggestions.map((suggestion, i) => {
@@ -248,9 +259,12 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                       );
                     })}
                   </div>
-              </div>
-            )}
-        </PlacesAutocomplete>
+                </div>
+                )}
+              </PlacesAutocomplete>
+      </form>
+      <Button style={{padding: 0}} form="landing-form" type="submit"  > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
+      </div>
 
 
 
@@ -298,7 +312,6 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
     </div>
   </div>
   )
-
 }
 
 export default LandingPage;
