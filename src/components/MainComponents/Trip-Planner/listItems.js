@@ -44,12 +44,7 @@ export default function mainListItems (props) {
 	<div>
 	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
 		<FromToItemContainer type = 'from'  />
-			{
 
-		{/* <StopItem stopType = 'food' address = "Mike's Best Burgers"/>
-		<StopItem stopType = 'fuel' address = "Mike's Brother's Gas Stop"/> */}
-{
-}
 
 		{
 
@@ -69,30 +64,3 @@ export default function mainListItems (props) {
 	)
 	};
 
-export const secondaryListItems = (
-	<ThemeProvider theme={theme}>
-	<div>
-		<ListSubheader inset>Suggestions</ListSubheader>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Current month" className = {'primaryDestination'}/>
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Last quarter" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Year-end sale" />
-		</ListItem>
-
-	</div>
-	</ThemeProvider>
-
-);
