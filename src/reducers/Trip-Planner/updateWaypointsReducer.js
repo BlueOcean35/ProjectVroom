@@ -7,7 +7,9 @@ var updateWaypointsReducer = (state = [], action) => {
 		return action.waypoints.slice();
 	} else if (action.type === "UPDATE_WAYPOINT_COMMENT") {
 		return action.waypoints.slice();
-	} else {
+	} else if (action.type === "RESET_WAYPOINTS") {
+		return [];
+	}else {
 		return state;
 	}
 };
