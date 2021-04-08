@@ -18,6 +18,9 @@ import RoomIcon from '@material-ui/icons/Room';
 import FromToItem from './listItemComponents/FromToItem.jsx';
 import StopItem from './listItemComponents/StopItem.jsx';
 import Button from '@material-ui/core/Button';
+import {ThemeProvider} from '@material-ui/core';
+import theme from '../../theme';
+import FromToItemContainer from '../../../containers/FromToItemContainer.js';
 
 
 
@@ -31,29 +34,40 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export function mainListItems () {
+export default function mainListItems (props) {
 	const classes = useStyles();
 	return (
+		<ThemeProvider theme={theme}>
 	<div>
-
 	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
-		<FromToItem type = 'from' from = {{address: 'Boston'}} />
-		<StopItem stopType = 'food' address = "Ralph Waldo Emerson's House"/>
+		<FromToItemContainer type = 'from'  />
+			{
 
-
-
-		<FromToItem type = 'to' to = {{address: 'Miami'}} from = {{address: 'Boston'}} />
+				props.waypoints.map((element, index) => {
+					return (<StopItem stopType = {element.type} address = {element.name} index = {index} removeFunc = {props.removeWaypoint} />)
+				})
+			}
+		<FromToItemContainer type = 'to' />
 
 		<ListItem>
-			  <Button variant="contained" color = "secondary">
+			  <Button variant="contained" color = "secondary" onClick = {() => {
+					props.fetchNewRoute({
+							name: 'Albany',
+							type: 'food', //curent type we're in
+							loc: `33.9071676,-118.0944974`,
+							place_id: '12345',
+					})
+				}}>
         Add New Stop
       </Button>
-		</ListItem>
+			</ListItem>
 	</div>
+	</ThemeProvider>
 	)
 	};
 
 export const secondaryListItems = (
+	<ThemeProvider theme={theme}>
 	<div>
 		<ListSubheader inset>Suggestions</ListSubheader>
 		<ListItem button>
@@ -76,4 +90,6 @@ export const secondaryListItems = (
 		</ListItem>
 
 	</div>
+	</ThemeProvider>
+
 );

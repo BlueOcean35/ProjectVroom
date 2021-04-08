@@ -2,11 +2,16 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
+import {ThemeProvider} from "@material-ui/core";
+import theme from '../../../theme';
 
 const useStyles = makeStyles({
 	root: {
-		width: 300,
+		width: 300
 	},
+	slider: {
+		color: "#211C17"
+	}
 });
 
 function valuetext(value) {
@@ -17,9 +22,11 @@ export default function FilterSlider() {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.root}>
+		<ThemeProvider theme={theme}>
+				<div className={classes.root}>
 			<Typography id="discrete-slider-small-steps" gutterBottom></Typography>
 			<Slider
+			className={classes.slider}
 				defaultValue={0.00000005}
 				getAriaValueText={valuetext}
 				aria-labelledby="discrete-slider-small-steps"
@@ -30,5 +37,7 @@ export default function FilterSlider() {
 				valueLabelDisplay="auto"
 			/>
 		</div>
+		</ThemeProvider>
+
 	);
 }

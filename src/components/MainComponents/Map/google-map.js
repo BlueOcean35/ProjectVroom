@@ -3,6 +3,7 @@ import Helmet from "react-helmet";
 import store from "../../../store"
 const API_KEY = 'AIzaSyC4JTb8HXtNdYA6ero9OZ5AZSVB7BUGFpk';
 
+
 class GoogleMap extends Component {
 	constructor (props) {
 		super(props)
@@ -39,14 +40,15 @@ class GoogleMap extends Component {
 				center: new window.google.maps.LatLng(latitude, longitude),
 				zoom: 7,
 				mapTypeId: window.google.maps.MapTypeId.ROADMAP,
-				zoomControl: true,
+				zoomControl: this.props.toggle || true,
 				mapTypeControl: false,
 				scaleControl: false,
 				streetViewControl: false,
 				rotateControl: false,
 				fullscreenControl: false,
 				scrollwheel: false,
-				draggable: true,
+				draggable: this.props.toggle || true,
+				disableDoubleClickZoom: true,
 				gestureHandling: "cooperative",
 			}
 		);
@@ -66,13 +68,30 @@ class GoogleMap extends Component {
       console.log(props.waypoints)
 
       if (props.waypoints.length !== 0) {
-        var waypointsLoc = props.waypoints[0].loc
+        // var waypointsLoc = props.waypoints[0].loc
+        if (props.waypoints.length > 1) {
+          var waypointsLoc = props.waypoints.map((wp) => {
+            return {
+              location: wp.loc
+            }
+          })
+
+
+          // waypointsLoc = waypointsLoc.join('|')
+
+
+
+        } else {
+          var waypointsLoc = [{
+            location: props.waypoints[0].loc
+          }]
+        }
+
+        console.log('waypoints loc: ', waypointsLoc)
         var request = {
           origin:start,
           destination:end,
-          waypoints: [{
-            location: waypointsLoc
-          }],
+          waypoints: waypointsLoc,
           optimizeWaypoints: true,
           travelMode: 'DRIVING'
         };
@@ -83,15 +102,6 @@ class GoogleMap extends Component {
           travelMode: 'DRIVING'
         };
       }
-      // var request = {
-      //   origin:start,
-      //   destination:end,
-      //   waypoints: [{
-      //     location: waypointsLoc
-      //   }],
-      //   optimizeWaypoints: true,
-      //   travelMode: 'DRIVING'
-      // };
       directionsService.route(request, function(response, status) {
         if (status == 'OK') {
           console.log(response);
@@ -107,8 +117,10 @@ class GoogleMap extends Component {
 		map.addListener("dblclick", (mouseEvent) => {
       const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
-      console.log(x,y)
-			this.props.getNearby(x, y);
+			console.log(x, y);
+			if (this.props.getNearby) {
+				this.props.getNearby(x, y);
+			}
 		});
 	};
 

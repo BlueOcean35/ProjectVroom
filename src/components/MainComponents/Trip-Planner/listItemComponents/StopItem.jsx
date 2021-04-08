@@ -64,7 +64,8 @@ render(){
   var icons = {
     food: FastfoodIcon,
     lodging: HotelIcon,
-    fuel: LocalGasStationIcon
+    fuel: LocalGasStationIcon,
+    shopping: ShoppingCartIcon
   }
 
   var StopIcon ;
@@ -90,7 +91,7 @@ render(){
     </Tooltip>
 
     <Tooltip title={<span style = {{fontSize: '15px'}}>Remove Stop</span>} >
-      <IconButton aria-label = 'remove-stop'>
+      <IconButton aria-label = 'remove-stop' onClick = {() => {this.props.removeFunc(this.props.index)}}>
         <RemoveCircleIcon />
       </IconButton>
     </Tooltip>
@@ -98,7 +99,7 @@ render(){
 		</ListItem>
 
     <ListItem style = {{display: this.state.commentDisplay}}>
-    <TextField value = {this.state.commentText} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px'}}>Comment</span>} />
+    <TextField value = {this.state.commentText} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px', color: "#fff"}}>Comment</span>} />
      {/* <Button variant="contained">
         Add Comment
       </Button> */}
