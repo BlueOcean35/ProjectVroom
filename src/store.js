@@ -1,10 +1,8 @@
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./reducers/rootReducer.js";
 import thunk from "redux-thunk";
-
-/* REDUX-PERSIST SETUP
- import { persistStore, persistReducer } from 'redux-persist';
- import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 
  const persistConfig = {
@@ -16,7 +14,7 @@ import thunk from "redux-thunk";
 
  const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-*/
+
 
 // add in any state you need here
 var initialState = {
@@ -36,12 +34,12 @@ var initialState = {
 };
 
 const store = createStore(
-	rootReducer,
-	// persistedReducer,
+	// rootReducer,
+	persistedReducer,
 	initialState,
 	applyMiddleware(thunk)
 );
 
 export default store;
 
-//  export const persistor = persistStore(store);
+export const persistor = persistStore(store);

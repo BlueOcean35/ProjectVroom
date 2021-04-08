@@ -43,7 +43,7 @@ export default function FilterRadioButtons({
 
 	return (
 		<FormControl component="fieldset">
-			<FormLabel classes={{root: classes.filter, focused: classes.focused}} component="legend">by: </FormLabel>
+			<FormLabel classes={{root: classes.filter, focused: classes.focused}} component="legend">Filter by: </FormLabel>
 			<RadioGroup row aria-label="position" name="position" defaultValue="top">
 				<FormControlLabel
 					value="price"
