@@ -6,6 +6,8 @@ import { store } from "../../store.js"
 var showNearbyFoodReducer = (state=[], action) => {
   if (action.type === 'SHOW_NEARBY_FOOD') {
     return action.nearbyFood;
+  } else if (action.type === 'RESET_NEARBY_FOOD') {
+    return [];
   } else if (action.type === 'FILTER_BY_PRICE'){
     var newNearbyFood = state.slice();
 

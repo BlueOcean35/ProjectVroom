@@ -6,6 +6,11 @@ import getLocationFrom from '../actions/getLocationFrom';
 import getLocationTo from '../actions/getLocationTo';
 import fetchNewRoute from '../actions/Trip-Planner/fetchNewRoute.js';
 import resetWaypoints from "../actions/Trip-Planner/resetWaypoints.js"
+import resetNearbyFood from "../actions/Trip-Planner/resetNearbyFood.js"
+import resetNearbyLodging from "../actions/Trip-Planner/resetNearbyLodging.js"
+import resetNearbyFuel from "../actions/Trip-Planner/resetNearbyFuel.js";
+import resetNearbyAttractions from "../actions/Trip-Planner/resetNearbyFood.js";
+
 
 var mapStoreToProps = (state) => ({
   storeFrom: state.addressObjFrom,
@@ -30,6 +35,18 @@ var mapDispatchToProps = (dispatch) => ({
     },
     resetWaypoints: () => {
       dispatch(resetWaypoints())
+    },
+    resetNearbyFood: () => {
+      dispatch(resetNearbyFood())
+    },
+    resetNearbyLodging: () => {
+      dispatch(resetNearbyLodging())
+    },
+    resetNearbyFuel: () => {
+      dispatch(resetNearbyFuel())
+    },
+    resetNearbyAttractions: () => {
+      dispatch(resetNearbyAttractions())
     }
 });
 

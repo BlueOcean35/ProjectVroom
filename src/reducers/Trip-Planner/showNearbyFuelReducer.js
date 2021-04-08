@@ -3,6 +3,8 @@ import Redux from 'redux';
 var showNearbyFuelReducer = (state=[], action) => {
   if (action.type === 'SHOW_NEARBY_FUEL') {
     return action.nearbyFuel;
+  } else if (action.type === 'RESET_NEARBY_FUEL') {
+    return [];
   } else if (action.type === 'FILTER_BY_PRICE') {
     var newNearbyFuel = state.slice()
     var nearbyWithPrices = newNearbyFuel.filter((place) => {
