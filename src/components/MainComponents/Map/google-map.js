@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import store from "../../../store"
-const API_KEY = 'AIzaSyC--XuKLnf6DOhcJ4hfnPkkGIBbhiAX0qM';
-// const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
 	constructor (props) {
