@@ -16,18 +16,14 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import MapIcon from '@material-ui/icons/Map';
 import RoomIcon from '@material-ui/icons/Room';
 import FromToItem from './listItemComponents/FromToItem.jsx';
-import StopItem from './listItemComponents/StopItem.jsx';
+import StopItem from './listItemComponents/StopItem-itinerary.jsx';
 import Button from '@material-ui/core/Button';
 import {ThemeProvider} from '@material-ui/core';
 import theme from '../../theme';
-import FromToItemContainer from '../../../containers/FromToItemContainer.js';
-
-
 
 const useStyles = makeStyles((theme) => ({
-
 	listText: {
-		float: 'left',
+		float: 'center',
 		marginLeft: '16px',
 		marginRight: '16px',
 		marginBottom: '16px'
@@ -40,44 +36,16 @@ export default function mainListItems (props) {
 		<ThemeProvider theme={theme}>
 	<div>
 	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
-		<FromToItemContainer type = 'from'  />
+		<FromToItem type = 'from'  storeFrom={props.start}/>
 			{
-
 				props.waypoints.map((element, index) => {
-					return (<StopItem stopType = {element.type} address = {element.name} index = {index} removeFunc = {props.removeWaypoint} />)
+					return (<StopItem stopType = {element.type} address = {element.name} />)
 				})
 			}
-		<FromToItemContainer type = 'to' />
+		<FromToItem type = 'to' storeTo={props.end}/>
 
 	</div>
 	</ThemeProvider>
 	)
-	};
+};
 
-export const secondaryListItems = (
-	<ThemeProvider theme={theme}>
-	<div>
-		<ListSubheader inset>Suggestions</ListSubheader>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Current month" className = {'primaryDestination'}/>
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Last quarter" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Year-end sale" />
-		</ListItem>
-
-	</div>
-	</ThemeProvider>
-
-);
