@@ -36,7 +36,7 @@ const SaveItinerary = ({start, end, waypoints}) => {
   return (
     <ThemeProvider theme={theme}>
 
-      <Button  style={{ position: "fixed", left: "35px", bottom:" 10px", height:"65px", width:"500px", textDecoration: "none", color: "black", boxShadow: '0px 6px 8px 0px rgba(255,255,255,255.04)', margin: '3px auto'}} variant="contained" color="secondary">{id ? <Redirect to={`/Itinerary/${id}`} style={{height:"100%", width:"600px", textDecoration: "none", color: "white"}}/> : <div className="btn-itinerary" onClick={handleClick} style={{height:"100%", width:'100%', display: 'flex', justifyContent: "center", alignItems: "center"}}><h2>Save Itinerary</h2></div>}</Button>
+      <Button  style={{ position: "fixed", left: "60px", bottom:" 10px", height:"65px", width:"500px", textDecoration: "none", color: "black", boxShadow: '0px 6px 8px 0px rgba(255,255,255,255.04)', margin: '3px auto'}} variant="contained" color="secondary">{id ? <Redirect to={`/Itinerary/${id}`} style={{height:"100%", width:"600px", textDecoration: "none", color: "white"}}/> : <div className="btn-itinerary" onClick={handleClick} style={{height:"100%", width:'100%', display: 'flex', justifyContent: "center", alignItems: "center"}}><h2>Save Itinerary</h2></div>}</Button>
 
     </ThemeProvider>
 
