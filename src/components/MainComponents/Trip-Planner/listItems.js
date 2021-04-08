@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: '16px',
 		marginRight: '16px',
 		marginBottom: '16px'
+	},
+	button: {
+		width: "35%"
 	}
 }));
 
@@ -50,7 +53,7 @@ export default function mainListItems (props) {
 		<FromToItemContainer type = 'to' />
 
 		<ListItem>
-			  <Button variant="contained" color = "secondary" onClick = {() => {
+			  <Button className={classes.button} variant="contained" color = "secondary" onClick = {() => {
 					props.fetchNewRoute({
 							name: 'Albany',
 							type: 'food', //curent type we're in
