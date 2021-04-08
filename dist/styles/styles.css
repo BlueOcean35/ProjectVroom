@@ -74,7 +74,10 @@ body {
 .suggestion {
   display: block;
 }
-
+.tab-panel {
+  height: 400px;
+  overflow: scroll;
+}
 /* Itinerary Page Styles */
 .itinerary-container {
 	position: absolute;
@@ -99,4 +102,3 @@ body {
 	/* overflow: hidden; */
 	/* grid-row-start: 1; */
 }
-

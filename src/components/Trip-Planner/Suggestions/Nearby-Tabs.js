@@ -12,11 +12,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
-import NearbyListItems from "./List-Items.js";
+import nearbyPlaces from "../../../../sample-data/nearby-places.js";
+import NearbyListItems from "./Nearby-List-Items.js";
 import SuggestionsListItemsContainer from "./List-Items-Container.js";
-import FilterByContainer from "./Filter-Radio-Container.js"
-import {useEffect} from "react";
-
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;
@@ -24,7 +22,6 @@ function TabPanel(props) {
 	return (
 		<div
 			role="tabpanel"
-      className = "tab-panel"
 			hidden={value !== index}
 			id={`simple-tabpanel-${index}`}
 			aria-labelledby={`simple-tab-${index}`}
@@ -55,8 +52,7 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
-		backgroundColor: "#8D0E00",
-		color: "white"
+		backgroundColor: theme.palette.background.paper,
 	},
 }));
 
@@ -70,28 +66,9 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 	};
 
   const displayInstructions = () => {
-    if (nearbyFood.length === 0) {
-      return (
-      <div className='instructions'>
-        <h1 className='instructions-header'>Welcome to the Big Bad <br/>Biker Trip Planner!</h1>
-        <div classname='instructions-text'>
-          <p>To get started, double click anywhere on the map to find <br/>food, fuel, lodging and attractions nearby</p>
-        </div>
-      </div>
-      )
-    } else {
-      return (
-        <>
-          <FilterByContainer/>
-          <List>
-            {nearbyFood.map((p) => {
-              return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'food'} />
-            })}
-          </List>
-
-        </>
-      )
-    }
+      return (<div>
+        Instructions
+      </div>)
   }
 
 	return (
@@ -110,35 +87,41 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			</AppBar>
 			<TabPanel value={value} index={0} >
 				{displayInstructions()} <br />
-
+				<FilterRadioButtons />
+				<FilterSlider />
+				<List>
+					{nearbyFood.map((p) => {
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
+					})}
+				</List>
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				Lodging <br />
-				<FilterByContainer />
-				{/* <FilterSlider /> */}
+				<FilterRadioButtons />
+				<FilterSlider />
 				<List>
 					{nearbyLodging.map((p) => {
-						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'lodging'}/>;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
 					})}
 				</List>
 			</TabPanel>
 			<TabPanel value={value} index={2}>
 				Attractions <br />
-				<FilterByContainer />
-				{/* <FilterSlider /> */}
+				<FilterRadioButtons />
+				<FilterSlider />
 				<List>
 					{nearbyAttractions.map((p) => {
-						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'attractions'}/>;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
 					})}
 				</List>
 			</TabPanel>
 			<TabPanel value={value} index={3}>
 				Fuel <br />
-				<FilterByContainer />
-				{/* <FilterSlider /> */}
+				<FilterRadioButtons />
+				<FilterSlider />
 				<List>
 					{nearbyFuel.map((p) => {
-						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'fuel'}/>;
+						return <SuggestionsListItemsContainer place={p} key={p.place_id} />;
 					})}
 				</List>
 			</TabPanel>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import clsx from "clsx";
-import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip, ThemeProvider } from '@material-ui/core';
+import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -11,7 +11,6 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 import axios from 'axios';
-import theme from '../../theme';
 import { Link } from "react-router-dom";
 const API_KEY = process.env.API_KEY;
 
@@ -34,6 +33,34 @@ const drawerWidth = 600;
 const useStyles = makeStyles((theme) => ({
 
 
+	rideButton: {
+    marginTop: '15px',
+    height: '75px',
+    width: `35%`,
+    fontSize: "30px",
+    backgroundColor: "#8e0e00",
+    color: '#fff',
+    fontFamily: "Helvetica",
+    '&:hover': {
+      opacity: `0.9`,
+      color: '#211C17',
+      backgroundColor: "#DB1200"
+    },
+    transition: "all 0.5s"
+
+
+  },
+  Tooltip: {
+    marginRight: '10px',
+    color: 'white',
+    backgroundColor: "#8e0e00",
+    '&:hover': {
+      opacity: `0.9`,
+      color: '#211C17',
+      backgroundColor: "#DB1200"
+    },
+    transition: "all 0.4s",
+  },
 	title: {
     flexGrow: 1,
     fontSize: "20px"
@@ -190,7 +217,12 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                 )}
             </PlacesAutocomplete>
 
+    <div className="landing-page-interactions">
 
+      <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
+        <Tooltip className={classes.Tooltip} title="use current location">
+        <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
+        </Tooltip>
 
             <PlacesAutocomplete
               value={addressTo}
@@ -213,10 +245,10 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                         ? 'suggestion-item--active'
                         : 'suggestion-item';
                       const style = suggestion.active
-                      ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
-                        : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
+                        ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
+                        : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
                       return (
-                        <div  onClick={() => setAddressTo(suggestion.description)} key={`to-${suggestion}-${i}`}
+                        <div onClick={() => setAddressFrom(suggestion.description)} key={`from-${suggestion}-${i}`}
                           {...getSuggestionItemProps(suggestion, {
                             className,
                             style,
@@ -234,8 +266,51 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
       <Button style={{padding: 0}} form="landing-form" type="submit"  > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
       </div>
 
+
+
+        <PlacesAutocomplete
+          value={addressTo}
+          onChange={setAddressTo}
+          onSelect={handleSelectTo}
+        >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div>
+              <InputLabel  className={classes.inputLabel} >To:
+                <Input className={classes.input} {...getInputProps({
+                  placeholder: "LA",
+                  required: true
+                })} />
+              </InputLabel>
+
+              <div className="autocomplete-dropdown-container">
+                {loading ? <div>Loading...</div> : null}
+                {suggestions.map((suggestion, i) => {
+                  const className = suggestion.active
+                    ? 'suggestion-item--active'
+                    : 'suggestion-item';
+                  const style = suggestion.active
+                  ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
+                    : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
+                  return (
+                    <div  onClick={() => setAddressTo(suggestion.description)} key={`to-${suggestion}-${i}`}
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style,
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            )}
+          </PlacesAutocomplete>
+
+      </form>
+        <Button style={{padding: 0, height: '100%'}} form="landing-form" type="submit" className={classes.rideButton} > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
     </div>
-    </ThemeProvider>
+  </div>
   )
 }
 

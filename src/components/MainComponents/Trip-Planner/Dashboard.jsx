@@ -2,15 +2,17 @@ import React from "react";
 import { typography } from '@material-ui/system';
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip, Link as MuiLink, ThemeProvider } from '@material-ui/core';
+import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip, Link as MuiLink, ThemeProvider } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+import listItems from "./listItems";
 import NearbyTabsContainer from "./Suggestions/Nearby-Tabs-Container.js";
 import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
 import SuggestionsListItems from "./Suggestions/List-Items.js";
 import GoogleMapContainer from "../Map/GoogleMapContainer.js";
+import ListItemsContainer from './Suggestions/List-Items-Container.js';
+import ListItemsContainer2 from '../../../containers/listItemsContainer.js';
 import theme from '../../theme';
 import SaveItineraryContainer from './SaveItineraryContainer.js';
 
@@ -169,10 +171,9 @@ export default function Dashboard() {
 				</div>
 				<Divider />
 				<>
-					Your travel so far list contained in the div below called
-					{"<List>{mainListItems}</List> "}
-					<List>{mainListItems()}</List>
-					<List>{secondaryListItems}</List>
+
+					<ListItemsContainer2 />
+
 					<Divider  />
 					<NearbyTabsContainer  />
         	<SaveItineraryContainer />
