@@ -160,7 +160,6 @@ class GoogleMap extends Component {
 	render() {
 		return (
       <div>
-        {this.props.waypoints.length}
         <div className="map-wrapper-container">
 
           <div className="map-wrapper">

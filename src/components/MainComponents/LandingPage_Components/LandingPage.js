@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
   },
 }));
-let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo}) => {
+let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo, resetWaypoints}) => {
   const classes = useStyles();
   const [addressFrom, setAddressFrom] = useState('');
   const [addressTo, setAddressTo] = (useState(''))
@@ -237,7 +237,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                 )}
               </PlacesAutocomplete>
       </form>
-      <Button  form="landing-form" type="submit" className={classes.button} > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to="/Dashboard" className={classes.link} >Let’s Ride </Link> : <span>Let’s Ride</span>}</Button>
+      <Button  form="landing-form" type="submit" className={classes.button} onClick={resetWaypoints} > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to="/Dashboard" className={classes.link} >Let’s Ride </Link> : <span>Let’s Ride</span>}</Button>
       </div>
     </div>
     </ThemeProvider>
