@@ -22,19 +22,19 @@ export default function FromToItem (props) {
   var listText;
 
   if (props.type === 'from') {
-    listText = `From: ${props.from.address}`;
+    listText = `From: ${props.storeFrom.formatted_address}`;
   } else if (props.type === 'to') {
-    listText = `To: ${props.to.address}`;
+    listText = `To: ${props.storeTo.formatted_address}`;
   }
 
 	return (
     <div>
       <ListItem >
         <ListItemIcon>
-          <RoomIcon style= {{fontSize: '1.75rem', color: 'black' }} />
+          <RoomIcon style= {{fontSize: '1.75rem' }} />
         </ListItemIcon>
         <Typography variant= 'body1' >
-          <Box fontWeight = 'fontWeightBold' fontSize = '1.35rem'>{listText}</Box>
+          <Box style={{color: "#fff"}} fontWeight = 'fontWeightBold' fontSize = '1.35rem'>{listText}</Box>
         </Typography>
       </ListItem>
 
