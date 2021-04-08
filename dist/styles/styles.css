@@ -58,6 +58,9 @@ body {
 	width: 200px;
 }
 
+.main-title {
+	height: 60px;
+}
 
 /* Suggestions Styles*/
 .MuiList-root {
