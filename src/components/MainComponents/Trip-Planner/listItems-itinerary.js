@@ -39,7 +39,7 @@ export default function mainListItems (props) {
 		<FromToItem type = 'from'  storeFrom={props.start}/>
 			{
 				props.waypoints.map((element, index) => {
-					return (<StopItem stopType = {element.type} address = {element.name} />)
+					return (<StopItem stopType = {element.type} address = {element.name} comment={element.comment}/>)
 				})
 			}
 		<FromToItem type = 'to' storeTo={props.end}/>

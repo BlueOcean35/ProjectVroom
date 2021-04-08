@@ -53,7 +53,7 @@ export default class StopItem extends React.Component  {
           <ListItemIcon>
             <StopIcon style= {{fontSize: '1.40rem' }} />
           </ListItemIcon>
-          <ListItemText primary={<div><span>Stop: {this.props.address}</span> <br></br> <span style = {{fontSize: '.8rem', fontStyle: 'italic' }}></span></div>} />
+          <ListItemText primary={<div><span>Stop: {this.props.address}</span> <br></br> <span style = {{fontSize: '.8rem', fontStyle: 'italic' }}>{this.props.comment}</span></div>} />
         </ListItem>
       </div>
 	  )
