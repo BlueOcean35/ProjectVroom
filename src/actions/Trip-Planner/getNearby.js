@@ -25,7 +25,7 @@ var getNearby = (lat, lng) => {
         
           var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
           var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-          //console.warn('DIST IN MI ', distinMi);
+           //console.warn('DIST IN MI ', distinMi);
           return distinMi;
         }
 
