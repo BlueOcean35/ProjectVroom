@@ -49,17 +49,17 @@ const ItineraryTest = () => {
         </div>
         <div className='overarching-list-items-container'>
           <div className='list-items-itinerary-container'>
-            <ListItems start={newData.start} end={newData.end} waypoints={newData.waypoints}/>
+            <ListItems style={{backgroundColor: "#000000"}} start={newData.start} end={newData.end} waypoints={newData.waypoints}/>
           </div>
           <div className='circular-button-icon-container'>
-            <button onClick={copyURL} className="copy-button"><i className="far fa-copy"></i></button>
-            <FacebookShareButton url={window.location.href}>
+            <button onClick={copyURL} className="copy-button share-btns"><i className="far fa-copy"></i></button>
+            <FacebookShareButton className='share-btns' url={window.location.href}>
               <FacebookIcon size={50} round />
             </FacebookShareButton>
-            <EmailShareButton subject={'Hey Fellow Biker Bros. Look at this cool biker trip I made for us tough guys'} body={'Super cool, right guys?'} url={window.location.href}>
+            <EmailShareButton className='share-btns' subject={'Hey Fellow Biker Bros. Look at this cool biker trip I made for us tough guys'} body={'Super cool, right guys?'} url={window.location.href}>
               <EmailIcon size={50} round />
             </EmailShareButton>
-            <TwitterShareButton url={window.location.href}>
+            <TwitterShareButton className='share-btns' url={window.location.href}>
               <TwitterIcon size={50} round />
             </TwitterShareButton>
           </div>
