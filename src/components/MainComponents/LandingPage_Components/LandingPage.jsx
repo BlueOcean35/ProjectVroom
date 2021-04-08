@@ -12,7 +12,7 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
+const API_KEY = process.env.API_KEY;
 
 
 function Copyright() {
