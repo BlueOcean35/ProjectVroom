@@ -2,6 +2,7 @@ import { connect, dispatch } from 'react-redux';
 import listItems from "../components/MainComponents/Trip-Planner/listItems.js";
 import fetchNewRoute from '../actions/Trip-Planner/fetchNewRoute.js';
 import removeWaypoint from '../actions/Trip-Planner/removeWaypoint.js';
+import updateWaypointComment from '../actions/Trip-Planner/updateWaypointComment.js';
 
 var mapStoreToProps = (state) => ({
   storeFrom: state.addressObjFrom,
@@ -16,6 +17,9 @@ var mapDispatchToProps = (dispatch) => ({
   },
     fetchNewRoute: (newWaypoint) => {
       dispatch(fetchNewRoute(newWaypoint))
+    },
+    updateWaypointComment: (index, comment) => {
+      dispatch(updateWaypointComment(index, comment))
     }
 
 });

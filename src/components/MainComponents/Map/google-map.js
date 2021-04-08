@@ -3,7 +3,6 @@ import Helmet from "react-helmet";
 import store from "../../../store"
 const API_KEY = 'AIzaSyBVzEAf0DQrgJnrlYtqwJON9qBIdxv1kgg';
 
-
 class GoogleMap extends Component {
 	constructor (props) {
 		super(props)
@@ -15,10 +14,12 @@ class GoogleMap extends Component {
 	};
 
   componentDidUpdate(prevProps) {
-
+    console.log(prevProps.waypoints, 'old waypoints')
+    console.log(this.props.waypoints, 'new waypoints')
     console.log('update')
-
-    this.initMap();
+    if (prevProps.waypoints.length !== this.props.waypoints.length){
+      this.initMap();
+    }
   }
 
 	renderMap = () => {

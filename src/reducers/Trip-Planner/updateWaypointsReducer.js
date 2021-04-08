@@ -5,6 +5,8 @@ var updateWaypointsReducer = (state = [], action) => {
 		return action.waypoints.slice();
 	} else if (action.type === "REMOVE_WAYPOINTS") {
 		return action.waypoints.slice();
+	} else if (action.type === "UPDATE_WAYPOINT_COMMENT") {
+		return action.waypoints.slice();
 	} else {
 		return state;
 	}
