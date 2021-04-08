@@ -1,5 +1,5 @@
-import React, {Fragment} from "react";
-import Example from './exampleCounterContainer.js';
+import React, { Fragment } from "react";
+import Example from "./exampleCounterContainer.js";
 
 import {
   BrowserRouter as Router,
@@ -16,7 +16,6 @@ const App = ({ name }) => {
   return (
     <>
       <Router>
-
         <Switch>
           <Route path="/" exact>
             <LandingPageContainer />
@@ -27,8 +26,7 @@ const App = ({ name }) => {
           </Route>
 
           <Route exact path="/itinerary/:id">
-           {/* a component will be here when ready */}
-           <ItineraryTest/>
+            <ItineraryTest />
           </Route>
         </Switch>
       </Router>
