@@ -10,7 +10,8 @@ import {
 
 import LandingPageContainer from "../containers/LandingPageContainer";
 import Dashboard from "./MainComponents/Trip-Planner/Dashboard";
-import ItineraryPage from "./MainComponents/Itinerary/itinerary.js"
+import ItineraryTest from "./Itinerary/ItineraryTest.js";
+
 
 const App = ({ name }) => {
   return (
@@ -26,10 +27,10 @@ const App = ({ name }) => {
             <Dashboard />
           </Route>
 
-          <Route path="/itinerary/:id" render={(props) => {
-            return ( <ItineraryPage {...props} />)
-          }}>
-            {/* <ItineraryPage /> */}
+
+          <Route exact path="/itinerary/:id">
+           {/* a component will be here when ready */}
+           <ItineraryTest/>
           </Route>
         </Switch>
       </Router>

@@ -14,7 +14,8 @@ import PlacesAutocomplete, {
 // import GoogleMaps from "./Map-Pure-JS";
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
+const API_KEY = process.env.API_KEY;
+console.log(API_KEY);
 
 function Copyright() {
 	return (
@@ -178,7 +179,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position)
-        return axios.get(`http://maps.googleapis.com/maps/api/geocode/libraries&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false&"+ `key=[KEYGOESHERE]`).then((data) => {
+        return axios.get(`http://maps.googleapis.com/maps/api/geocode/libraries&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false&"+ `key=${API_KEY}`).then((data) => {
           console.log(data)
           // 1. set the reverse geocode address to be the state in our redux store
           // 2. auto complete our from field
