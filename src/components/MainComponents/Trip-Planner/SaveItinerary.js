@@ -22,7 +22,10 @@ const SaveItinerary = ({start, end, waypoints}) => {
   };
 
   return (
-    <Button variant="contained" color="secondary">{id ? <Link to={`/Itinerary/${id}`} style={{height:"100%", width:"100%", textDecoration: "none", color: "white"}}>Save Itinerary</Link> : <div onClick={handleClick} style={{height:"100%", width:"100%"}}>Save Itinerary</div>}</Button>
+    <div >
+   <Button variant="contained" color="secondary">{id ? <Link to={`/Itinerary/${id}`} style={{height:"100%", width:"600px", textDecoration: "none", color: "white", marginBottom: "10px"}}>Save Itinerary</Link> : <div onClick={handleClick} style={{height:"100%", width:'600px'}}>Save Itinerary</div>}</Button>
+    </div>
+
   )
 };
 

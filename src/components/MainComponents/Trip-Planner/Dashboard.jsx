@@ -15,7 +15,7 @@ import ListItemsContainer from './Suggestions/List-Items-Container.js';
 import ListItemsContainer2 from '../../../containers/listItemsContainer.js';
 import theme from '../../theme';
 import SaveItineraryContainer from './SaveItineraryContainer.js';
-import Button from '@material-ui/core/Button';
+
 
 function Copyright() {
 	return (
@@ -133,9 +133,6 @@ export default function Dashboard() {
 	};
 
 	//this is where we define the drawer close logic
-	const handleDrawerClose = () => {
-		// setOpen(false);
-	};
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	return (
@@ -155,7 +152,7 @@ export default function Dashboard() {
 						noWrap
 						className={classes.title}
 					>
-						BIG BAD BOSTON BIKERS
+						<a style={{pointerEvents: "none", cursor: "default"}} className="main-title" href="https://fontmeme.com/old-english-fonts/"><img className="main-title"  src="https://fontmeme.com/permalink/210408/c4d47cc99a98e48ed869f59f25d94dbc.png" alt="old-english-fonts" border="0" /></a>
 					</Typography>
 					<div> This is where you add the logo </div>
 				</Toolbar>
@@ -171,7 +168,6 @@ export default function Dashboard() {
 				</div>
 				<Divider />
 				<>
-
 					<ListItemsContainer2 />
 
 					<Divider  />
