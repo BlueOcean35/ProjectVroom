@@ -62,5 +62,6 @@ export default function mainListItems (props) {
 	</div>
 	</ThemeProvider>
 	)
-	};
+	// BUG: this curly bracket needed to be indented!
+};
 
