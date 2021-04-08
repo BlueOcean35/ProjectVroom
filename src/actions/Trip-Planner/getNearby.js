@@ -29,6 +29,7 @@ var getNearby = (lat, lng) => {
   return (dispatch) => {
     axios.get(getQuery('restaurant'))
       .then(({data}) => {
+        console.log(data);
         var dataWithLoc = data.map((place) => {
           place['originLoc'] = {
             lat: lat,
@@ -41,7 +42,7 @@ var getNearby = (lat, lng) => {
         dispatch(showNearbyFood(dataWithLoc));
       })
       .catch((error) => {
-        //console.error('error getting nearby food: ', error);
+        console.error('error getting nearby food: ', error);
       })
       .then(() => {
         axios.get(getQuery('gas_station'))
