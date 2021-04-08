@@ -1,7 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import { handle } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Map from '../MainComponents/Map/google-map.js';
+import Map from '../Map/google-map';
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:3000";
 
@@ -48,5 +48,3 @@ const ItineraryTest = () => {
 };
 
 export default ItineraryTest;
-
-

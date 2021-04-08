@@ -10,13 +10,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import FilterSlider from "./Filter-Slider.js";
 import FilterRadioButtons from "./Filter-Radio.js";
 import NearbyListItems from "./List-Items.js";
 import SuggestionsListItemsContainer from "./List-Items-Container.js";
 import FilterByContainer from "./Filter-Radio-Container.js"
-import {useEffect} from "react";
-
 
 function TabPanel(props) {
 	const { children, value, index, ...other } = props;

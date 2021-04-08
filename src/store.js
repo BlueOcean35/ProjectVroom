@@ -28,7 +28,6 @@ var initialState = {
   nearbyIsAdded: false,
   waypoints: [],
   travelSoFarStops: [],
-	toggleStopButton: false,
   locationFrom: {}, //start loc validated by api
   locationTo: {}, //end loc validated by api
   addressObjFrom: {}, //from the login page start text field

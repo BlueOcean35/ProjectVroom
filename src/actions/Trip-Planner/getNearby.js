@@ -6,6 +6,18 @@ import showNearbyLodging from './showNearbyLodging.js';
 import  '../../store.js';
 import thunk from 'redux-thunk';
 
+var calcProximity = (lat1, lon1, lat2, lon2) => {
+  var p = 0.017453292519943295;
+  var c = Math.cos;
+  var a = 0.5 - c((lat2 - lat1) * p)/2 + 
+          c(lat1 * p) * c(lat2 * p) * 
+          (1 - c((lon2 - lon1) * p))/2;
+
+  var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
+  var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
+  return distinMi;
+}
+
 var getNearby = (lat, lng) => {
 
   const getQuery = (type) => {
@@ -15,20 +27,6 @@ var getNearby = (lat, lng) => {
   return (dispatch) => {
     axios.get(getQuery('restaurant'))
       .then(({data}) => {
-        var calcProximity = (lat1, lon1, lat2, lon2) => {
-          // //console.warn('RUNNING CALC PROX')
-          var p = 0.017453292519943295;    // Math.PI / 180
-          var c = Math.cos;
-          var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-                  c(lat1 * p) * c(lat2 * p) * 
-                  (1 - c((lon2 - lon1) * p))/2;
-        
-          var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
-          var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-           //console.warn('DIST IN MI ', distinMi);
-          return distinMi;
-        }
-
         var dataWithLoc = data.map((place) => {
           place['originLoc'] = {
             lat: lat,
@@ -37,30 +35,15 @@ var getNearby = (lat, lng) => {
           place['proximity'] = calcProximity(lat,lng, place.geometry.location.lat, place.geometry.location.lng)
           return place;
         })
-        console.log('food: ', dataWithLoc);
+        //console.log('food: ', dataWithLoc);
         dispatch(showNearbyFood(dataWithLoc));
       })
       .catch((error) => {
-        console.error('error getting nearby food: ', error);
+        //console.error('error getting nearby food: ', error);
       })
       .then(() => {
         axios.get(getQuery('gas_station'))
           .then(({data}) => {
-
-            var calcProximity = (lat1, lon1, lat2, lon2) => {
-              //console.warn('RUNNING CALC PROX')
-              var p = 0.017453292519943295;    // Math.PI / 180
-              var c = Math.cos;
-              var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-                      c(lat1 * p) * c(lat2 * p) * 
-                      (1 - c((lon2 - lon1) * p))/2;
-            
-              var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
-              var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-              //console.warn('DIST IN MI ', distinMi);
-              return distinMi;
-            }
-
             var dataWithLoc = data.map((place) => {
               place['originLoc'] = {
                 lat: lat,
@@ -69,28 +52,15 @@ var getNearby = (lat, lng) => {
               place['proximity'] = calcProximity(lat,lng, place.geometry.location.lat, place.geometry.location.lng)
               return place;
             })
-            console.log('fuel: ', dataWithLoc);
+            //console.log('fuel: ', dataWithLoc);
             dispatch(showNearbyFuel(dataWithLoc));
           })
           .catch((error) => {
-            console.error('error getting nearby fuel: ', error);
+            //console.error('error getting nearby fuel: ', error);
           })
           .then(() => {
             axios.get(getQuery('lodging'))
               .then(({data}) => {
-                var calcProximity = (lat1, lon1, lat2, lon2) => {
-                  //console.warn('RUNNING CALC PROX')
-                  var p = 0.017453292519943295;    // Math.PI / 180
-                  var c = Math.cos;
-                  var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-                          c(lat1 * p) * c(lat2 * p) * 
-                          (1 - c((lon2 - lon1) * p))/2;
-                
-                  var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
-                  var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-                  //console.warn('DIST IN MI ', distinMi);
-                  return distinMi;
-                }
     
                 var dataWithLoc = data.map((place) => {
                   place['originLoc'] = {
@@ -100,28 +70,15 @@ var getNearby = (lat, lng) => {
                   place['proximity'] = calcProximity(lat,lng, place.geometry.location.lat, place.geometry.location.lng)
                   return place;
                 })
-                console.log('lodging: ', dataWithLoc);
+                //console.log('lodging: ', dataWithLoc);
               })
               .catch((error) => {
-                console.error('error getting nearby lodging: ', error);
+                //console.error('error getting nearby lodging: ', error);
               })
               .then(() => {
                 axios.get(getQuery('tourist_attraction'))
                   .then(({data}) => {
-                    var calcProximity = (lat1, lon1, lat2, lon2) => {
-                      //console.warn('RUNNING CALC PROX')
-                      var p = 0.017453292519943295;    // Math.PI / 180
-                      var c = Math.cos;
-                      var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-                              c(lat1 * p) * c(lat2 * p) * 
-                              (1 - c((lon2 - lon1) * p))/2;
-                    
-                      var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
-                      var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-                      //console.warn('DIST IN MI ', distinMi);
-                      return distinMi;
-                    }
-        
+                  
                     var dataWithLoc = data.map((place) => {
                       place['originLoc'] = {
                         lat: lat,
@@ -130,17 +87,17 @@ var getNearby = (lat, lng) => {
                       place['proximity'] = calcProximity(lat,lng, place.geometry.location.lat, place.geometry.location.lng)
                       return place;
                     })
-                    console.log('attractions: ', dataWithLoc);
+                    //console.log('attractions: ', dataWithLoc);
                     dispatch(showNearbyAttractions(dataWithLoc));
                   })
                   .catch((error) => {
-                    console.error('error getting nearby attractions: ', error);
+                    //console.error('error getting nearby attractions: ', error);
                   })
               })
           })
       })
       .catch((error) => {
-        console.error('error getting nearby items: ', error);
+        //console.error('error getting nearby items: ', error);
       })
   }
 };
