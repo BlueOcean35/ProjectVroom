@@ -232,7 +232,7 @@ theme.overrides = {
   },
   MuiListItem: {
     root: {
-      backgroundColor: "#211C17"
+      backgroundColor: "#000000"
     },
     gutters: {
       color: "black"
