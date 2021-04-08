@@ -83,7 +83,7 @@ body {
 }
 
 .tab-panel {
-  height: 400px;
+  height: 100%;
   overflow: scroll;
 }
 
@@ -137,4 +137,8 @@ body {
 
 #map {
   height: 50%;
+}
+
+.btn-itinerary:hover {
+	color: #fff;
 }
