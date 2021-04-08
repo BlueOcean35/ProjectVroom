@@ -5,6 +5,7 @@ import getAddressObjTo from '../actions/getAddressObjTo';
 import getLocationFrom from '../actions/getLocationFrom';
 import getLocationTo from '../actions/getLocationTo';
 import fetchNewRoute from '../actions/Trip-Planner/fetchNewRoute.js';
+import resetWaypoints from "../actions/Trip-Planner/resetWaypoints.js"
 
 var mapStoreToProps = (state) => ({
   storeFrom: state.addressObjFrom,
@@ -26,6 +27,9 @@ var mapDispatchToProps = (dispatch) => ({
     },
     fetchNewRoute: () => {
       dispatch(fetchNewRoute())
+    },
+    resetWaypoints: () => {
+      dispatch(resetWaypoints())
     }
 });
 
