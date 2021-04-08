@@ -3,6 +3,8 @@ import Redux from 'redux';
 var showNearbyAttractionsReducer = (state=[], action) => {
   if (action.type === 'SHOW_NEARBY_ATTRACTIONS') {
     return action.nearbyAttractions;
+  } else if (action.type === 'RESET_NEARBY_ATTRACTIONS') {
+    return [];
   } else if (action.type === 'FILTER_BY_PRICE') {
     var newNearbyAttractions = state.slice()
     
