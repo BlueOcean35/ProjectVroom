@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Example from "./exampleCounterContainer.js";
 
 import {
   BrowserRouter as Router,
@@ -11,7 +10,7 @@ import {
 import LandingPageContainer from "../containers/LandingPageContainer";
 
 import Dashboard from "./MainComponents/Trip-Planner/Dashboard";
-import ItineraryTest from "./Itinerary/ItineraryTest.js";
+import ItineraryTest from "./MainComponents/Itinerary/ItineraryTest";
 
 const App = ({ name }) => {
   return (

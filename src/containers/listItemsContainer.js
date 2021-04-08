@@ -8,19 +8,19 @@ var mapStoreToProps = (state) => ({
   storeFrom: state.addressObjFrom,
   storeTo: state.addressObjTo,
   waypoints: state.waypoints
-})
+});
 
 var mapDispatchToProps = (dispatch) => ({
 
   removeWaypoint: (index) => {
-    dispatch(removeWaypoint(index))
+    dispatch(removeWaypoint(index));
   },
-    fetchNewRoute: (newWaypoint) => {
-      dispatch(fetchNewRoute(newWaypoint))
-    },
-    updateWaypointComment: (index, comment) => {
-      dispatch(updateWaypointComment(index, comment))
-    }
+  fetchNewRoute: (newWaypoint) => {
+    dispatch(fetchNewRoute(newWaypoint));
+  },
+  updateWaypointComment: (index, comment) => {
+    dispatch(updateWaypointComment(index, comment));
+  }
 
 });
 

@@ -11,11 +11,11 @@
 }
 
 .map-container {
-  overflow: visible !important;
-  position: unset !important;
+  /* overflow: visible !important;
+  position: unset !important; */
   height: 100vh;
-  width: 100vh;
-  margin-top: 300px;
+  width: 100%;
+  /* margin-top: 300px; */
   /* overflow: hidden; */
   /* grid-row-start: 1; */
 }
@@ -24,11 +24,13 @@
   font-family: "Metal Mania", cursive;
 }
 body {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: darkred;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	color: darkred;
+	background-color: black;
+  overflow: hidden;
 }
 
 .landing-page-inputs {
@@ -79,27 +81,64 @@ body {
 .suggestion {
   display: block;
 }
+
 .tab-panel {
   height: 100%;
   overflow: scroll;
 }
+
 /* Itinerary Page Styles */
 .itinerary-container {
 	position: absolute;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	width: 100%;
 	height: 100%;
 }
 
-
-.map-container {
-	height: 600px;
-	width: 600px;
-	margin-top: 300px;
-
+.mapContainer {
+	width: 50%;
+	height: 30rem;
 }
 
-/* Lets ride and save buttons: background should be white
+.list-items-itinerary-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+}
 
-Filter buttons (food, fuel, etc…): text is black, background is grey when not clicked, white when clicked */
+.overarching-list-items-container {
+	margin: auto;
+	width: 50%;
+}
+
+.copy-button {
+	font-size: 35px;
+	border: none;
+	border-radius: 50%;
+	width: 48.44px;
+	height: 48.44px;
+	margin-right: 1px;
+}
+
+.copy-button:hover {
+	cursor: pointer;
+}
+
+.circular-button-icon-container {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+#map {
+  height: 50%;
+}
+
+.btn-itinerary:hover {
+	color: #fff;
+}

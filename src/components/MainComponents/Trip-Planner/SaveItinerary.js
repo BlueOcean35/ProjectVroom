@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import theme from '../../theme';
 import {ThemeProvider} from '@material-ui/core';
@@ -33,7 +33,9 @@ const SaveItinerary = ({start, end, waypoints}) => {
 
   return (
     <ThemeProvider theme={theme}>
-   <Button  style={{height:"80px", width:"90%", textDecoration: "none", color: "black", margin: "10px auto",boxShadow: '0px 6px 8px 0px rgba(255,255,255,255.04)'}} variant="contained" color="secondary">{id ? <Link to={`/Itinerary/${id}`} >Save Itinerary</Link> : <div onClick={handleClick} style={{height:"100%", width:'600px'}}>Save Itinerary</div>}</Button>
+
+      <Button  style={{height:"80px", width:"550px", textDecoration: "none", color: "black", boxShadow: '0px 6px 8px 0px rgba(255,255,255,255.04)', margin: '3px auto'}} variant="contained" color="secondary">{id ? <Redirect to={`/Itinerary/${id}`} style={{height:"100%", width:"600px", textDecoration: "none", color: "white"}}/> : <div className="btn-itinerary" onClick={handleClick} style={{height:"100%", width:'100%', display: 'flex', justifyContent: "center", alignItems: "center"}}><h2>Save Itinerary</h2></div>}</Button>
+
     </ThemeProvider>
 
   )

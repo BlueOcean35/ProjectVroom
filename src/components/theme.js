@@ -20,6 +20,8 @@ theme.overrides = {
     backgroundColor: "#fff",
     color: '#211C17',
     fontFamily: "Helvetica",
+    padding: '0',
+
     '&:hover': {
       opacity: `0.9`,
       color: '#fff',
@@ -56,9 +58,16 @@ theme.overrides = {
         boxShadow: '0px 4px 8px 0px rgba(0,0,0,0.04)'
       },
     },
+    label: {
+      height: '100%',
+      width: '100%'
+    }
 
   },
   MuiAppBar: {
+    root: {
+
+    },
    colorPrimary: {
      color: "#211C17"
    }
@@ -88,6 +97,7 @@ theme.overrides = {
   },
   MuiButtonBase: {
     root: {
+      margin: "0, auto",
     backgroundColor: "#fff",
     color: '#211C17',
     fontFamily: "Helvetica",
@@ -99,7 +109,6 @@ theme.overrides = {
       boxShadow: '0px 4px 8px 0px rgba(255,255,255,255.02)'
 
     },
-    marginRight: "10px",
     transition: "all 0.5s",
     boxShadow: '0px 1px 2px 0px rgba(255,255,255,255.02)',
 
@@ -181,7 +190,10 @@ theme.overrides = {
   MuiPaper: {
     root: {
       backgroundColor: '#211C17',
-      color: '#fff'
+      color: '#fff',
+      display: 'flex',
+      justifyContent: 'center',
+
     }
   },
   MuiDivider: {

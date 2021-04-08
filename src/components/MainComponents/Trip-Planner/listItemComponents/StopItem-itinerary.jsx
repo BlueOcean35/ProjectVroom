@@ -7,7 +7,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import PeopleIcon from "@material-ui/icons/People";
+import BarChartIcon from "@material-ui/icons/BarChart";
+import LayersIcon from "@material-ui/icons/Layers";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import MapIcon from '@material-ui/icons/Map';
+import RoomIcon from '@material-ui/icons/Room';
 import HotelIcon from '@material-ui/icons/Hotel';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
@@ -21,78 +28,36 @@ import Button from '@material-ui/core/Button';
 
 
 export default class StopItem extends React.Component  {
-
   constructor(props) {
     super(props)
-    this.state = {
-      commentDisplay: 'none'
-    };
-    this.toggleCommentDisplay = this.toggleCommentDisplay.bind(this);
-    this.handleCommentChage = this.handleCommentChage.bind(this);
-
   }
 
-  toggleCommentDisplay() {
-    console.log(this.state.commentDisplay)
-    if (this.state.commentDisplay === 'none') {
-      this.setState({commentDisplay: 'inline'});
-    } else {
-        this.setState({commentDisplay: 'none'});
-    }
-  }
-
-
-  handleCommentChage(event) {
-    this.props.commentFunc(this.props.index, event.target.value);
-  }
-
-  render(){
-
+  render () {
     var icons = {
       food: FastfoodIcon,
       lodging: HotelIcon,
       fuel: LocalGasStationIcon,
       shopping: ShoppingCartIcon
-    };
-
+    }
     var StopIcon ;
 
     if (icons[this.props.stopType] === undefined) {
       StopIcon = ExploreIcon;
     } else {
-      StopIcon = icons[this.props.stopType];
+      StopIcon = icons[this.props.stopType]
     }
 
     return (
       <div style = {{paddingLeft: '2px'}}>
-      <ListItem >
+        <ListItem >
           <ListItemIcon>
             <StopIcon style= {{fontSize: '1.40rem' }} />
           </ListItemIcon>
           <ListItemText primary={<div><span>Stop: {this.props.address}</span> <br></br> <span style = {{fontSize: '.8rem', fontStyle: 'italic' }}>{this.props.comment}</span></div>} />
-
-        <Tooltip title={<span style = {{fontSize: '15px'}}>Write Comment</span>} >
-          <IconButton onClick = {this.toggleCommentDisplay} aria-label = 'write-comment'>
-            <CreateIcon />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip title={<span style = {{fontSize: '15px'}}>Remove Stop</span>} >
-          <IconButton aria-label = 'remove-stop' onClick = {() => {this.props.removeFunc(this.props.index)}}>
-            <RemoveCircleIcon />
-          </IconButton>
-        </Tooltip>
-
-      </ListItem>
-
-      <ListItem style = {{display: this.state.commentDisplay}}>
-        <TextField value = {this.props.comment} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px'}}>Comment</span>} />
-      </ListItem>
-
-
+        </ListItem>
       </div>
-      )
-    }
-	};
+	  )
+  }
+};
 
 
