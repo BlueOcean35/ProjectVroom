@@ -71,6 +71,7 @@ var getNearby = (lat, lng) => {
                   return place;
                 })
                 //console.log('lodging: ', dataWithLoc);
+                dispatch(showNearbyLodging(dataWithLoc))
               })
               .catch((error) => {
                 //console.error('error getting nearby lodging: ', error);
