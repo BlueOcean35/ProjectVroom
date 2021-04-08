@@ -14,6 +14,8 @@ import GoogleMapContainer from "../Map/GoogleMapContainer.js";
 import ListItemsContainer from './Suggestions/List-Items-Container.js';
 import ListItemsContainer2 from '../../../containers/listItemsContainer.js';
 import theme from '../../theme';
+import SaveItineraryContainer from './SaveItineraryContainer.js';
+import Button from '@material-ui/core/Button';
 
 function Copyright() {
 	return (
@@ -173,7 +175,8 @@ export default function Dashboard() {
 					<ListItemsContainer2 />
 
 					<Divider  />
-					<NearbyTabsContainer />
+					<NearbyTabsContainer  />
+        	<SaveItineraryContainer />
 				</>
 			</Drawer>
 			<main className={classes.content}>
