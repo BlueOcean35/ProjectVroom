@@ -8,7 +8,6 @@ router.get("/dashboard", (req, res) => {
 });
 
 router.get("/itinerary/:id", (req, res) => {
-  // res.send(path.join(__dirname, "..", "dist"));
   res.sendFile(path.join(__dirname, "../../dist/index.html"));
 });
 

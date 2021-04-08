@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const url = "mongodb://localhost/itinerary";
 mongoose.Promise = Promise;
 
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((error) => console.error(error));
 
 const db = mongoose.connection;
