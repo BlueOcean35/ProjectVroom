@@ -91,6 +91,15 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
     }
   }
 
+  // const displayNoResultsFound = (list, type) => {
+  //   if (list.length === 0) {
+  //     list.map((place) => {
+
+  //     })
+
+  //   }
+  // } 
+
 	return (
 		<div className={classes.root}>
 			<AppBar position="static">
@@ -112,7 +121,6 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			<TabPanel value={value} index={1}>
 				Lodging <br />
 				<FilterByContainer />
-				{/* <FilterSlider /> */}
 				<List>
 					{nearbyLodging.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'lodging'}/>;
@@ -122,7 +130,6 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			<TabPanel value={value} index={2}>
 				Attractions <br />
 				<FilterByContainer />
-				{/* <FilterSlider /> */}
 				<List>
 					{nearbyAttractions.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'attractions'}/>;
@@ -132,7 +139,6 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
 			<TabPanel value={value} index={3}>
 				Fuel <br />
 				<FilterByContainer />
-				{/* <FilterSlider /> */}
 				<List>
 					{nearbyFuel.map((p) => {
 						return <SuggestionsListItemsContainer place={p} key={p.place_id} type={'fuel'}/>;

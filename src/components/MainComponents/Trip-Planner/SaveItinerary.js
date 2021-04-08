@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 const SaveItinerary = ({start, end, waypoints}) => {
@@ -22,8 +22,8 @@ const SaveItinerary = ({start, end, waypoints}) => {
   };
 
   return (
-    <div >
-   <Button variant="contained" color="secondary">{id ? <Link to={`/Itinerary/${id}`} style={{height:"100%", width:"600px", textDecoration: "none", color: "white", marginBottom: "10px"}}>Save Itinerary</Link> : <div onClick={handleClick} style={{height:"100%", width:'600px'}}>Save Itinerary</div>}</Button>
+    <div style={{height: "100%", width: "600px"}}>
+      <Button variant="contained" color="secondary">{id ? <Redirect to={`/Itinerary/${id}`} style={{height:"100%", width:"600px", textDecoration: "none", color: "white"}}/> : <div onClick={handleClick} style={{height:"100%", width:'600px'}}>Save Itinerary</div>}</Button>
     </div>
 
   )
