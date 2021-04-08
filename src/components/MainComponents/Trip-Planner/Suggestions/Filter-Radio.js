@@ -8,10 +8,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles ({
   radio: {
-		color: "white",
+		color: "#211C17",
     '&$checked': {
       color: '#DB1200'
-    }
+		},
+		"&:hover" : {
+			color: "#fff",
+			backgroundColor: '#DB1200'
+		}
 	},
 	filter: {
 		"&$focused": {
@@ -33,7 +37,7 @@ export default function FilterRadioButtons({
 {
 	const classes = useStyles();
 
-  // console.warn('NEARBY FOOD', nearbyFood);
+  // //console.warn('NEARBY FOOD', nearbyFood);
 
 	return (
 		<FormControl component="fieldset">

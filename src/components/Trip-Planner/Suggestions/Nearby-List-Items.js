@@ -7,6 +7,12 @@ import FastfoodIcon from "@material-ui/icons/Fastfood";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { PlaceOutlined } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+
+
+const useStyles = makeStyles({
+
+});
 
 const calcProxmity = () => {};
 
@@ -22,7 +28,7 @@ const NearbyListItems = ({
 }) => {
 	const classes = useStyles();
 	return (
-		<ListItem button>
+		<ListItem button style={{	backgroundColor: "black"}}>
 			<ListItemIcon>
 				<FastfoodIcon fontSize="large" />
 			</ListItemIcon>

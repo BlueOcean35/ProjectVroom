@@ -17,49 +17,50 @@ theme.overrides = {
     height: '100%',
     width: `100%`,
     fontSize: "30px",
-    backgroundColor: "#211C17",
-    color: '#DB1200',
+    backgroundColor: "#fff",
+    color: '#211C17',
     fontFamily: "Helvetica",
     '&:hover': {
       opacity: `0.9`,
       color: '#fff',
       backgroundColor: "#DB1200",
       transform: 'translateY(-4px)',
-      boxShadow: '0px 4px 8px 0px rgba(255,255,255,255.02)'
+      boxShadow: '0px 6px 12x 0px rgba(0,0,0,0.04)'
     },
     transition: "all 0.5s",
-    boxShadow: '0px 1px 2px 0px rgba(255,255,255,255.02)',
+    boxShadow: '0px 4px 8px 0px rgba(0,0,0,0.04)',
 
     },
     containedSecondary: {
-      color: "#DB1200",
-      backgroundColor: "#211C17",
+      color: "#211C17",
+      backgroundColor: "#fff",
       fontSize: "20px",
 
-        boxShadow: '0px 1px 2px 0px rgba(255,255,255,255.02)',
+        boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.04)',
 
       '&:hover': {
         opacity: `0.9`,
         color: '#fff',
         backgroundColor: "#DB1200",
         transform: 'translateY(-4px)',
-        boxShadow: '0px 4px 8px 0px rgba(255,255,255,255.02)'
+        boxShadow: '0px 4px 8px 0px rgba(0,0,0,0.04)'
       },
     },
     contained: {
-      color: "black"
+      color: "black",
+      '&:hover': {
+        opacity: `0.9`,
+        color: '#fff',
+        backgroundColor: "#DB1200",
+        transform: 'translateY(-4px)',
+        boxShadow: '0px 4px 8px 0px rgba(0,0,0,0.04)'
+      },
     },
 
   },
-
-  MuiSlider: {
-    thumb: {
-      color: "#DB1200"
-    }
-  },
   MuiAppBar: {
    colorPrimary: {
-     backgroundColor: "211C17"
+     color: "#211C17"
    }
   },
   MuiTypography: {
@@ -87,8 +88,8 @@ theme.overrides = {
   },
   MuiButtonBase: {
     root: {
-    backgroundColor: "#211C17",
-    color: '#DB1200',
+    backgroundColor: "#fff",
+    color: '#211C17',
     fontFamily: "Helvetica",
     '&:hover': {
       opacity: `0.9`,
@@ -115,6 +116,7 @@ theme.overrides = {
       backgroundColor: "#red"
     },
   },
+
   MuiFormLabel: {
     root: {
       color: "#fff",
@@ -136,20 +138,20 @@ theme.overrides = {
   },
   MuiIconButton: {
     root: {
-    backgroundColor: "#211C17",
-    color: '#DB1200',
+    backgroundColor: "#fff",
+    color: '#211C17',
     fontFamily: "Helvetica",
     '&:hover': {
       opacity: `0.9`,
       color: '#fff',
       backgroundColor: "#DB1200",
       transform: 'translateY(-4px)',
-      boxShadow: '0px 4px 8px 0px rgba(255,255,255,255.02)'
+      boxShadow: '0px 6px 10px 0px rgba(0,0,0,0.04)'
 
     },
     marginRight: "10px",
     transition: "all 0.5s",
-    boxShadow: '0px 1px 2px 0px rgba(255,255,255,255.02)',
+    boxShadow: '0px 6px 8px 0px rgba(0,0,0,0.04)',
 
     }
   },
@@ -216,17 +218,32 @@ theme.overrides = {
     }
   },
   MuiListItem: {
+    root: {
+      backgroundColor: "#211C17"
+    },
     gutters: {
       color: "black"
     },
     button: {
       color: "#DB1200",
+      '&:hover': {
+        opacity: `0.9`,
+        color: '#211C17',
+        backgroundColor: "#DB1200"
+      },
+    }
+  },
+  MuiTabs: {
+    flexContainer: {
+      backgroundColor: "#8D0E00"
     }
   },
   MuiList: {
     root: {
-      backgroundColor: '#8e0e00',
-      color: "#FFF"
+      height: "100%",
+      marginTop: "5px",
+      backgroundColor: '#211C17',
+      color: "#211C17"
     }
   },
   MuiInputLabel: {

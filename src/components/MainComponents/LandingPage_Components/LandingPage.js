@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     padding: 0,
      width: "35%",
-     color: "#DB1200",
+     color: "#211C17",
   },
   toolbarIcon: {
     display: "flex",
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     width: "100%",
     height: "100%",
-    color: "white"
+    color: "#211C17"
   },
   buttonContainer: {
     height: "75px",
