@@ -1,8 +1,9 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import { handle } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Map from '../MainComponents/Map/google-map.js';
-import ListItems from '../MainComponents/Trip-Planner/listItems-itinerary.js';
+import Map from "../Map/google-map";
+// import ListItems from '../MainComponents/Trip-Planner/listItems-itinerary.js';
+import ListItems from "../Trip-Planner/listItems-itinerary.js"
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:3000";
 import {FacebookShareButton, EmailShareButton, TwitterShareButton} from 'react-share'
@@ -69,5 +70,3 @@ const ItineraryTest = () => {
 };
 
 export default ItineraryTest;
-
-
