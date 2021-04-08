@@ -3,6 +3,8 @@ import Redux from 'redux';
 var showNearbyLodgingReducer = (state=[], action) => {
   if (action.type === 'SHOW_NEARBY_LODGING') {
     return action.nearbyLodging;
+  } else if (action.type === 'RESET_NEARBY_LODGING') {
+    return [];
   } else if (action.type === 'FILTER_BY_PRICE') {
     var newNearbyLodging = state.slice()
     var nearbyWithPrices = newNearbyLodging.filter((place) => {
