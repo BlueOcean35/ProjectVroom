@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import store from "../../../store"
-const API_KEY = 'AIzaSyC4JTb8HXtNdYA6ero9OZ5AZSVB7BUGFpk';
+const API_KEY = 'AIzaSyBVzEAf0DQrgJnrlYtqwJON9qBIdxv1kgg';
 
 
 class GoogleMap extends Component {
@@ -27,11 +27,17 @@ class GoogleMap extends Component {
 
 	initMap = () => {
     console.log('map rendered')
-		let latitude = 40.7128;
-		let longitude = -74.0060;
+		let latitude = this.props.locationFrom.lat || 40.7128
+		let longitude = this.props.locationFrom.lng || -74.0060
 		var directionsService = new google.maps.DirectionsService();
-		var directionsRenderer = new google.maps.DirectionsRenderer();
+		var directionsRenderer = new google.maps.DirectionsRenderer({
 
+      // markerOptions: {
+      //   icon: "https://img.icons8.com/bubbles/50/000000/motorbike-helmet.png",
+      //   animation: google.maps.Animation.DROP,
+      // }
+    });
+    let positionMarkers = [];
     // console.warn('redux start: ', store.getState(), this.props)
 
     const map = new window.google.maps.Map(
@@ -50,12 +56,18 @@ class GoogleMap extends Component {
 				draggable: this.props.toggle || true,
 				disableDoubleClickZoom: true,
 				gestureHandling: "cooperative",
+
 			}
 		);
+    console.log('DIV------------------------', map.getDiv())
 
     directionsRenderer.setMap(map);
     directionsRenderer.setOptions({
-      preserveViewport: true
+      preserveViewport: false,
+      polylineOptions: {
+        strokeWeight: 5,
+        strokeOpacity: 0.7,
+      },
     })
 
     function calcRoute(props) {
@@ -114,7 +126,27 @@ class GoogleMap extends Component {
 
     calcRoute(this.props)
 
+    function addPositionMarker(location) {
+      const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+      });
+      positionMarkers.push(marker);
+    }
+
+    function setMapOnAll(map) {
+      positionMarkers[0].setMap(map);
+      positionMarkers=[];
+    }
+
 		map.addListener("dblclick", (mouseEvent) => {
+      if (!positionMarkers.length) {
+      addPositionMarker(mouseEvent.latLng);
+      map.panTo(mouseEvent.latLng);
+      map.setZoom(8);
+    } else {
+      setMapOnAll(null);
+    }
       const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
 			console.log(x, y);
