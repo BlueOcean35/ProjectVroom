@@ -69,7 +69,8 @@ theme.overrides = {
 
     },
    colorPrimary: {
-     color: "#211C17"
+     color: "#211C17",
+     backgroundColor: "#AA827C"
    }
   },
   MuiTypography: {
@@ -247,7 +248,7 @@ theme.overrides = {
   },
   MuiTabs: {
     flexContainer: {
-      backgroundColor: "#8D0E00"
+      backgroundColor: "#aa827c"
     }
   },
   MuiList: {
