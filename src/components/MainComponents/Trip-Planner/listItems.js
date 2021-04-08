@@ -46,24 +46,24 @@ export default function mainListItems (props) {
 		<FromToItemContainer type = 'from'  />
 			{
 
-				props.waypoints.map((element, index) => {
-					return (<StopItem stopType = {element.type} address = {element.name} index = {index} removeFunc = {props.removeWaypoint} />)
-				})
-			}
+		{/* <StopItem stopType = 'food' address = "Mike's Best Burgers"/>
+		<StopItem stopType = 'fuel' address = "Mike's Brother's Gas Stop"/> */}
+{
+}
+
+		{
+
+			props.waypoints.map((element, index) => {
+				return (<StopItem stopType = {element.type} address = {element.name} commentFunc = {props.updateWaypointComment} index = {index} removeFunc = {props.removeWaypoint} comment = {element.comment} />)
+			})
+		}
+
+
+
 		<FromToItemContainer type = 'to' />
 
-		<ListItem>
-			  <Button className={classes.button} variant="contained" color = "secondary" onClick = {() => {
-					props.fetchNewRoute({
-							name: 'Albany',
-							type: 'food', //curent type we're in
-							loc: `33.9071676,-118.0944974`,
-							place_id: '12345',
-					})
-				}}>
-        Add New Stop
-      </Button>
-			</ListItem>
+
+
 	</div>
 	</ThemeProvider>
 	)
