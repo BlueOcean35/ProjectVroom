@@ -11,11 +11,11 @@
 }
 
 .map-container {
-  overflow: visible !important;
-  position: unset !important;
+  /* overflow: visible !important;
+  position: unset !important; */
   height: 100vh;
-  width: 100vh;
-  margin-top: 300px;
+  width: 100%;
+  /* margin-top: 300px; */
   /* overflow: hidden; */
   /* grid-row-start: 1; */
 }
@@ -30,6 +30,7 @@ body {
 	text-align: center;
 	color: darkred;
 	background-color: black;
+  overflow: hidden;
 }
 
 .landing-page-inputs {
@@ -90,15 +91,14 @@ body {
 .itinerary-container {
 	position: absolute;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	width: 100%;
 	height: 100%;
 }
 
-.map-container {
-	height: 600px;
-	width: 600px;
-	margin-top: 300px;
+.mapContainer {
+	width: 50%;
+	height: 30rem;
 }
 
 .list-items-itinerary-container {
@@ -106,6 +106,11 @@ body {
 	align-items: center;
 	justify-content: center;
 	margin-top: 50px;
+}
+
+.overarching-list-items-container {
+	margin: auto;
+	width: 50%;
 }
 
 .copy-button {
@@ -130,3 +135,6 @@ body {
 	justify-content: center;
 }
 
+#map {
+  height: 50%;
+}

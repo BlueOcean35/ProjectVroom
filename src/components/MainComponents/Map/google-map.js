@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import store from "../../../store"
-// BUG: API_KEY was hardcoded in ??
 const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
@@ -162,7 +161,6 @@ class GoogleMap extends Component {
 	render() {
 		return (
       <div>
-        {this.props.waypoints.length}
         <div className="map-wrapper-container">
 
           <div className="map-wrapper">

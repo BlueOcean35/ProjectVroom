@@ -33,8 +33,6 @@ export default function FilterRadioButtons({
 {
 	const classes = useStyles();
 
-  // //console.warn('NEARBY FOOD', nearbyFood);
-
 	return (
 		<FormControl component="fieldset">
 			<FormLabel classes={{root: classes.filter, focused: classes.focused}} component="legend">by: </FormLabel>
