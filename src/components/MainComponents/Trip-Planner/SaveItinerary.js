@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
+axios.defaults.baseURL = `http://${process.env.IP_ADDRESS}:3000`;
+
 const SaveItinerary = ({start, end, waypoints}) => {
   const [id, setId] = useState(null);
 

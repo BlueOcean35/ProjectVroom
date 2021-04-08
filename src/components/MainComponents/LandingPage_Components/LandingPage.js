@@ -11,6 +11,8 @@ import PlacesAutocomplete, {
 import axios from 'axios';
 import theme from '../../theme';
 import { Link } from 'react-router-dom';
+axios.defaults.baseURL = `http://${process.env.IP_ADDRESS}:3000`;
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
