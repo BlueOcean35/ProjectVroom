@@ -32,46 +32,14 @@ function Copyright() {
 const drawerWidth = 600;
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		display: "flex",
-	},
-	toolbarIcon: {
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "flex-end",
-		padding: "0 8px",
-		...theme.mixins.toolbar,
-	},
-	appBar: {
-		transition: theme.transitions.create(["width", "margin"], {
-			easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    padding: "10px",
-    background: `linear-gradient(to right, #8e0e00, #1f1c18)`
-	},
+
 
 	title: {
     flexGrow: 1,
-    fontFamily: 'Metal Mania'
+    fontSize: "20px"
+
 	},
 
-	appBarSpacer: theme.mixins.toolbar,
-	content: {
-		flexGrow: 1,
-		height: "100vh",
-		overflow: "auto",
-  },
-  inputLabel: {
-    marginRight: '10px',
-    background: '#211C17',
-    color:'#fff',
-    paddingLeft: '10px',
-    fontSize: '20px',
-    boxShadow: '2px 10px -14px 14px #FFF'
-  },
-  input: {
-  },
 	container: {
 		paddingTop: theme.spacing(4),
 		paddingBottom: theme.spacing(4),
@@ -90,7 +58,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     width: '100%',
     height: "100%",
-    color: 'white'
+    color: "#DB1200",
+    '&:hover': {
+      color: '#fff',
+    },
 
   },
   buttonContainer: {
@@ -157,9 +128,9 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
       <div className="landingPage">
             <AppBar
             position="relative"
-            className={clsx(classes.appBar)}
+            style={{height: '80px', background:`linear-gradient(to right, #8e0e00, #1f1c18)`}}
             >
-            <Toolbar className={classes.toolbar}>
+            <Toolbar >
               <Typography
                 component="h1"
                 variant="h3"
@@ -167,7 +138,8 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                 noWrap
                 className={classes.title}
               >
-                Big Bad Boston Bikers
+              <a href="https://fontmeme.com/old-english-fonts/"><img src="https://fontmeme.com/permalink/210408/c4d47cc99a98e48ed869f59f25d94dbc.png" alt="old-english-fonts" border="0" /></a>
+
               </Typography>
               <div> Logo </div>
             </Toolbar>
@@ -176,7 +148,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
         <div className="landing-page-interactions">
 
           <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
-            <Tooltip className={classes.Tooltip} title="use current location">
+            <Tooltip title="use current location">
             <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
             </Tooltip>
 
@@ -187,7 +159,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
               >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                   <div>
-                    <InputLabel  className={classes.inputLabel} >From:
+                    <InputLabel  >From:
                       <Input className={classes.input}  {...getInputProps({
                             placeholder: "NYC",
                             required: true
@@ -227,8 +199,8 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
             >
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
-                  <InputLabel  className={classes.inputLabel} >To:
-                    <Input className={classes.input} {...getInputProps({
+                  <InputLabel  >To:
+                    <Input  {...getInputProps({
                       placeholder: "LA",
                       required: true
                     })} />
@@ -259,13 +231,12 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                 )}
               </PlacesAutocomplete>
       </form>
-      <Button style={{padding: 0}} form="landing-form" type="submit" className={classes.rideButton} > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
+      <Button style={{padding: 0}} form="landing-form" type="submit"  > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
       </div>
 
     </div>
     </ThemeProvider>
   )
-
 }
 
 export default LandingPage;

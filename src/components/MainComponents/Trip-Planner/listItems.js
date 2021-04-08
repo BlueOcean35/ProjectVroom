@@ -18,6 +18,8 @@ import RoomIcon from '@material-ui/icons/Room';
 import FromToItem from './listItemComponents/FromToItem.jsx';
 import StopItem from './listItemComponents/StopItem.jsx';
 import Button from '@material-ui/core/Button';
+import {ThemeProvider} from '@material-ui/core';
+import theme from '../../theme';
 
 
 
@@ -34,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 export function mainListItems () {
 	const classes = useStyles();
 	return (
+		<ThemeProvider theme={theme}>
 	<div>
 
 	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
@@ -44,16 +47,18 @@ export function mainListItems () {
 
 		<FromToItem type = 'to' to = {{address: 'Miami'}} from = {{address: 'Boston'}} />
 
-		<ListItem>
+
 			  <Button variant="contained" color = "secondary">
         Add New Stop
       </Button>
-		</ListItem>
+
 	</div>
+	</ThemeProvider>
 	)
 	};
 
 export const secondaryListItems = (
+	<ThemeProvider theme={theme}>
 	<div>
 		<ListSubheader inset>Suggestions</ListSubheader>
 		<ListItem button>
@@ -76,4 +81,6 @@ export const secondaryListItems = (
 		</ListItem>
 
 	</div>
+	</ThemeProvider>
+
 );

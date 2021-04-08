@@ -98,7 +98,7 @@ render(){
 		</ListItem>
 
     <ListItem style = {{display: this.state.commentDisplay}}>
-    <TextField value = {this.state.commentText} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px'}}>Comment</span>} />
+    <TextField value = {this.state.commentText} onChange = {this.handleCommentChage} style = {{float: 'left', paddingLeft: '16px',  width: '70%'}} id="standard-basic" label={<span style = {{paddingLeft: '16px', color: "#fff"}}>Comment</span>} />
      {/* <Button variant="contained">
         Add Comment
       </Button> */}
