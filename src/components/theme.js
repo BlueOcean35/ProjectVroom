@@ -14,9 +14,8 @@ theme.overrides = {
 
   MuiButton: {
     root: {
-    marginTop: '15px',
     height: '100%',
-    width: `35%`,
+    width: `100%`,
     fontSize: "30px",
     backgroundColor: "#211C17",
     color: '#DB1200',
@@ -36,6 +35,9 @@ theme.overrides = {
       color: "#DB1200",
       backgroundColor: "#211C17",
       fontSize: "20px",
+
+        boxShadow: '0px 1px 2px 0px rgba(255,255,255,255.02)',
+
       '&:hover': {
         opacity: `0.9`,
         color: '#fff',
@@ -46,8 +48,10 @@ theme.overrides = {
     },
     contained: {
       color: "black"
-    }
+    },
+
   },
+
   MuiSlider: {
     thumb: {
       color: "#DB1200"
@@ -66,7 +70,10 @@ theme.overrides = {
     },
     body1: {
       color: "#fff"
-    }
+    },
+    colorTextSecondary : {
+      color: "#fff"
+    },
   },
   MuiListItemIcon: {
     root: {
