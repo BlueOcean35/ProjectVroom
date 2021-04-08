@@ -28,6 +28,7 @@ class GoogleMap extends Component {
 
 	initMap = () => {
     console.log('map rendered')
+    // this is the problem!
 		let latitude = this.props.locationFrom.lat || 40.7128
 		let longitude = this.props.locationFrom.lng || -74.0060
 		var directionsService = new google.maps.DirectionsService();
@@ -160,7 +161,6 @@ class GoogleMap extends Component {
 	render() {
 		return (
       <div>
-        {this.props.waypoints.length}
         <div className="map-wrapper-container">
 
           <div className="map-wrapper">

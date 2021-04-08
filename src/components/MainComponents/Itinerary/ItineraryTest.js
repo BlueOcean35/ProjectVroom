@@ -43,25 +43,27 @@ const ItineraryTest = () => {
       <div className="itinerary-container">
         <div className='mapContainer'>
           {newData !== null ?
-            <Map addressObjFrom={newData.start} addressObjTo={newData.end} toggle={false} waypoints={newData.waypoints}/> : <div>new data is null</div>
+            <Map addressObjFrom={newData.start} addressObjTo={newData.end} toggle={false} waypoints={newData.waypoints} locationFrom={newData.start.geometry.location} /> : <div>new data is null</div>
           }
         </div>
-        <div className='list-items-itinerary-container'>
-          <ListItems start={newData.start} end={newData.end} waypoints={newData.waypoints}/>
+        <div className='overarching-list-items-container'>
+          <div className='list-items-itinerary-container'>
+            <ListItems start={newData.start} end={newData.end} waypoints={newData.waypoints}/>
+          </div>
+          <div className='circular-button-icon-container'>
+            <button onClick={copyURL} className="copy-button"><i className="far fa-copy"></i></button>
+            <FacebookShareButton url={window.location.href}>
+              <FacebookIcon size={50} round />
+            </FacebookShareButton>
+            <EmailShareButton subject={'Hey Fellow Biker Bros. Look at this cool biker trip I made for us tough guys'} body={'Super cool, right guys?'} url={window.location.href}>
+              <EmailIcon size={50} round />
+            </EmailShareButton>
+            <TwitterShareButton url={window.location.href}>
+              <TwitterIcon size={50} round />
+            </TwitterShareButton>
+          </div>
+          <br></br>
         </div>
-        <div className='circular-button-icon-container'>
-          <button onClick={copyURL} className="copy-button"><i class="far fa-copy"></i></button>
-          <FacebookShareButton url={window.location.href}>
-            <FacebookIcon size={50} round />
-          </FacebookShareButton>
-          <EmailShareButton subject={'Hey Fellow Biker Bros. Look at this cool biker trip I made for us tough guys'} body={'Super cool, right guys?'} url={window.location.href}>
-            <EmailIcon size={50} round />
-          </EmailShareButton>
-          <TwitterShareButton url={window.location.href}>
-            <TwitterIcon size={50} round />
-          </TwitterShareButton>
-        </div>
-        <br></br>
       </div>
     </Fragment>
   )} else {

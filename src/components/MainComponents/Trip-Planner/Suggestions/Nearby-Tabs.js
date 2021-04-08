@@ -71,7 +71,8 @@ export default function NearbyTabs({nearbyFood, nearbyFuel, nearbyAttractions, n
       return (
       <div className='instructions'>
         <h1 className='instructions-header'>Welcome to the Big Bad <br/>Biker Trip Planner!</h1>
-        <div classname='instructions-text'>
+				{/* BUG: className was written classname */}
+        <div className='instructions-text'>
           <p>To get started, double click anywhere on the map to find <br/>food, fuel, lodging and attractions nearby</p>
         </div>
       </div>
