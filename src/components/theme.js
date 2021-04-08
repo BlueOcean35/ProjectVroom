@@ -252,7 +252,7 @@ theme.overrides = {
   },
   MuiList: {
     root: {
-      height: "100%",
+      height: "90%",
       marginTop: "5px",
       backgroundColor: '#211C17',
       color: "#211C17"

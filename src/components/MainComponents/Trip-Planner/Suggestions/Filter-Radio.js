@@ -10,7 +10,11 @@ const useStyles = makeStyles ({
   radio: {
 		color: "#211C17",
     '&$checked': {
-      color: '#DB1200'
+			color: '#DB1200',
+			"&:hover" : {
+				color: "#fff",
+				backgroundColor: '#DB1200'
+			}
 		},
 		"&:hover" : {
 			color: "#fff",
