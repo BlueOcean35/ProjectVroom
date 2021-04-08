@@ -16,10 +16,10 @@ app.use(express.static(path.join(__dirname, "..", "dist")));
 
 app.get("/maps/*", function (req, res, next) {
   const url = `https://maps.googleapis.com${req.url}&key=${API_KEY}`;
-  axios
-    .get(url)
+  axios.get(url)
     .then((response) => {
       console.log("successful!");
+      res.header("Access-Control-Allow-Origin", "*");
       res.status(response.status).send(response.data.results);
     })
     .catch((err) => {
