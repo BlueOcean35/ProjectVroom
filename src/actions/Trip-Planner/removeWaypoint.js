@@ -1,6 +1,6 @@
 import axios from 'axios';
 import distRemoveWaypoints from './distRemoveWaypoints.js';
-import store from '../../store.js';
+import { store } from '../../store.js';
 import thunk from 'redux-thunk';
 
 

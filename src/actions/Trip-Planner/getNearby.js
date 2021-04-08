@@ -3,7 +3,7 @@ import showNearbyFood from './showNearbyFood.js';
 import showNearbyFuel from './showNearbyFuel.js';
 import showNearbyAttractions from './showNearbyAttractions.js';
 import showNearbyLodging from './showNearbyLodging.js';
-import  '../../store.js';
+import { store } from '../../store.js';
 import thunk from 'redux-thunk';
 
 axios.defaults.baseURL = `http://${process.env.IP_ADDRESS}:3000`;

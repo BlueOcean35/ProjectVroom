@@ -1,6 +1,6 @@
 import Redux from 'redux';
 import nearbyPlaces from '../../../sample-data/nearby-places';
-import store from "../../store.js"
+import { store } from "../../store.js"
 
 
 var showNearbyFoodReducer = (state=[], action) => {
@@ -25,14 +25,14 @@ var showNearbyFoodReducer = (state=[], action) => {
 
     var combinedPlaces = sortedPrices.concat(nearbyWithoutPrices);
     return combinedPlaces;
-    
+
 
   } else if (action.type === 'FILTER_BY_RATING'){
     var newNearbyFood = state.slice()
      return newNearbyFood.sort((a,b) => {
       return b.rating - a.rating
     })
-    
+
   } else if (action.type === 'FILTER_BY_PROXIMITY') {
     var newNearbyFood = state.slice()
 

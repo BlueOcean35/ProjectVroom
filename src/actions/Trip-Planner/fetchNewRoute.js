@@ -1,6 +1,6 @@
 import axios from 'axios';
 import distNewWaypoints from './distNewWaypoints.js';
-import store from '../../store.js';
+import { store } from '../../store.js';
 import thunk from 'redux-thunk';
 
 var fetchNewRoute = (newWaypoint) => {
