@@ -33,13 +33,11 @@ var initialState = {
 
 };
 
-const store = createStore(
+export const store = createStore(
 	// rootReducer,
 	persistedReducer,
 	initialState,
 	applyMiddleware(thunk)
 );
-
-export default store;
 
 export const persistor = persistStore(store);
