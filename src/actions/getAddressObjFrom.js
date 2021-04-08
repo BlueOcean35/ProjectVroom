@@ -12,8 +12,6 @@ const getAddressObjFrom = (AddressObj) => {
   currentAddress = `${currentAddress[0]},${currentAddress[1]}`;
 
   format.David_format = currentAddress;
-
-  console.log('this is the address object from', format)
   return {
     type: 'GET_ADDRESS_OBJ_FROM',
     payload: format

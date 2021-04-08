@@ -135,18 +135,17 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
   const classes = useStyles();
 
   const [addressFrom, setAddressFrom] = useState('');
-  const [addressTo, setAddressTo] = (useState(''))
+  const [addressTo, setAddressTo] = (useState('');
 
   function handleSubmit(evt) {
     evt.preventDefault();
   }
 
   function handleSelectFrom(from) {
-      geocodeByAddress(from)
+      return geocodeByAddress(from)
       .then((results) => {
-
+        console.log(results[0])
         submitAddressFrom(results)
-        console.log(results)
         return getLatLng(results[0])})
       .then((latLng) => {
         submitCoordinatesFrom(latLng)
@@ -158,6 +157,7 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
   function handleSelectTo(To) {
       geocodeByAddress(To)
       .then((results) => {
+        setAddressTo(results[0].formatted_address)
         submitAddressTo(results)
         return getLatLng(results[0])
       })
@@ -233,13 +233,13 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
                     ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
                     : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
                   return (
-                    <div onClick={() => setAddressFrom(suggestion.description)} key={`from-${suggestion}-${i}`}
+                    <div  key={`from-${suggestion}-${i}`}
                       {...getSuggestionItemProps(suggestion, {
                         className,
                         style,
                       })}
                     >
-                      <span>{suggestion.description}</span>
+                      <span >{suggestion.description}</span>
                     </div>
                   );
                 })}
@@ -274,13 +274,13 @@ let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, s
               ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
                 : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
               return (
-                <div  onClick={() => setAddressTo(suggestion.description)} key={`to-${suggestion}-${i}`}
+                <div onClick={handleSelectTo} key={`to-${suggestion}-${i}`}
                   {...getSuggestionItemProps(suggestion, {
                     className,
                     style,
                   })}
                 >
-                  <span>{suggestion.description}</span>
+                  <span  >{suggestion.description}</span>
                 </div>
               );
             })}
