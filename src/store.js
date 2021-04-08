@@ -20,22 +20,29 @@ import thunk from "redux-thunk";
 
 // add in any state you need here
 var initialState = {
-	nearbyFood: [],
-	nearbyLodging: [],
-	nearbyAttractions: [],
-	nearbyFuel: [],
-	nearbyIsAdded: false,
-	legs: [],
-	travelSoFarStops: [],
+
+  nearbyFood: [],
+  nearbyLodging: [],
+  nearbyAttractions: [],
+  nearbyFuel: [],
+  nearbyIsAdded: false,
+  waypoints: [],
+  travelSoFarStops: [],
 	toggleStopButton: false,
-	// map? route? selectedLocation?
+  locationFrom: {}, //start loc validated by api
+  locationTo: {}, //end loc validated by api
+  addressObjFrom: {}, //from the login page start text field
+  addressObjTo: {} //from the login page destination text field
+
 };
 
-export const store = createStore(
+const store = createStore(
 	rootReducer,
 	// persistedReducer,
 	initialState,
 	applyMiddleware(thunk)
 );
+
+export default store;
 
 //  export const persistor = persistStore(store);

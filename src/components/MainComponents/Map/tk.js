@@ -45,10 +45,10 @@ function MyComponent() {
   // console.log('waypoints', waypoints)
 
   return (
-    <LoadScript
-      googleMapsApiKey={"AIzaSyBVzEAf0DQrgJnrlYtqwJON9qBIdxv1kgg"}
-      libraries={libraries}
-    >
+    // <LoadScript
+    //   googleMapsApiKey={"AIzaSyBVzEAf0DQrgJnrlYtqwJON9qBIdxv1kgg"}
+    //   libraries={libraries}
+    // >
       <GoogleMap
         id={'Main-Map'}
         mapContainerStyle={{width: '100%', height: '100%'}}
@@ -154,7 +154,7 @@ function MyComponent() {
         }
         <></>
       </GoogleMap>
-    </LoadScript>
+    // </LoadScript>
   )
 }
 

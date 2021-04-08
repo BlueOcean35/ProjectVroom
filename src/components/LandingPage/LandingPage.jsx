@@ -1,13 +1,22 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import clsx from "clsx";
-import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, Link, CssBaseline, Button } from '@material-ui/core';
+import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, Link, CssBaseline, Button, Tooltip } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  geocodeByPlaceId,
+  getLatLng,
+} from 'react-places-autocomplete';
 // import MapContainer from "./Map.js";
 // import GoogleMaps from "./Map-Pure-JS";
+import { store } from '../../store';
+import axios from 'axios';
+const API_KEY = process.env.API_KEY;
+
+
 
 function Copyright() {
 	return (
@@ -28,10 +37,6 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: "flex",
 	},
-	toolbar: {
-    paddingRight: 24,
-     // keep right padding when drawer closed
-	},
 	toolbarIcon: {
 		display: "flex",
 		alignItems: "center",
@@ -40,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 		...theme.mixins.toolbar,
 	},
 	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
 		transition: theme.transitions.create(["width", "margin"], {
 			easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -48,54 +52,40 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px",
     background: `linear-gradient(to right, #8e0e00, #1f1c18)`
 	},
-	appBarShift: {
-		width: `100%`,
-		transition: theme.transitions.create(["width", "margin"], {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.enteringScreen,
-		}),
-	},
+
 	rideButton: {
     marginTop: '15px',
-    height: '80px',
+    height: '75px',
     width: `35%`,
     fontSize: "30px",
-    background: `linear-gradient(#8e0e00 40%, #1f1c18)`,
+    backgroundColor: "#8e0e00",
     color: '#fff',
-    fontFamily: 'Metal Mania',
+    fontFamily: "Helvetica",
     '&:hover': {
       opacity: `0.9`,
+      color: '#211C17',
+      backgroundColor: "#DB1200"
+    },
+    transition: "all 0.5s"
 
-    }
 
   },
-	menuButtonHidden: {
-		display: "none",
-	},
+  Tooltip: {
+    marginRight: '10px',
+    color: 'white',
+    backgroundColor: "#8e0e00",
+    '&:hover': {
+      opacity: `0.9`,
+      color: '#211C17',
+      backgroundColor: "#DB1200"
+    },
+    transition: "all 0.4s",
+  },
 	title: {
     flexGrow: 1,
     fontFamily: 'Metal Mania'
 	},
-	drawerPaper: {
-		position: "relative",
-		whiteSpace: "nowrap",
-		width: drawerWidth,
-		transition: theme.transitions.create("width", {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.enteringScreen,
-		}),
-	},
-	drawerPaperClose: {
-		overflowX: "hidden",
-		transition: theme.transitions.create("width", {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.leavingScreen,
-		}),
-		width: theme.spacing(7),
-		[theme.breakpoints.up("sm")]: {
-			width: theme.spacing(9),
-		},
-	},
+
 	appBarSpacer: theme.mixins.toolbar,
 	content: {
 		flexGrow: 1,
@@ -111,10 +101,14 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '2px 10px -14px 14px #FFF'
   },
   input: {
-    marginRight: '5px',
+    marginRight: '10px',
+    marginLeft: '10px',
     color:'#fff',
     height: '55px',
-    fontSize: '20px'
+    fontSize: '20px',
+    '&:after': {
+      borderBottom: '2px solid #DB1200',
+    },
   },
 	container: {
 		paddingTop: theme.spacing(4),
@@ -131,35 +125,69 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+// to format the names of the cities
+// x = x.split(', ')
+// x[0] = x[0].split(' ')
+// [0] = x[0].join('+')
+//x = `${x[0]},${x[1]}`
 
-let LandingPage = () => {
+let LandingPage = ({submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo}) => {
   const classes = useStyles();
 
-  const [state, setState] = useState({
-    from: "",
-    to: ""
-    })
+  const [addressFrom, setAddressFrom] = useState('');
+  const [addressTo, setAddressTo] = (useState('');
 
   function handleSubmit(evt) {
     evt.preventDefault();
-
   }
 
-  function handleChange(evt) {
-    const value = evt.target.value;
-    setState({
-      ...state,
-      [evt.target.name]: value
-    });
-    console.log('from: ', state.from)
-    console.log('to: ', state.to)
+  function handleSelectFrom(from) {
+      return geocodeByAddress(from)
+      .then((results) => {
+        console.log(results[0])
+        submitAddressFrom(results)
+        return getLatLng(results[0])})
+      .then((latLng) => {
+        submitCoordinatesFrom(latLng)
+        console.log(latLng)
+    })
+      .catch(error => console.error('Error', error));
+  };
+
+  function handleSelectTo(To) {
+      geocodeByAddress(To)
+      .then((results) => {
+        setAddressTo(results[0].formatted_address)
+        submitAddressTo(results)
+        return getLatLng(results[0])
+      })
+      .then((latLng) => {
+        submitCoordinatesTo(latLng)
+        console.log(latLng)
+    })
+      .catch(error => console.error('Error', error));
+  };
+
+  function getCurrLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position)
+        return axios.get(`http://maps.googleapis.com/maps/api/geocode/libraries&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false&"+ `key=${API_KEY}`).then((data) => {
+          console.log(data)
+          // 1. set the reverse geocode address to be the state in our redux store
+          // 2. auto complete our from field
+      }).catch(err => console.log(err))
+      })
+    }
   }
+
+
   return(
     <div className="landingPage">
 
     <AppBar
     position="relative"
-    className={clsx(classes.appBar, open && classes.appBarShift)}
+    className={clsx(classes.appBar)}
   >
     <Toolbar className={classes.toolbar}>
       <Typography
@@ -176,10 +204,93 @@ let LandingPage = () => {
   </AppBar>
 
   <div className="landing-page-interactions">
+
   <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
-   <InputLabel  className={classes.inputLabel} >From: <Input name="from" value={state.from} onChange={handleChange} className={classes.input} placeholder= "NYC" /></InputLabel>
-   <InputLabel className={classes.inputLabel} >To: <Input name="to" value={state.to} onChange={handleChange} className={classes.input} placeholder= "LA" /></InputLabel>
+    <Tooltip className={classes.Tooltip} title="use current location">
+    <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
+    </Tooltip>
+
+    <PlacesAutocomplete
+      value={addressFrom}
+      onChange={setAddressFrom}
+      onSelect={handleSelectFrom}
+      >
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div>
+            <InputLabel  className={classes.inputLabel} >From:
+              <Input className={classes.input}  {...getInputProps({
+                    placeholder: "NYC",
+                    required: true
+                  })} />
+            </InputLabel>
+              <div className="autocomplete-dropdown-container">
+                {loading ? <div>Loading...</div> : null}
+                {suggestions.map((suggestion, i) => {
+                  const className = suggestion.active
+                    ? 'suggestion-item--active'
+                    : 'suggestion-item';
+                  const style = suggestion.active
+                    ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
+                    : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
+                  return (
+                    <div  key={`from-${suggestion}-${i}`}
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style,
+                      })}
+                    >
+                      <span >{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+          </div>
+        )}
+    </PlacesAutocomplete>
+
+
+
+    <PlacesAutocomplete
+      value={addressTo}
+      onChange={setAddressTo}
+      onSelect={handleSelectTo}
+    >
+      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        <div>
+          <InputLabel  className={classes.inputLabel} >To:
+            <Input className={classes.input} {...getInputProps({
+              placeholder: "LA",
+              required: true
+            })} />
+          </InputLabel>
+
+          <div className="autocomplete-dropdown-container">
+            {loading ? <div>Loading...</div> : null}
+            {suggestions.map((suggestion, i) => {
+              const className = suggestion.active
+                ? 'suggestion-item--active'
+                : 'suggestion-item';
+              const style = suggestion.active
+              ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
+                : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
+              return (
+                <div onClick={handleSelectTo} key={`to-${suggestion}-${i}`}
+                  {...getSuggestionItemProps(suggestion, {
+                    className,
+                    style,
+                  })}
+                >
+                  <span  >{suggestion.description}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        )}
+      </PlacesAutocomplete>
+
  </form>
+
  <Button form="landing-form" type="submit" className={classes.rideButton}>Let's Ride</Button>
 
   </div>

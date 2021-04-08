@@ -1,20 +1,8 @@
 import React from "react";
+import { typography } from '@material-ui/system';
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Drawer from "@material-ui/core/Drawer";
-import Box from "@material-ui/core/Box";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Link from "@material-ui/core/Link";
+import { Input, InputLabel, Drawer, Box, AppBar, Toolbar, List, Typography, Divider, IconButton, Badge, Container, Grid, Paper, CssBaseline, Button, Tooltip, Link as MuiLink, } from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -28,9 +16,9 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="textSecondary" align="center">
 			{"Copyright © "}
-			<Link color="inherit" href="https://material-ui.com/">
-				Your Website
-			</Link>{" "}
+			<MuiLink color="inherit" href="https://material-ui.com/">
+				Big Bad Boston Bikers
+			</MuiLink>{" "}
 			{new Date().getFullYear()}
 			{"."}
 		</Typography>
@@ -42,15 +30,18 @@ const drawerWidth = 600;
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: "flex",
+		height: "100vh",
+		width: "100vw"
 	},
 	toolbar: {
 		paddingRight: 24, // keep right padding when drawer closed
+		padding: "0 8px",
 	},
 	toolbarIcon: {
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "flex-end",
-		padding: "0 8px",
+		padding: "41px",
 		...theme.mixins.toolbar,
 	},
 	appBar: {
@@ -59,6 +50,8 @@ const useStyles = makeStyles((theme) => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.leavingScreen,
 		}),
+		padding: "10px",
+		background: `linear-gradient(to right, #8e0e00, #1f1c18)`
 	},
 	appBarShift: {
 		marginLeft: drawerWidth,
@@ -67,15 +60,16 @@ const useStyles = makeStyles((theme) => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
 		}),
+		background: `linear-gradient(to right, #8e0e00, #1f1c18)`,
 	},
 	menuButton: {
-		marginRight: 36,
 	},
 	menuButtonHidden: {
 		display: "none",
 	},
 	title: {
 		flexGrow: 1,
+    fontFamily: 'Metal Mania'
 	},
 	drawerPaper: {
 		position: "relative",
@@ -85,6 +79,9 @@ const useStyles = makeStyles((theme) => ({
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
 		}),
+	},
+	tabs: {
+		background: `linear-gradient(to right, #8e0e00, #1f1c18)`
 	},
 	drawerPaperClose: {
 		overflowX: "hidden",
@@ -108,6 +105,7 @@ const useStyles = makeStyles((theme) => ({
 		paddingBottom: theme.spacing(4),
 	},
 	paper: {
+
 		padding: theme.spacing(2),
 		display: "flex",
 		overflow: "auto",
@@ -116,6 +114,10 @@ const useStyles = makeStyles((theme) => ({
 	fixedHeight: {
 		height: 240,
 	},
+	primaryDestination: {
+		fontWeight: 'bold',
+		color: 'red'
+	}
 }));
 
 export default function Dashboard() {
@@ -137,28 +139,17 @@ export default function Dashboard() {
 			<AppBar
 				position="absolute"
 				className={clsx(classes.appBar, open && classes.appBarShift)}
+
 			>
 				<Toolbar className={classes.toolbar}>
-					<IconButton
-						edge="start"
-						color="inherit"
-						aria-label="open drawer"
-						onClick={handleDrawerOpen}
-						className={clsx(
-							classes.menuButton,
-							open && classes.menuButtonHidden
-						)}
-					>
-						<MenuIcon />
-					</IconButton>
 					<Typography
 						component="h1"
-						variant="h6"
+						variant="h3"
 						color="inherit"
 						noWrap
 						className={classes.title}
 					>
-						This is where you add the Title
+						BIG BAD BOSTON BIKERS
 					</Typography>
 					<div> This is where you add the logo </div>
 				</Toolbar>
@@ -171,18 +162,15 @@ export default function Dashboard() {
 				open={open}
 			>
 				<div className={classes.toolbarIcon}>
-					<IconButton onClick={handleDrawerClose}>
-						<ChevronLeftIcon />
-					</IconButton>
 				</div>
 				<Divider />
 				<>
 					Your travel so far list contained in the div below called
 					{"<List>{mainListItems}</List> "}
-					<List>{mainListItems}</List>
-					<List>{mainListItems}</List>
-					<Divider />
-					<NearbyTabsContainer />
+					<List>{mainListItems()}</List>
+					<List>{secondaryListItems}</List>
+					<Divider  />
+					<NearbyTabsContainer  />
 				</>
 			</Drawer>
 			<main className={classes.content}>
