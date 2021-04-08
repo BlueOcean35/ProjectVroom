@@ -1,9 +1,18 @@
 import { connect, dispatch } from "react-redux";
 import getNearby from "../../actions/Trip-Planner/getNearby.js";
-import GoogleMap from "./google-map.js";
+import GoogleMap from "./tk.js";
 
 var mapStoreToProps = (state) => ({
-	nearbyFood: state.nearbyFood
+	nearbyFood: state.nearbyFood,
+	positionMarker: [],
+  suggestionMarkers: [],
+  center: {lat: 42.3701, lng: -71.0589},
+  map: null,
+  service: null,
+  response: null,
+  origin:'Boston',
+  destination: 'New York',
+  waypoints: []
 });
 
 var mapDispatchToProps = (dispatch) => ({
