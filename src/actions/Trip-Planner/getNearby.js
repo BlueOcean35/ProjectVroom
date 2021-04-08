@@ -16,7 +16,7 @@ var getNearby = (lat, lng) => {
     axios.get(getQuery('restaurant'))
       .then(({data}) => {
         var calcProximity = (lat1, lon1, lat2, lon2) => {
-          console.warn('RUNNING CALC PROX')
+          // //console.warn('RUNNING CALC PROX')
           var p = 0.017453292519943295;    // Math.PI / 180
           var c = Math.cos;
           var a = 0.5 - c((lat2 - lat1) * p)/2 + 
@@ -25,7 +25,7 @@ var getNearby = (lat, lng) => {
         
           var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
           var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-          console.warn('DIST IN MI ', distinMi);
+          //console.warn('DIST IN MI ', distinMi);
           return distinMi;
         }
 
@@ -48,7 +48,7 @@ var getNearby = (lat, lng) => {
           .then(({data}) => {
 
             var calcProximity = (lat1, lon1, lat2, lon2) => {
-              console.warn('RUNNING CALC PROX')
+              //console.warn('RUNNING CALC PROX')
               var p = 0.017453292519943295;    // Math.PI / 180
               var c = Math.cos;
               var a = 0.5 - c((lat2 - lat1) * p)/2 + 
@@ -57,7 +57,7 @@ var getNearby = (lat, lng) => {
             
               var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
               var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-              console.warn('DIST IN MI ', distinMi);
+              //console.warn('DIST IN MI ', distinMi);
               return distinMi;
             }
 
@@ -79,7 +79,7 @@ var getNearby = (lat, lng) => {
             axios.get(getQuery('lodging'))
               .then(({data}) => {
                 var calcProximity = (lat1, lon1, lat2, lon2) => {
-                  console.warn('RUNNING CALC PROX')
+                  //console.warn('RUNNING CALC PROX')
                   var p = 0.017453292519943295;    // Math.PI / 180
                   var c = Math.cos;
                   var a = 0.5 - c((lat2 - lat1) * p)/2 + 
@@ -88,7 +88,7 @@ var getNearby = (lat, lng) => {
                 
                   var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
                   var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-                  console.warn('DIST IN MI ', distinMi);
+                  //console.warn('DIST IN MI ', distinMi);
                   return distinMi;
                 }
     
@@ -109,7 +109,7 @@ var getNearby = (lat, lng) => {
                 axios.get(getQuery('tourist_attraction'))
                   .then(({data}) => {
                     var calcProximity = (lat1, lon1, lat2, lon2) => {
-                      console.warn('RUNNING CALC PROX')
+                      //console.warn('RUNNING CALC PROX')
                       var p = 0.017453292519943295;    // Math.PI / 180
                       var c = Math.cos;
                       var a = 0.5 - c((lat2 - lat1) * p)/2 + 
@@ -118,7 +118,7 @@ var getNearby = (lat, lng) => {
                     
                       var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
                       var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-                      console.warn('DIST IN MI ', distinMi);
+                      //console.warn('DIST IN MI ', distinMi);
                       return distinMi;
                     }
         

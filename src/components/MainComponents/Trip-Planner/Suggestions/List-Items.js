@@ -57,10 +57,10 @@ const NearbyListItems = ({
   locationFrom,
   locationTo, 
 }) => {
-  // console.warn('LOCATION FROM', locationFrom)
+  // //console.warn('LOCATION FROM', locationFrom)
 
   // var calcProximity = (lat1, lon1, lat2, lon2) => {
-  //   console.warn('RUNNING CALC PROX')
+  //   //console.warn('RUNNING CALC PROX')
   //   var p = 0.017453292519943295;    // Math.PI / 180
   //   var c = Math.cos;
   //   var a = 0.5 - c((lat2 - lat1) * p)/2 + 
@@ -69,7 +69,7 @@ const NearbyListItems = ({
   
   //   var distinKM = 12742 * Math.asin(Math.sqrt(a)); 
   //   var distinMi = ((distinKM * 1000) * 0.00062137) + 15;
-  //   console.warn('DIST IN MI ', distinMi);
+  //   //console.warn('DIST IN MI ', distinMi);
   //   return distinMi;
   // }
 	
@@ -94,7 +94,7 @@ const NearbyListItems = ({
             type: type,
             place_id: place.place_id,
             loc: `${place.geometry.location.lat},${place.geometry.location.lng}`,
-            proximityFromOrigin: calcProximity(locationFrom.lat, locationFrom.lng, place.geometry.location.lat, place.geometry.location.lng)
+            proximityFromOrigin: place.proximity
           }
           fetchNewRoute(waypoint)
         }} />

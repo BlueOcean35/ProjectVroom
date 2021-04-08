@@ -33,7 +33,7 @@ var showNearbyLodgingReducer = (state=[], action) => {
     var newNearbyLodging = state.slice()
 
     // var calcProximity = (lat1, lon1, lat2, lon2) => {
-    //   console.warn('RUNNING CALC PROX')
+    //   //console.warn('RUNNING CALC PROX')
     //   var p = 0.017453292519943295;    // Math.PI / 180
     //   var c = Math.cos;
     //   var a = 0.5 - c((lat2 - lat1) * p)/2 + 
