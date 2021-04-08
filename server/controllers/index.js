@@ -5,6 +5,7 @@ var ObjectId = require('mongodb').ObjectId;
 exports.createOne = (req, res) => {
   Itinerary.create(req.body)
     .then((data) => {
+      res.header("Access-Control-Allow-Origin", "*");
       res.status(201).send(data);
     })
     .catch((err) => {
@@ -16,6 +17,7 @@ exports.createOne = (req, res) => {
 exports.retrieveOne = (req, res) => {
   Itinerary.find(ObjectId(req.params.id))
     .then((data) => {
+      res.header("Access-Control-Allow-Origin", "*");
       res.status(200).send(data);
     })
     .catch((err) => {
@@ -23,5 +25,3 @@ exports.retrieveOne = (req, res) => {
       res.sendStatus(500);
     });
 };
-
-// "_id": "606cc315f98f3300141f0b0c"

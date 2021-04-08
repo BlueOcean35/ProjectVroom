@@ -5,7 +5,8 @@ import Map from "../Map/google-map";
 // import ListItems from '../MainComponents/Trip-Planner/listItems-itinerary.js';
 import ListItems from "../Trip-Planner/listItems-itinerary.js"
 import axios from 'axios';
-axios.defaults.baseURL = "http://localhost:3000";
+
+axios.defaults.baseURL = `http://${process.env.IP_ADDRESS}:3000`;
 import {FacebookShareButton, EmailShareButton, TwitterShareButton} from 'react-share'
 import {FacebookIcon, EmailIcon, TwitterIcon} from 'react-share'
 
