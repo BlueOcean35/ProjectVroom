@@ -28,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
+  button: {
+    padding: 0,
+     width: "35%",
+     color: "#DB1200",
+  },
   toolbarIcon: {
     display: "flex",
     alignItems: "center",
@@ -59,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     paddingLeft: "10px",
     fontSize: "20px",
-    boxShadow: "2px 10px -14px 14px #FFF"
+    boxShadow: "2px 10px -14px 14px #FFF",
+    marginBottom: "15px"
   },
   input: {
   },
@@ -146,7 +152,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                 noWrap
                 className={classes.title}
               >
-                Big Bad Boston Bikers
+               <a style={{pointerEvents: "none", cursor: "default"}} href="https://fontmeme.com/old-english-fonts/"><img src="https://fontmeme.com/permalink/210408/c4d47cc99a98e48ed869f59f25d94dbc.png" alt="old-english-fonts" border="0" /></a>
               </Typography>
               <div> Logo </div>
             </Toolbar>
@@ -231,7 +237,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                 )}
               </PlacesAutocomplete>
       </form>
-      <Button style={{padding: 0}} form="landing-form" type="submit" className={classes.rideButton} > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to="/Dashboard" className={classes.link} >Let’s Ride </Link> : <span>Let’s Ride</span>}</Button>
+      <Button  form="landing-form" type="submit" className={classes.button} > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to="/Dashboard" className={classes.link} >Let’s Ride </Link> : <span>Let’s Ride</span>}</Button>
       </div>
     </div>
     </ThemeProvider>
