@@ -38,7 +38,7 @@ class GoogleMap extends Component {
       // }
     });
     let positionMarkers = [];
-    // console.warn('redux start: ', store.getState(), this.props)
+    // //console.warn('redux start: ', store.getState(), this.props)
 
     const map = new window.google.maps.Map(
 			document.getElementById("google-map"),
