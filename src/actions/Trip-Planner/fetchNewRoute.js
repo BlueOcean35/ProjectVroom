@@ -12,6 +12,7 @@ var fetchNewRoute = (newWaypoint) => {
     if (newWaypoint !== undefined){
       waypoints.push(newWaypoint)
     }
+    waypoints.sort((a,b) => {return a.proximityFromOrigin - b.proximityFromOrigin})
     return (dispatch) => {
       dispatch(distNewWaypoints(waypoints))
   }
