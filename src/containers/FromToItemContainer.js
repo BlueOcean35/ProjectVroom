@@ -5,12 +5,11 @@ import fetchNewRoute from '../actions/Trip-Planner/fetchNewRoute.js';
 var mapStoreToProps = (state) => ({
   storeFrom: state.addressObjFrom,
   storeTo: state.addressObjTo
-})
+});
 
 var mapDispatchToProps = (dispatch) => ({
-
     fetchNewRoute: () => {
-      dispatch(fetchNewRoute())
+      dispatch(fetchNewRoute());
     }
 });
 
