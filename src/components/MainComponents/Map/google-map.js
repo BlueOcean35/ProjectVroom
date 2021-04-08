@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import store from "../../../store"
-const API_KEY = 'AIzaSyBVzEAf0DQrgJnrlYtqwJON9qBIdxv1kgg';
+// BUG: API_KEY was hardcoded in ??
+const API_KEY = process.env.API_KEY;
 
 class GoogleMap extends Component {
 	constructor (props) {
@@ -28,6 +29,7 @@ class GoogleMap extends Component {
 
 	initMap = () => {
     console.log('map rendered')
+    // this is the problem!
 		let latitude = this.props.locationFrom.lat || 40.7128
 		let longitude = this.props.locationFrom.lng || -74.0060
 		var directionsService = new google.maps.DirectionsService();
