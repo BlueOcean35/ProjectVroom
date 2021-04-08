@@ -6,8 +6,7 @@ const morgan = require("morgan");
 const axios = require("axios");
 require("dotenv").config();
 const { router } = require("./Routes/Routes");
-const API_KEY = process.env.API_KEY;
-
+const API_KEY = process.env.API_KEY2;
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -18,7 +17,6 @@ app.get("/maps/*", function (req, res, next) {
   const url = `https://maps.googleapis.com${req.url}&key=${API_KEY}`;
   axios.get(url)
     .then((response) => {
-      console.log(response);
       res.header("Access-Control-Allow-Origin", "*");
       res.status(response.status).send(response.data.results);
     })

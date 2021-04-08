@@ -29,7 +29,6 @@ var getNearby = (lat, lng) => {
   return (dispatch) => {
     axios.get(getQuery('restaurant'))
       .then(({data}) => {
-        console.log(data);
         var dataWithLoc = data.map((place) => {
           place['originLoc'] = {
             lat: lat,
@@ -59,7 +58,7 @@ var getNearby = (lat, lng) => {
             dispatch(showNearbyFuel(dataWithLoc));
           })
           .catch((error) => {
-            //console.error('error getting nearby fuel: ', error);
+            console.error('error getting nearby fuel: ', error);
           })
           .then(() => {
             axios.get(getQuery('lodging'))
@@ -77,7 +76,7 @@ var getNearby = (lat, lng) => {
                 dispatch(showNearbyLodging(dataWithLoc))
               })
               .catch((error) => {
-                //console.error('error getting nearby lodging: ', error);
+                console.error('error getting nearby lodging: ', error);
               })
               .then(() => {
                 axios.get(getQuery('tourist_attraction'))
@@ -95,13 +94,13 @@ var getNearby = (lat, lng) => {
                     dispatch(showNearbyAttractions(dataWithLoc));
                   })
                   .catch((error) => {
-                    //console.error('error getting nearby attractions: ', error);
+                    console.error('error getting nearby attractions: ', error);
                   })
               })
           })
       })
       .catch((error) => {
-        //console.error('error getting nearby items: ', error);
+        console.error('error getting nearby items: ', error);
       })
   }
 };
