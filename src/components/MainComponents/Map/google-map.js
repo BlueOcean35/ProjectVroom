@@ -30,14 +30,14 @@ class GoogleMap extends Component {
 				center: new window.google.maps.LatLng(latitude, longitude),
 				zoom: 7,
 				mapTypeId: window.google.maps.MapTypeId.ROADMAP,
-				zoomControl: true,
+				zoomControl: this.props.toggle || true,
 				mapTypeControl: false,
 				scaleControl: false,
 				streetViewControl: false,
 				rotateControl: false,
 				fullscreenControl: false,
 				scrollwheel: false,
-				draggable: true,
+				draggable: this.props.toggle || true,
 				disableDoubleClickZoom: true,
 				gestureHandling: "cooperative",
 			}
@@ -57,9 +57,7 @@ class GoogleMap extends Component {
       var request = {
         origin:start,
         destination:end,
-        waypoints: [{
-          location: { lat: 41.03, lng: -73.76 }
-        }],
+        waypoints: props.waypoints,
         optimizeWaypoints: true,
         travelMode: 'DRIVING'
       };
@@ -79,7 +77,9 @@ class GoogleMap extends Component {
 			const x = JSON.stringify(mouseEvent.latLng.lat());
 			const y = JSON.stringify(mouseEvent.latLng.lng());
 			console.log(x, y);
-			this.props.getNearby(x, y);
+			if (this.props.getNearby) {
+				this.props.getNearby(x, y);
+			}
 		});
 	};
 

@@ -10,12 +10,10 @@ import PlacesAutocomplete, {
   geocodeByPlaceId,
   getLatLng,
 } from 'react-places-autocomplete';
-// import MapContainer from "./Map.js";
-// import GoogleMaps from "./Map-Pure-JS";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 const API_KEY = process.env.API_KEY;
-console.log(API_KEY);
+
 
 function Copyright() {
 	return (
@@ -122,6 +120,7 @@ const useStyles = makeStyles((theme) => ({
 	fixedHeight: {
 		height: 240,
   },
+
   link: {
     textDecoration: 'none',
     width: '100%',
@@ -135,11 +134,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// to format the names of the cities
-// x = x.split(', ')
-// x[0] = x[0].split(' ')
-// [0] = x[0].join('+')
-//x = `${x[0]},${x[1]}`
 
 let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, submitCoordinatesFrom, submitCoordinatesTo}) => {
   const classes = useStyles();
@@ -154,6 +148,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
   function handleSelectFrom(from) {
       geocodeByAddress(from)
       .then((results) => {
+        setAddressFrom(results[0].formatted_address)
         submitAddressFrom(results)
         return getLatLng(results[0])})
       .then((latLng) => {
@@ -165,6 +160,7 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
   function handleSelectTo(To) {
       geocodeByAddress(To)
       .then((results) => {
+        setAddressTo(results[0].formatted_address)
         submitAddressTo(results)
         return getLatLng(results[0])
       })
@@ -177,13 +173,14 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
 
   function getCurrLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
+      navigator.geolocation.getCurrentPosition( function(position) {
         console.log(position)
-        return axios.get(`http://maps.googleapis.com/maps/api/geocode/libraries&json?latlng=` + position.coords.latitude + "," + position.coords.longitude + "&sensor-false&"+ `key=${API_KEY}`).then((data) => {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+         axios.get(`/maps/api/geocode/json?latlng=${lat},${lng}&sensor-false`).then(({data}) => {
           console.log(data)
-          // 1. set the reverse geocode address to be the state in our redux store
-          // 2. auto complete our from field
-      }).catch(err => console.log(err))
+          handleSelectFrom(data[0].formatted_address)
+          setAddressFrom(data[0].formatted_address)})
       })
     }
   }
@@ -192,44 +189,85 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
   return(
     <div className="landingPage">
 
-    <AppBar
-    position="relative"
-    className={clsx(classes.appBar)}
-  >
-    <Toolbar className={classes.toolbar}>
-      <Typography
-        component="h1"
-        variant="h3"
-        color="inherit"
-        noWrap
-        className={classes.title}
-      >
-        Big Bad Boston Bikers
-      </Typography>
-      <div> Logo </div>
-    </Toolbar>
-  </AppBar>
+      <AppBar
+      position="relative"
+      className={clsx(classes.appBar)}
+    >
+      <Toolbar className={classes.toolbar}>
+        <Typography
+          component="h1"
+          variant="h3"
+          color="inherit"
+          noWrap
+          className={classes.title}
+        >
+          Big Bad Boston Bikers
+        </Typography>
+        <div> Logo </div>
+      </Toolbar>
+    </AppBar>
 
-  <div className="landing-page-interactions">
+    <div className="landing-page-interactions">
 
-  <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
-    <Tooltip className={classes.Tooltip} title="use current location">
-    <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
-    </Tooltip>
+      <form id="landing-form" onSubmit={handleSubmit} className="landing-page-inputs" >
+        <Tooltip className={classes.Tooltip} title="use current location">
+        <IconButton onClick={getCurrLocation} aria-label="current location"> <LocationOnIcon /> </IconButton>
+        </Tooltip>
 
-    <PlacesAutocomplete
-      value={addressFrom}
-      onChange={setAddressFrom}
-      onSelect={handleSelectFrom}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <InputLabel  className={classes.inputLabel} >From:
-              <Input className={classes.input}  {...getInputProps({
-                    placeholder: "NYC",
-                    required: true
-                  })} />
-            </InputLabel>
+        <PlacesAutocomplete
+          value={addressFrom}
+          onChange={setAddressFrom}
+          onSelect={handleSelectFrom}
+          >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+              <div>
+                <InputLabel  className={classes.inputLabel} >From:
+                  <Input className={classes.input}  {...getInputProps({
+                        placeholder: "NYC",
+                        required: true
+                      })} />
+                </InputLabel>
+                  <div className="autocomplete-dropdown-container">
+                    {loading ? <div>Loading...</div> : null}
+                    {suggestions.map((suggestion, i) => {
+                      const className = suggestion.active
+                        ? 'suggestion-item--active'
+                        : 'suggestion-item';
+                      const style = suggestion.active
+                        ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
+                        : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
+                      return (
+                        <div onClick={() => setAddressFrom(suggestion.description)} key={`from-${suggestion}-${i}`}
+                          {...getSuggestionItemProps(suggestion, {
+                            className,
+                            style,
+                          })}
+                        >
+                          <span>{suggestion.description}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+              </div>
+            )}
+        </PlacesAutocomplete>
+
+
+
+        <PlacesAutocomplete
+          value={addressTo}
+          onChange={setAddressTo}
+          onSelect={handleSelectTo}
+        >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div>
+              <InputLabel  className={classes.inputLabel} >To:
+                <Input className={classes.input} {...getInputProps({
+                  placeholder: "LA",
+                  required: true
+                })} />
+              </InputLabel>
+
               <div className="autocomplete-dropdown-container">
                 {loading ? <div>Loading...</div> : null}
                 {suggestions.map((suggestion, i) => {
@@ -237,10 +275,10 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
                   const style = suggestion.active
-                    ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white",  }
-                    : { backgroundColor: "#211C17", cursor: 'pointer', color: "white", };
+                  ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
+                    : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
                   return (
-                    <div onClick={() => setAddressFrom(suggestion.description)} key={`from-${suggestion}-${i}`}
+                    <div  onClick={() => setAddressTo(suggestion.description)} key={`to-${suggestion}-${i}`}
                       {...getSuggestionItemProps(suggestion, {
                         className,
                         style,
@@ -251,65 +289,14 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
                   );
                 })}
               </div>
-          </div>
-        )}
-    </PlacesAutocomplete>
+            </div>
+            )}
+          </PlacesAutocomplete>
 
-
-
-    <PlacesAutocomplete
-      value={addressTo}
-      onChange={setAddressTo}
-      onSelect={handleSelectTo}
-    >
-      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-        <div>
-          <InputLabel  className={classes.inputLabel} >To:
-            <Input className={classes.input} {...getInputProps({
-              placeholder: "LA",
-              required: true
-            })} />
-          </InputLabel>
-
-          <div className="autocomplete-dropdown-container">
-            {loading ? <div>Loading...</div> : null}
-            {suggestions.map((suggestion, i) => {
-              const className = suggestion.active
-                ? 'suggestion-item--active'
-                : 'suggestion-item';
-              const style = suggestion.active
-              ? { backgroundColor: "#911E0B",cursor: 'pointer', color: "white"}
-                : { backgroundColor: "#211C17", cursor: 'pointer', color: "white"};
-              return (
-                <div  onClick={() => setAddressTo(suggestion.description)} key={`to-${suggestion}-${i}`}
-                  {...getSuggestionItemProps(suggestion, {
-                    className,
-                    style,
-                  })}
-                >
-                  <span>{suggestion.description}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        )}
-      </PlacesAutocomplete>
-
- </form>
-
-
-        <Button style={{padding: 0, height: '100%'}} form="landing-form" type="submit" className={classes.rideButton} >{storeFrom.formatted_address && storeTo.formatted_address ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
-
-
-
-
-
-  </div>
-
-
-
+      </form>
+        <Button style={{padding: 0, height: '100%'}} form="landing-form" type="submit" className={classes.rideButton} > {(storeFrom.formatted_address && storeTo.formatted_address) ? <Link to='/Dashboard' className={classes.link} >Let's Ride </Link> : <span>Let's Ride</span>}</Button>
     </div>
+  </div>
   )
 
 }
