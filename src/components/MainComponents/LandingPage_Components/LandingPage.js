@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     padding: 0,
      width: "35%",
-     color: "#DB1200",
+     color: "#211C17",
   },
   toolbarIcon: {
     display: "flex",
@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     width: "100%",
     height: "100%",
-    color: "white"
+    color: "#211C17"
   },
   buttonContainer: {
     height: "75px",
@@ -156,7 +156,8 @@ let LandingPage = ({storeFrom, storeTo, submitAddressFrom, submitAddressTo, subm
               >
                <a style={{pointerEvents: "none", cursor: "default"}} href="https://fontmeme.com/old-english-fonts/"><img src="https://fontmeme.com/permalink/210408/c4d47cc99a98e48ed869f59f25d94dbc.png" alt="old-english-fonts" border="0" /></a>
               </Typography>
-              <div> Logo </div>
+              <div> <img className="logo" style={{height: "120px", width: "120px"}} src={"../images/logo.png"} alt="big bad boston bikers logo"></img></div>
+
             </Toolbar>
           </AppBar>
         <div className="landing-page-interactions">

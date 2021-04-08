@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: "flex",
 		height: "100vh",
-		width: "100vw"
+		width: "100vw",
 	},
 	toolbar: {
 		paddingRight: 24, // keep right padding when drawer closed
@@ -154,7 +154,8 @@ export default function Dashboard() {
 					>
 						<a style={{pointerEvents: "none", cursor: "default"}} className="main-title" href="https://fontmeme.com/old-english-fonts/"><img className="main-title"  src="https://fontmeme.com/permalink/210408/c4d47cc99a98e48ed869f59f25d94dbc.png" alt="old-english-fonts" border="0" /></a>
 					</Typography>
-					<div> This is where you add the logo </div>
+					<div><img style={{height: "120px", width: "120px"}} className="logo" src={"../images/logo.png"} alt="big bad boston bikers logo"></img></div>
+
 				</Toolbar>
 			</AppBar>
 			<Drawer
