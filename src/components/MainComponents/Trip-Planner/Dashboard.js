@@ -12,6 +12,8 @@ import NearbyTabs from "./Suggestions/Nearby-Tabs.js";
 import SuggestionsListItems from "./Suggestions/List-Items.js";
 import GoogleMapContainer from "../Map/GoogleMapContainer.js";
 import theme from '../../theme';
+import SaveItineraryContainer from './SaveItineraryContainer.js';
+
 
 function Copyright() {
 	return (
@@ -173,6 +175,7 @@ export default function Dashboard() {
 					<List>{secondaryListItems}</List>
 					<Divider  />
 					<NearbyTabsContainer  />
+        	<SaveItineraryContainer />
 				</>
 			</Drawer>
 			<main className={classes.content}>
