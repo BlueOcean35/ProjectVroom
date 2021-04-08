@@ -72,6 +72,11 @@ body {
   display: block;
 }
 
+.tab-panel {
+  height: 400px;
+  overflow: scroll;
+}
+
 /* Itinerary Page Styles */
 .itinerary-container {
 	position: absolute;

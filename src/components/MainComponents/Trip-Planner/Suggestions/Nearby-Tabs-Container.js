@@ -8,6 +8,7 @@ var mapStoreToProps = (state) => ({
 	nearbyFuel: state.nearbyFuel
 });
 
+
 var NearbyTabsContainer = connect(
 	mapStoreToProps,
 	null
