@@ -72,6 +72,15 @@ body {
   display: block;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+.tab-panel {
+  height: 400px;
+  overflow: scroll;
+}
+=======
+>>>>>>> 3855e618b9a11ca85a7087f0145a1bc917d1391b
+=======
 /* Itinerary Page Styles */
 .itinerary-container {
 	position: absolute;
@@ -97,3 +106,4 @@ body {
 	/* grid-row-start: 1; */
 }
 
+>>>>>>> origin/dev

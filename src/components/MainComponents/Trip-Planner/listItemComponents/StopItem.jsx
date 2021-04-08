@@ -64,7 +64,8 @@ render(){
   var icons = {
     food: FastfoodIcon,
     lodging: HotelIcon,
-    fuel: LocalGasStationIcon
+    fuel: LocalGasStationIcon,
+    shopping: ShoppingCartIcon
   }
 
   var StopIcon ;
@@ -90,7 +91,7 @@ render(){
     </Tooltip>
 
     <Tooltip title={<span style = {{fontSize: '15px'}}>Remove Stop</span>} >
-      <IconButton aria-label = 'remove-stop'>
+      <IconButton aria-label = 'remove-stop' onClick = {() => {this.props.removeFunc(this.props.index)}}>
         <RemoveCircleIcon />
       </IconButton>
     </Tooltip>

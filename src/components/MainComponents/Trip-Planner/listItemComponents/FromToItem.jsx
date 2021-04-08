@@ -22,9 +22,9 @@ export default function FromToItem (props) {
   var listText;
 
   if (props.type === 'from') {
-    listText = `From: ${props.from.address}`;
+    listText = `From: ${props.storeFrom.formatted_address}`;
   } else if (props.type === 'to') {
-    listText = `To: ${props.to.address}`;
+    listText = `To: ${props.storeTo.formatted_address}`;
   }
 
 	return (

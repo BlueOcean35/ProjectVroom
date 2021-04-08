@@ -8,6 +8,7 @@ require('dotenv').config();
 const { router } = require('./Routes/Routes');
 const API_KEY = process.env.API_KEY;
 
+
 app.use(morgan('dev'));
 app.use(express.json());
 

@@ -15,8 +15,15 @@ var getNearby = (lat, lng) => {
   return (dispatch) => {
     axios.get(getQuery('restaurant'))
       .then(({data}) => {
-        console.log('food: ', data);
-        dispatch(showNearbyFood(data));
+        var dataWithLoc = data.map((place) => {
+          place['originLoc'] = {
+            lat: lat,
+            lng: lng
+          }
+          return place;
+        })
+        console.log('food: ', dataWithLoc);
+        dispatch(showNearbyFood(dataWithLoc));
       })
       .catch((error) => {
         console.error('error getting nearby food: ', error);
@@ -24,8 +31,15 @@ var getNearby = (lat, lng) => {
       .then(() => {
         axios.get(getQuery('gas_station'))
           .then(({data}) => {
-            console.log('fuel: ', data);
-            dispatch(showNearbyFuel(data));
+            var dataWithLoc = data.map((place) => {
+              place['originLoc'] = {
+                lat: lat,
+                lng: lng
+              }
+              return place;
+            })
+            console.log('fuel: ', dataWithLoc);
+            dispatch(showNearbyFuel(dataWithLoc));
           })
           .catch((error) => {
             console.error('error getting nearby fuel: ', error);
@@ -33,8 +47,15 @@ var getNearby = (lat, lng) => {
           .then(() => {
             axios.get(getQuery('lodging'))
               .then(({data}) => {
-                console.log('lodging: ', data);
-                dispatch(showNearbyLodging(data));
+                var dataWithLoc = data.map((place) => {
+                  place['originLoc'] = {
+                    lat: lat,
+                    lng: lng
+                  }
+                  return place;
+                })
+                console.log('lodging: ', dataWithLoc);
+                dispatch(showNearbyLodging(dataWithLoc));
               })
               .catch((error) => {
                 console.error('error getting nearby lodging: ', error);
@@ -42,8 +63,15 @@ var getNearby = (lat, lng) => {
               .then(() => {
                 axios.get(getQuery('tourist_attraction'))
                   .then(({data}) => {
-                    console.log('attractions: ', data);
-                    dispatch(showNearbyAttractions(data));
+                    var dataWithLoc = data.map((place) => {
+                      place['originLoc'] = {
+                        lat: lat,
+                        lng: lng
+                      }
+                      return place;
+                    })
+                    console.log('attractions: ', dataWithLoc);
+                    dispatch(showNearbyAttractions(dataWithLoc));
                   })
                   .catch((error) => {
                     console.error('error getting nearby attractions: ', error);
