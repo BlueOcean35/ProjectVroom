@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
 		position: "relative",
 		whiteSpace: "nowrap",
 		width: drawerWidth,
+		height: '60rem',
 		transition: theme.transitions.create("width", {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
@@ -169,7 +170,7 @@ export default function Dashboard() {
 				</div>
 				<Divider />
 				<>
-					<ListItemsContainer2 />
+					<ListItemsContainer2 classes = {classes.tripSoFarHeight} />
 
 					<Divider />
 					<NearbyTabsContainer />
