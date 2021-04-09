@@ -34,8 +34,8 @@ export default function mainListItems (props) {
 	const classes = useStyles();
 	return (
 		<ThemeProvider theme={theme}>
-	<div style={{overflow:"scroll"}}>
-	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
+			<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
+		<div style={{overflow:"scroll", height:"500px"}}>
 		<FromToItem type = 'from'  storeFrom={props.start}/>
 			{
 				props.waypoints.map((element, index) => {
