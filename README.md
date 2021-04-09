@@ -73,7 +73,6 @@ The landing page is where users can enter the origin and destination of their tr
 
 The From and To fields utilize Google's Geolocation Service to auto-suggest locations based on user input. Once the user has chosen a start and destination, they can click the "Let's Ride" button to move to the trip planning dashboard.
 
-![Landing Page](https://recordit.co/z1VLopTvZ4)
 
 > ![](READMEGIF/landingPage.gif)
 ---
