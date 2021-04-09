@@ -44,6 +44,10 @@ var selectTypeIcon = (type) => {
 
 }
 
+var searchLoc = (name) => {
+  window.open(`https://www.google.com/search?q=${name}`)
+}
+
 
 
 const NearbyListItems = ({
@@ -68,6 +72,7 @@ const NearbyListItems = ({
 						Proximity:{place.proximity.toString().slice(0,4)}mi from origin
 					</div>
 				}
+        onClick={searchLoc(place.name.join(''))}
 			/>
 			<ListItemIcon>
 				<AddBoxIcon fontSize="large" onClick={() => {
