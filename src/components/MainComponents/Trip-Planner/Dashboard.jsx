@@ -171,7 +171,7 @@ export default function Dashboard() {
 				<>
 					<ListItemsContainer2 />
 
-					<Divider  />
+
 					<NearbyTabsContainer  />
         	<SaveItineraryContainer />
 				</>
