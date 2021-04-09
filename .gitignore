@@ -2,3 +2,5 @@
 node_modules
 .DS*
 dist/bundle.js
+config.js
+.vscode/

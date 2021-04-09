@@ -1,10 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers/rootReducer.js';
-import thunk from 'redux-thunk';
-
-/* REDUX-PERSIST SETUP
- import { persistStore, persistReducer } from 'redux-persist';
- import storage from 'redux-persist/lib/storage';
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./reducers/rootReducer.js";
+import thunk from "redux-thunk";
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 
  const persistConfig = {
@@ -16,18 +14,30 @@ import thunk from 'redux-thunk';
 
  const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-*/
+
 
 // add in any state you need here
 var initialState = {
-  count: 0
+
+  nearbyFood: [],
+  nearbyLodging: [],
+  nearbyAttractions: [],
+  nearbyFuel: [],
+  nearbyIsAdded: false,
+  waypoints: [],
+  travelSoFarStops: [],
+  locationFrom: {}, //start loc validated by api
+  locationTo: {}, //end loc validated by api
+  addressObjFrom: {}, //from the login page start text field
+  addressObjTo: {} //from the login page destination text field
+
 };
 
-export const store = createStore (
-  rootReducer,
-  // persistedReducer,
-  initialState,
-  applyMiddleware(thunk)
+export const store = createStore(
+	// rootReducer,
+	persistedReducer,
+	initialState,
+	applyMiddleware(thunk)
 );
 
-//  export const persistor = persistStore(store);
+export const persistor = persistStore(store);
