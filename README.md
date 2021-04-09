@@ -87,7 +87,6 @@ Users may also add comments to their stop by clicking the pen icon in the Trip D
 
 <!-- They can remove the stop from their trip by selecting the remove icon near the stop. The destinations in the trip details will always reflect the order displayed on the route.  -->
 
-![Trip Dashboard](./read-me-imgs/TripDashboard.png)
 
 > ![](READMEGIF/tripPlanner.gif)
 ---
