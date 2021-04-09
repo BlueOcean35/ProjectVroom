@@ -41,7 +41,7 @@ export default function mainListItems (props) {
 	const classes = useStyles();
 	return (
 		<ThemeProvider theme={theme}>
-	<div>
+	<div style = {{overflow: 'scroll'}}>
 	<Typography variant = 'h5' component = 'h2' className = {classes.listText} >Your Trip Details</Typography>
 		<FromToItemContainer type = 'from'  />
 
