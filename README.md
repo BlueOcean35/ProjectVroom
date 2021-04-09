@@ -40,7 +40,8 @@ The MVP goals of this application were to allow users to plan a trip, receive su
   - IP_ADDRESS: set to the server's computer's IP Address or `localhost` if running on local computer
 - run `docker-compose up` to build the database, server and front end client
 - navigate to `IP_ADDRESS:3000`
--
+
+---
 
 ## Technologies Used
 > Back end
@@ -71,6 +72,8 @@ Ensure that the following modules are installed before running docker-compose
 The landing page is where users can enter the origin and destination of their trip. Users can click the white travel icon to allow Google to use their current location as the starting point.
 
 The From and To fields utilize Google's Geolocation Service to auto-suggest locations based on user input. Once the user has chosen a start and destination, they can click the "Let's Ride" button to move to the trip planning dashboard.
+
+![Landing Page](https://recordit.co/z1VLopTvZ4)
 
 > ![](READMEGIF/landingPage.gif)
 ---
