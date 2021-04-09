@@ -1,14 +1,31 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3000;
-const path = require('path');
+const path = require("path");
 const morgan = require("morgan");
-require('dotenv').config();
+const axios = require("axios");
+require("dotenv").config();
+const { router } = require("./Routes/Routes");
+const API_KEY = process.env.API_KEY2;
 
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '..', 'dist')));
+app.use(express.static(path.join(__dirname, "..", "dist")));
+
+app.get("/maps/*", function (req, res, next) {
+  const url = `https://maps.googleapis.com${req.url}&key=${API_KEY}`;
+  axios.get(url)
+    .then((response) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.status(response.status).send(response.data.results);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+app.use("/", router);
 
 app.listen(port, () => {
   console.log(`Example app listening at Port ${port}`);

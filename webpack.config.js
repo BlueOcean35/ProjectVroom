@@ -1,31 +1,34 @@
-const webpack = require('webpack');
-const path = require('path');
-const Dotenv = require('dotenv-webpack');
+const webpack = require("webpack");
+const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
 const config = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
+
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
+
+  mode: "development",
+
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      }
-    ]
+        use: "babel-loader",
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx'
-    ]
+    extensions: [".js", ".jsx"],
   },
-  plugins: [
-    new Dotenv()
-  ]
+  plugins: [new Dotenv()],
+
+  devServer: {
+    historyApiFallback: true,
+  },
 };
 
 module.exports = config;
